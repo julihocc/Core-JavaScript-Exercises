@@ -1,4 +1,7 @@
 
+* Every problem has its own folder. 
+* Every folder contains a subfolder called "iterations"
+* The most recent version is the last iteration 
 
 ## Ongoing problems
 
