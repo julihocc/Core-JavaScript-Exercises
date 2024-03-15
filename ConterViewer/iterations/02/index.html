@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="decrement" title="Decrement" type="button">Decrement</button>
+    <button id="random" title="Random" type="button">Random</button>
+    <button id="increment" title="Increment" type="button">Increment</button>
+    <select id="baseOptions" title="Base">
+      <option value="10">Decimal</option>
+      <option value="2">Binary</option>
+      <option value="8">Octary</option>
+      <option value="16">Hexadecimal</option>
+      <option value="R">Roman</option>
+    </select>
+    <label for="stepInput">Step size:</label>
+    <input id="stepInput" type="text" />
+    <p id="display"></p>
+    <button id="reset" title="Reset">Reset</button>
+
+    <script src="./script.js" type="module"></script>
+    <script src="./Counter.js" type="module"></script>
+    <script type="module" src="./RomanNumerals.js"></script>
+    <script type="module" src="./storage.js"></script>
+  </body>
+</html>

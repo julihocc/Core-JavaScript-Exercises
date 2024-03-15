@@ -1,0 +1,13 @@
+import Graph from "./Graph.js";
+
+// Example Usage:
+const graph = new Graph();
+graph.addEdge(0, 1, 20);
+graph.addEdge(1, 2, 10);
+graph.addEdge(2, 3, 30);
+graph.addEdge(0, 2, 10);
+graph.addEdge(1, 3, 20);
+
+// graph.showNeighbors()
+
+console.log("The longest path is " + graph.longestPathBetweenNodes(0, 3));
