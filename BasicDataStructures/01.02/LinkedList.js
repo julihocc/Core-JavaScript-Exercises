@@ -5,12 +5,19 @@ class Node {
   }
 }
 
+// TODO 2. For regular linked list, add an element or another linked list in beteween
+//  1. After some position
+//  2. After some value
+
 class LinkedList {
+  #length = 0;
   constructor() {
     this.head = null;
     this.tail = null;
   }
   append(value) {
+    // [x]: Implement the length increment
+    this.#length++;
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;
@@ -64,6 +71,9 @@ class LinkedList {
     this.tail = prev;
     this.tail.next = null;
     return second;
+  }
+  get length() {
+    return this.#length;
   }
 }
 
