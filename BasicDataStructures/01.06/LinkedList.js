@@ -135,6 +135,17 @@ class LinkedList {
   }
 
   // TODO 3. For regular linked list, filter values and return a new list
+  filter(callback) {
+    let current = this.head;
+    const newList = new LinkedList();
+    while (current) {
+      if (callback(current.value)) {
+        newList.append(current.value);
+      }
+      current = current.next;
+    }
+    return newList;
+  }
 }
 
 export { LinkedList, Node };
