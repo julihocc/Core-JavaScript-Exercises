@@ -20,4 +20,6 @@ console.log([...list]); // [1, 2, 3, 4, 5, 6]
 
 const otherHalf = list.halve();
 console.log([...list]); // [1, 2, 3]
+console.log(list.length); // 3
 console.log([...otherHalf]); // [4, 5, 6]
+console.log(otherHalf.length); // 3

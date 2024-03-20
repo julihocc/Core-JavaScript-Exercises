@@ -56,6 +56,7 @@ class LinkedList {
     return [first, second];
   }
   halve() {
+    // [x] Recalculate the length of the list
     let slow = this.head;
     let fast = this.head;
     let prev = null;
@@ -70,6 +71,8 @@ class LinkedList {
     second.tail = this.tail;
     this.tail = prev;
     this.tail.next = null;
+    second.#length = Math.ceil(this.#length / 2);
+    this.#length = Math.floor(this.#length / 2);
     return second;
   }
   get length() {
