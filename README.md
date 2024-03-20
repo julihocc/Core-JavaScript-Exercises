@@ -3,7 +3,7 @@
 * Every folder contains a subfolder called "iterations"
 * The most recent version is the last iteration 
 
-## Ongoing problems
+## Ongoing Tasks
 
 1. FoodOrderingSystem
 2. OOPShapeOverload
