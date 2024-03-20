@@ -11,6 +11,7 @@ class LinkedList {
     this.tail = null;
   }
   append(value) {
+    // TODO: 1. For regular linked list, keep track of the length and create a getter for it
     const newNode = new Node(value);
     if (!this.head) {
       this.head = newNode;

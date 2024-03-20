@@ -75,6 +75,7 @@ class LinkedList {
   get length() {
     return this.#length;
   }
+  // TODO 3. For regular linked list, filter values and return a new list
 }
 
 export { LinkedList, Node };
