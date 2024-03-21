@@ -149,7 +149,7 @@ class App {
     this.currentShape.dequeue();
   };
 
-  asyncProcessQueue = async (event) => {
+  debouncedProcessQueue = async (event) => {
     console.log("Compressing");
     if (this.timerId) {
       clearTimeout(this.timerId);
@@ -165,7 +165,7 @@ class App {
     if (this.compress.checked) {
       this.directionsContainer.addEventListener(
         "click",
-        this.asyncProcessQueue
+        this.debouncedProcessQueue
       );
     } else {
       this.directionsContainer.addEventListener("click", this.processQueue);
@@ -181,12 +181,12 @@ class App {
         );
         this.directionsContainer.addEventListener(
           "click",
-          this.asyncProcessQueue
+          this.debouncedProcessQueue
         );
       } else {
         this.directionsContainer.removeEventListener(
           "click",
-          this.asyncProcessQueue
+          this.debouncedProcessQueue
         );
         this.directionsContainer.addEventListener("click", this.processQueue);
       }
