@@ -17,6 +17,7 @@ class App {
     undoContainer
   ) {
     this.step = 20;
+    this.debounceTime = 1500;
     this.canvas = canvas;
     this.context = context;
     this.shapeSelected = shapeSelected;
@@ -157,7 +158,7 @@ class App {
     // this.enqueue(event);
     const action = this.createAction(event);
     this.currentShape.enqueue(action);
-    this.timerId = await this.delay(3000);
+    this.timerId = await this.delay(this.debounceTime);
     this.currentShape.dequeue();
   };
 
