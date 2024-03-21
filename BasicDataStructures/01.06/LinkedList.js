@@ -134,7 +134,7 @@ class LinkedList {
     return this;
   }
 
-  // TODO 3. For regular linked list, filter values and return a new list
+  // [x]TODO 3. For regular linked list, filter values and return a new list
   filter(callback) {
     let current = this.head;
     const newList = new LinkedList();
