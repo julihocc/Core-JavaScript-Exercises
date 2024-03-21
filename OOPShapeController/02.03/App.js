@@ -92,20 +92,40 @@ class App {
     });
   }
 
-  enqueue = (event) => {
+  // enqueue = (event) => {
+  //   console.log("Direction clicked on ", this);
+  //   const directionElement = event.target;
+  //   const direction = directionElement.id;
+  //   if (this.directions.hasOwnProperty(direction)) {
+  //     let deltax = this.directions[direction].deltax;
+  //     let deltay = this.directions[direction].deltay;
+  //     const action = {
+  //       direction,
+  //       deltax,
+  //       deltay,
+  //     };
+  //     console.log("Event", action.toString());
+  //     this.currentShape.enqueue(action);
+  //   }
+  // };
+
+  createAction = (event) => {
     console.log("Direction clicked on ", this);
     const directionElement = event.target;
     const direction = directionElement.id;
     if (this.directions.hasOwnProperty(direction)) {
       let deltax = this.directions[direction].deltax;
       let deltay = this.directions[direction].deltay;
-      const event = {
+      const action = {
         direction,
         deltax,
         deltay,
       };
-      console.log("Event", event.toString());
-      this.currentShape.enqueue(event);
+      console.log("Action", action.toString());
+      return action;
+      // this.currentShape.enqueue(action);
+    } else {
+      throw new Error("Invalid direction");
     }
   };
 
@@ -123,7 +143,9 @@ class App {
   // };
 
   processQueue = (event) => {
-    this.enqueue(event);
+    // this.enqueue(event);
+    const action = this.createAction(event);
+    this.currentShape.enqueue(action);
     this.currentShape.dequeue();
   };
 
@@ -132,7 +154,9 @@ class App {
     if (this.timerId) {
       clearTimeout(this.timerId);
     }
-    this.enqueue(event);
+    // this.enqueue(event);
+    const action = this.createAction(event);
+    this.currentShape.enqueue(action);
     this.timerId = await this.delay(3000);
     this.currentShape.dequeue();
   };

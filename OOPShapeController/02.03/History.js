@@ -45,3 +45,5 @@ class History {
     return this.current.action;
   }
 }
+
+export default History;

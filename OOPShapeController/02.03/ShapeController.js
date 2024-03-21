@@ -1,4 +1,5 @@
 import Queue from "./Queue.js";
+import History from "./History.js";
 
 class ShapeController {
   constructor(coordinates, context) {
@@ -12,21 +13,22 @@ class ShapeController {
     // [x] TODO 1. In shape controller, replace array with a queue
     // this.queue = [];
     this.queue = new Queue();
+    this.history = new History();
   }
 
-  enqueue(event) {
+  enqueue(action) {
     if (
-      this.coordinates.x + event.deltax < 0 ||
-      this.coordinates.x + event.deltax > canvas.width ||
-      this.coordinates.y + event.deltay < 0 ||
-      this.coordinates.y + event.deltay > canvas.height
+      this.coordinates.x + action.deltax < 0 ||
+      this.coordinates.x + action.deltax > canvas.width ||
+      this.coordinates.y + action.deltay < 0 ||
+      this.coordinates.y + action.deltay > canvas.height
     ) {
       console.error("Out of bounds");
     } else {
       // console.log("Applying action");
       // this.moveInThisDirection(event.deltax, event.deltay);
       // this.queue.push(event);
-      this.queue.enqueue(event);
+      this.queue.enqueue(action);
       console.log([...this.queue].map((e) => e.direction));
     }
   }
@@ -35,8 +37,8 @@ class ShapeController {
     console.log("ShapeController.dequeue()");
     if (this.queue.length > 0) {
       // const event = this.queue.shift();
-      const event = this.queue.dequeue();
-      this.moveInThisDirection(event.deltax, event.deltay);
+      const action = this.queue.dequeue();
+      this.moveInThisDirection(action.deltax, action.deltay);
     }
   }
 
