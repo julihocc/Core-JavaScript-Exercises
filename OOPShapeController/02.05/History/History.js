@@ -20,7 +20,7 @@ class History {
     this.head = episode;
     this.tail = episode;
     this.current = episode;
-    this.#length++;
+    this.#length = 1;
   }
 
   deleteHistoryFromHere(episode) {
@@ -29,17 +29,24 @@ class History {
     this.#length = episode.position;
   }
 
-  push(action) {
-    if (this.head === null) {
+  setAsTail(action) {
+    if (this.head === null || this.current.next === this.head) {
       this.initHistory(action);
     } else {
       // const episode = this.setActionAsCurrent(action);
       // this.setEpisodeAsTail(episode);
       const episode = new Episode(action);
-      this.tail = episode.setAfter(this.current);
+      episode.setAfter(this.current);
       this.current = episode;
       this.deleteHistoryFromHere(this.current);
     }
+  }
+
+  push(action) {
+    const episode = new Episode(action);
+    this.tail.next = episode;
+    episode.prev = this.tail;
+    this.tail = episode;
   }
 
   moveBackward() {

@@ -188,6 +188,7 @@ export default class BinaryTree {
     return result;
   }
 
+  // TODO Create an interface for showing the tree in the browser
   // a method for printing the tree in console
   print() {
     if (!this.root) {
@@ -197,11 +198,6 @@ export default class BinaryTree {
     }
   }
 
-  //_print print the tree as a folder system tree
-  // 5 -- 7 -- 6
-  //   -- 3 -- 4
-  //       -- 3 -- 1
-  //             -
   _print(node, level) {
     if (node.right) {
       this._print(node.right, level + 1);
