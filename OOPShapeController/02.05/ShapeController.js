@@ -1,5 +1,5 @@
 import Queue from "./Queue.js";
-import History from "./History.js";
+import History from "./History/History.js";
 
 class ShapeController {
   constructor(coordinates, context) {
@@ -29,8 +29,9 @@ class ShapeController {
       // this.moveInThisDirection(event.deltax, event.deltay);
       // this.queue.push(event);
       this.queue.enqueue(action);
-      this.history.addAction(action);
+      this.history.push(action);
       console.log([...this.queue].map((e) => e.direction));
+      console.log("history", this.history.toString());
     }
   }
 
@@ -58,15 +59,18 @@ class ShapeController {
     console.log("ShapeController.undo()");
     console.log("this.history.length", this.history.length);
     console.log("this.history", this.history.toString());
-    if (this.history.length > 0) {
-      const episode = this.history.undo();
-      console.log("episode", episode);
+    if (this.history.length > 0 && this.history.current.action) {
+      const current = this.history.current;
+      console.log("episode", current);
       console.log("current", this.history.current);
-      if (episode) {
-        const action = episode.action;
+      if (current) {
+        const action = current.action;
         console.log("action", action);
         this.moveInThisDirection(-action.deltax, -action.deltay);
       }
+      this.history.moveBackward();
+      console.log(`this.history.current`, this.history.current.toString());
+      console.log("this.tail", this.history.tail.toString());
     }
   }
 
@@ -75,17 +79,22 @@ class ShapeController {
     console.log("ShapeController.redo()");
     console.log("this.history.length", this.history.length);
     console.log("this.history", this.history.toString());
-    if (this.history.length > 0) {
-      const episode = this.history.redo();
-      console.log("episode", episode);
+    if (this.history.length > 0 && this.history.current.action) {
+      const current = this.history.current;
+      console.log("episode", current);
       console.log("current", this.history.current);
-      if (this.history.current) {
-        const action = this.history.current.action;
+      if (current) {
+        const action = current.action;
         console.log("action", action);
         this.moveInThisDirection(action.deltax, action.deltay);
       }
+      this.history.moveBackward();
+      console.log(`this.history.current`, this.history.current.toString());
+      console.log("this.tail", this.history.tail.toString());
     }
   }
+
+  // FIXME undo and redo are not working at the endpoints of the history
 
   animate() {
     // Smoothness factor determines the speed of the animation

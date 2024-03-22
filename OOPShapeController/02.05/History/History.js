@@ -29,7 +29,7 @@ class History {
     this.#length = episode.position;
   }
 
-  setAsTail(action) {
+  push(action) {
     if (this.head === null || this.current.next === this.head) {
       this.initHistory(action);
     } else {
@@ -38,15 +38,9 @@ class History {
       const episode = new Episode(action);
       episode.setAfter(this.current);
       this.current = episode;
+      this.tail = episode;
       this.deleteHistoryFromHere(this.current);
     }
-  }
-
-  push(action) {
-    const episode = new Episode(action);
-    this.tail.next = episode;
-    episode.prev = this.tail;
-    this.tail = episode;
   }
 
   moveBackward() {
