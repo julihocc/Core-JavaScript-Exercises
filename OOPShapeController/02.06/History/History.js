@@ -62,12 +62,12 @@ class History {
     this.head.next = episode;
     this.tail.prev = episode;
     this.current = episode;
-    // this.#tail.position = 1;
-    this.updateIndicesAfterHere(episode);
+    this.#tail.position = 1;
     console.log("Initialized history");
   }
 
-  updateIndicesAfterHere(episode) {
+  updateIndicesFromHere(episode, initValue) {
+    episode.position = initValue || 0;
     let current = episode.next;
     while (current !== Episode.NULL) {
       current.position = current.prev.position + 1;
@@ -80,8 +80,38 @@ class History {
       this.initHistory(action);
     } else if (this.current === this.tail) {
       const episode = new Episode(action);
+      const lastNode = this.tail.prev;
+      episode.position = this.tail.position;
+      this.tail.position += 1;
+      episode.next = this.tail;
+      episode.prev = lastNode;
+      lastNode.next = episode;
+      this.tail.prev = episode;
+    } else {
+      const b = new Episode(action);
+      const a = this.current;
+      const c = this.current.next;
+      b.prev = a;
+      b.next = c;
+      a.next = b;
+      c.prev = b;
+      this.current = b;
+      this.updateIndicesFromHere(b, a.position + 1);
     }
+    return this;
+  }
 
+  moveBackward() {
+    if (this.current.prev !== Episode.NULL) {
+      this.current = this.current.prev;
+    }
+    return this;
+  }
+
+  moveForward() {
+    if (this.current.next !== Episode.NULL) {
+      this.current = this.current.next;
+    }
     return this;
   }
 
