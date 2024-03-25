@@ -11,6 +11,7 @@ class Queue {
     this.head = null;
     this.tail = null;
   }
+
   enqueue(value) {
     this.#length++;
     console.log("enqueue", value);
@@ -23,6 +24,7 @@ class Queue {
       this.tail = newNode;
     }
   }
+
   dequeue() {
     if (this.head === null) {
       this.#length = 0;

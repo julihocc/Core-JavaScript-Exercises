@@ -13,15 +13,9 @@ class ShapeController {
     // [x] TODO 1. In shape controller, replace array with a queue
     // this.queue = [];
     this.queue = new Queue();
-    this.history = new History();
-    this.history.head.action = {
-      deltax: 0, // x
-      deltay: 0, // y
-    };
-    this.history.tail.action = {
-      deltax: 0, // x
-      deltay: 0, // y
-    };
+    // this.history = new History();
+    this.undoQueue = new Queue();
+    this.redoQueue = new Queue();
   }
 
   enqueue(action) {
@@ -37,9 +31,9 @@ class ShapeController {
       // this.moveInThisDirection(event.deltax, event.deltay);
       // this.queue.push(event);
       this.queue.enqueue(action);
-      this.history.insert(action);
+      this.undoQueue.enqueue(action);
+      this.redoQueue = new Queue();
       console.log([...this.queue].map((e) => e.direction));
-      console.log(this.history.info());
     }
   }
 
@@ -63,33 +57,25 @@ class ShapeController {
   }
 
   undo() {
-    const current = this.history.current;
-    console.log("current", current.toString());
-    if (current !== this.history.head) {
-      this.moveInThisDirection(-current.action.deltax, -current.action.deltay);
+    const action = this.undoQueue.dequeue();
+    if (action) {
+      this.redoQueue.enqueue(action);
+      this.moveTo(
+        this.coordinates.x - action.deltax,
+        this.coordinates.y - action.deltay
+      );
     }
-
-    if (current.prev === this.history.head || current === this.history.head) {
-      this.history.current = this.history.head;
-    } else {
-      this.history.moveBackward();
-    }
-    console.log(this.history.info());
   }
 
   redo() {
-    const current = this.history.current;
-    console.log("current", current.toString());
-    if (current !== this.history.tail) {
-      this.moveInThisDirection(current.action.deltax, current.action.deltay);
+    const action = this.redoQueue.dequeue();
+    if (action) {
+      this.undoQueue.enqueue(action);
+      this.moveTo(
+        this.coordinates.x + action.deltax,
+        this.coordinates.y + action.deltay
+      );
     }
-
-    if (current.next === this.history.tail || current === this.history.tail) {
-      this.history.current = this.history.tail;
-    } else {
-      this.history.moveForward();
-    }
-    console.log(this.history.info());
   }
 
   // FIXME undo and redo are not working at the endpoints of the history
