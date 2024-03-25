@@ -1,5 +1,5 @@
 import Queue from "./Queue.js";
-import History from "./History/History.js";
+import Stack from "./Stack.js";
 
 class ShapeController {
   constructor(coordinates, context) {
@@ -14,8 +14,8 @@ class ShapeController {
     // this.queue = [];
     this.queue = new Queue();
     // this.history = new History();
-    this.undoQueue = new Queue();
-    this.redoQueue = new Queue();
+    this.undoStack = new Stack();
+    this.redoStack = new Stack();
   }
 
   enqueue(action) {
@@ -31,8 +31,7 @@ class ShapeController {
       // this.moveInThisDirection(event.deltax, event.deltay);
       // this.queue.push(event);
       this.queue.enqueue(action);
-      this.undoQueue.enqueue(action);
-      this.redoQueue = new Queue();
+      this.undoStack.push(action);
       console.log([...this.queue].map((e) => e.direction));
     }
   }
@@ -57,9 +56,11 @@ class ShapeController {
   }
 
   undo() {
-    const action = this.undoQueue.dequeue();
+    // const action = this.undoQueue.pop();
+    const action = this.undoStack.pop();
     if (action) {
-      this.redoQueue.enqueue(action);
+      // this.redoQueue.enqueue(action);
+      this.redoStack.push(action);
       this.moveTo(
         this.coordinates.x - action.deltax,
         this.coordinates.y - action.deltay
@@ -68,9 +69,11 @@ class ShapeController {
   }
 
   redo() {
-    const action = this.redoQueue.dequeue();
+    // const action = this.redoQueue.dequeue();
+    const action = this.redoStack.pop();
     if (action) {
-      this.undoQueue.enqueue(action);
+      // this.undoQueue.enqueue(action);
+      this.undoStack.push(action);
       this.moveTo(
         this.coordinates.x + action.deltax,
         this.coordinates.y + action.deltay
