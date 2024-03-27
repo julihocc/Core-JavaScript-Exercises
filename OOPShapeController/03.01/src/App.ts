@@ -4,17 +4,31 @@ import { SquareController, CircleController } from "./ShapeController.js";
 import Coordinates from "./Coordinates.js";
 
 class App {
+  step: number;
+  debounceTime: number;
+  canvas: HTMLCanvasElement;
+  context: CanvasRenderingContext2D;
+  shapeSelected: HTMLSelectElement;
+  compress: HTMLInputElement;
+  directionsContainer: HTMLDivElement;
+  coordinateFormat: HTMLInputElement;
+  coordinateView: HTMLDivElement;
+  coordinateStyle: HTMLInputElement;
+  coordinateStyleContainer: HTMLDivElement;
+  undoContainer: HTMLDivElement;
+  coordinates: Coordinates;
+  currentShape: SquareController;
   constructor(
-    canvas,
-    context,
-    shapeSelected,
-    compress,
-    directionsContainer,
-    coordinateFormat,
-    coordinateView,
-    coordinateStyle,
-    coordinateStyleContainer,
-    undoContainer
+    canvas: HTMLCanvasElement,
+    context: CanvasRenderingContext2D,
+    shapeSelected: HTMLSelectElement,
+    compress: HTMLInputElement,
+    directionsContainer: HTMLDivElement,
+    coordinateFormat: HTMLInputElement,
+    coordinateView: HTMLDivElement,
+    coordinateStyle: HTMLInputElement,
+    coordinateStyleContainer: HTMLDivElement,
+    undoContainer: HTMLDivElement
   ) {
     this.step = 10;
     this.debounceTime = 500;
