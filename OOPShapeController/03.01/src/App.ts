@@ -115,15 +115,25 @@ class App {
     const directionElement = event.target;
     const direction = directionElement.id;
     if (this.directions.hasOwnProperty(direction)) {
-      let deltax = this.directions[direction as keyof Directions].deltax;
-      let deltay = this.directions[direction as keyof Directions].deltay;
-      const action = {
-        direction,
-        deltax,
-        deltay,
-      };
-      console.log("Action", action.toString());
-      return action;
+      const directionData = this.directions[direction as keyof Directions];
+      if (directionData) {
+        // let deltax = this.directions[direction as keyof Directions].deltax;
+        // let deltay = this.directions[direction as keyof Directions].deltay;
+
+        let deltax = directionData.deltax;
+        let deltay = directionData.deltay;
+
+        const action = {
+          direction,
+          deltax,
+          deltay,
+        };
+        console.log("Action", action.toString());
+        return action;
+      } else {
+        throw new Error("Invalid direction data");
+      }
+
       // this.currentShape.enqueue(action);
     } else {
       throw new Error("Invalid direction");
