@@ -1,7 +1,6 @@
 import { SquareController, CircleController } from "./ShapeController.js";
-// import Event from "./Event.js";
-// import Controller from "./Controller.js";
 import Coordinates from "./Coordinates.js";
+import { Directions } from "./directions.interface.js";
 
 class App {
   step: number;
@@ -18,6 +17,8 @@ class App {
   undoContainer: HTMLDivElement;
   coordinates: Coordinates;
   currentShape: SquareController;
+  directions: Directions;
+  timerId: null;
   constructor(
     canvas: HTMLCanvasElement,
     context: CanvasRenderingContext2D,
@@ -107,25 +108,10 @@ class App {
     });
   }
 
-  // enqueue = (event) => {
-  //   console.log("Direction clicked on ", this);
-  //   const directionElement = event.target;
-  //   const direction = directionElement.id;
-  //   if (this.directions.hasOwnProperty(direction)) {
-  //     let deltax = this.directions[direction].deltax;
-  //     let deltay = this.directions[direction].deltay;
-  //     const action = {
-  //       direction,
-  //       deltax,
-  //       deltay,
-  //     };
-  //     console.log("Event", action.toString());
-  //     this.currentShape.enqueue(action);
-  //   }
-  // };
-
-  createAction = (event) => {
+  createAction = (event: MouseEvent) => {
     console.log("Direction clicked on ", this);
+    if (!(event.target instanceof HTMLElement))
+      throw new Error("Invalid target");
     const directionElement = event.target;
     const direction = directionElement.id;
     if (this.directions.hasOwnProperty(direction)) {
