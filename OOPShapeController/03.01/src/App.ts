@@ -59,10 +59,10 @@ class App {
     // this.controller = new Controller();
 
     this.directions = {
-      up: { deltax: 0, deltay: -this.step },
-      down: { deltax: 0, deltay: this.step },
-      left: { deltax: -this.step, deltay: 0 },
-      right: { deltax: this.step, deltay: 0 },
+      UP: { deltax: 0, deltay: -this.step },
+      DOWN: { deltax: 0, deltay: this.step },
+      LEFT: { deltax: -this.step, deltay: 0 },
+      RIGHT: { deltax: this.step, deltay: 0 },
     };
 
     this.timerId = null;
@@ -115,8 +115,8 @@ class App {
     const directionElement = event.target;
     const direction = directionElement.id;
     if (this.directions.hasOwnProperty(direction)) {
-      let deltax = this.directions[direction].deltax;
-      let deltay = this.directions[direction].deltay;
+      let deltax = this.directions[direction as keyof Directions].deltax;
+      let deltay = this.directions[direction as keyof Directions].deltay;
       const action = {
         direction,
         deltax,
