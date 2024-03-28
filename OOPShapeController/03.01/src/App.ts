@@ -54,7 +54,7 @@ class App {
     this.currentShape = new SquareController(
       this.coordinates,
       this.context,
-      this.step
+      this.canvas
     );
 
     this.directions = {
@@ -93,13 +93,13 @@ class App {
         this.currentShape = new CircleController(
           this.coordinates,
           this.context,
-          this.step
+          this.canvas
         );
       } else if (shape === "square") {
         this.currentShape = new SquareController(
           this.coordinates,
           this.context,
-          this.step
+          this.canvas
         );
       }
       console.log(this.currentShape.toString());

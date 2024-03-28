@@ -1,12 +1,30 @@
 import Queue from "./Queue.js";
 import Stack from "./Stack.js";
+import Coordinates from "./Coordinates.js";
+
+interface Action {
+  deltax: number;
+  deltay: number;
+}
 
 class ShapeController {
-  constructor(coordinates, context) {
+  coordinates: Coordinates;
+  context: CanvasRenderingContext2D;
+  targetX: number | null;
+  targetY: number | null;
+  animating: boolean;
+  queue: Queue;
+  undoStack: Stack;
+  redoStack: Stack;
+  canvas: HTMLCanvasElement;
+  constructor(
+    coordinates: Coordinates,
+    context: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement
+  ) {
     this.coordinates = coordinates;
     this.context = context;
-    // this.targetX = this.coordinates.x;
-    // this.targetY = this.coordinates.y;
+    this.canvas = canvas;
     this.targetX = null;
     this.targetY = null;
     this.animating = false;
@@ -18,12 +36,12 @@ class ShapeController {
     this.redoStack = new Stack();
   }
 
-  enqueue(action) {
+  enqueue(action: Action) {
     if (
       this.coordinates.x + action.deltax < 0 ||
-      this.coordinates.x + action.deltax > canvas.width ||
+      this.coordinates.x + action.deltax > this.canvas.width ||
       this.coordinates.y + action.deltay < 0 ||
-      this.coordinates.y + action.deltay > canvas.height
+      this.coordinates.y + action.deltay > this.canvas.height
     ) {
       console.error("Out of bounds");
     } else {
@@ -45,7 +63,7 @@ class ShapeController {
     }
   }
 
-  moveTo(x, y) {
+  moveTo(x: number | null, y: number | null) {
     console.log("moveTo(x, y)", x, y);
     this.targetX = x;
     this.targetY = y;
