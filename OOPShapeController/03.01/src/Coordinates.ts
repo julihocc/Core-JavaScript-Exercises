@@ -3,8 +3,19 @@ import Converter from "./Converter.js";
 export default class Coordinates {
   // Convert cartesian coordinates to polar coordinates
   basis: string;
+  x: number;
+  y: number;
+  isPolar: boolean;
+  converter: Converter;
+  coordinateFormat: HTMLInputElement;
+  coordinateView: HTMLDivElement;
 
-  constructor(x, y, coordinateFormat, coordinateView) {
+  constructor(
+    x: number,
+    y: number,
+    coordinateFormat: HTMLInputElement,
+    coordinateView: HTMLDivElement
+  ) {
     this.x = x;
     this.y = y;
     this.basis = "decimal";
