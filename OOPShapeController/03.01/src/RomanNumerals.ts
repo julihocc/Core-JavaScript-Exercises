@@ -1,4 +1,28 @@
 export default class RomanNumerals {
+  romanToIntMap: {
+    I: number;
+    V: number;
+    X: number;
+    L: number;
+    C: number;
+    D: number;
+    M: number;
+  };
+  intToRomanMap: {
+    1: string;
+    4: string;
+    5: string;
+    9: string;
+    10: string;
+    40: string;
+    50: string;
+    90: string;
+    100: string;
+    400: string;
+    500: string;
+    900: string;
+    1000: string;
+  };
   constructor() {
     this.romanToIntMap = {
       I: 1,
@@ -26,16 +50,18 @@ export default class RomanNumerals {
     };
   }
 
-  toRoman(num) {
+  toRoman(num: number) {
     let result = "";
     let keys = Object.keys(this.intToRomanMap).reverse();
 
     if (num >= 4000) throw new Error("Number should be less than 4000");
 
     for (let key of keys) {
+      // let value = parseInt(key);
       let value = parseInt(key);
       while (num >= value) {
-        result += this.intToRomanMap[key];
+        result +=
+          this.intToRomanMap[key as unknown as keyof typeof this.intToRomanMap];
         num -= value;
       }
     }
