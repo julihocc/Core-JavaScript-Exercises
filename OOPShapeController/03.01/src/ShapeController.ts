@@ -7,7 +7,7 @@ interface Action {
   deltay: number;
 }
 
-class ShapeController {
+abstract class ShapeController {
   coordinates: Coordinates;
   context: CanvasRenderingContext2D;
   targetX: number | null;
@@ -104,6 +104,8 @@ class ShapeController {
   animate() {
     // Smoothness factor determines the speed of the animation
     const smoothness = 0.25;
+    if (!this.targetX || !this.targetY)
+      throw new Error("Invalid target coordinates");
     const dx = this.targetX - this.coordinates.x;
     const dy = this.targetY - this.coordinates.y;
 
@@ -115,7 +117,7 @@ class ShapeController {
       requestAnimationFrame(this.animate.bind(this));
     } else {
       // Snap to final position and stop animating
-      this.context.clearRect(0, 0, canvas.width, canvas.height);
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
       this.coordinates.x = this.targetX;
       this.coordinates.y = this.targetY;
@@ -125,24 +127,34 @@ class ShapeController {
     }
   }
 
-  moveInThisDirection(dx, dy) {
+  moveInThisDirection(dx: number, dy: number) {
     this.moveTo(this.coordinates.x + dx, this.coordinates.y + dy);
   }
 
-  toString() {
-    // return `x: ${this.x}, y: ${this.y}`;
-    throw new Error("You have to implement the method toString!");
-  }
+  // toString() {
+  //   // return `x: ${this.x}, y: ${this.y}`;
+  //   throw new Error("You have to implement the method toString!");
+  // }
 
-  draw() {
-    //developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
-    throw new Error("You have to implement the method draw!");
-  }
+  abstract toString(): string;
+
+  // draw() {
+  //   //developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+  //   throw new Error("You have to implement the method draw!");
+  // }
+
+  abstract draw(): void;
 }
 
 class CircleController extends ShapeController {
-  constructor(coordinates, context, radius) {
-    super(coordinates, context);
+  radius: number;
+  constructor(
+    coordinates: Coordinates,
+    context: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement,
+    radius: number
+  ) {
+    super(coordinates, context, canvas);
     this.radius = radius;
   }
 
@@ -166,8 +178,14 @@ class CircleController extends ShapeController {
 }
 
 class SquareController extends ShapeController {
-  constructor(coordinates, context, length) {
-    super(coordinates, context);
+  length: number;
+  constructor(
+    coordinates: Coordinates,
+    context: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement,
+    length: number
+  ) {
+    super(coordinates, context, canvas);
     this.length = length;
   }
   draw() {
@@ -189,4 +207,4 @@ class SquareController extends ShapeController {
   // TODO 2. Add a do/undo option to shape controller (performe the animations in reverse)
 }
 
-export { CircleController, SquareController };
+export { CircleController, SquareController, ShapeController };

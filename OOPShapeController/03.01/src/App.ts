@@ -1,4 +1,8 @@
-import { SquareController, CircleController } from "./ShapeController.js";
+import {
+  ShapeController,
+  SquareController,
+  CircleController,
+} from "./ShapeController.js";
 import Coordinates from "./Coordinates.js";
 import { Directions } from "./directions.interface.js";
 
@@ -16,7 +20,7 @@ class App {
   coordinateStyleContainer: HTMLDivElement;
   undoContainer: HTMLDivElement;
   coordinates: Coordinates;
-  currentShape: SquareController;
+  currentShape: ShapeController;
   directions: Directions;
   timer: void | null;
   constructor(
@@ -54,7 +58,8 @@ class App {
     this.currentShape = new SquareController(
       this.coordinates,
       this.context,
-      this.canvas
+      this.canvas,
+      this.step
     );
 
     this.directions = {
@@ -93,13 +98,15 @@ class App {
         this.currentShape = new CircleController(
           this.coordinates,
           this.context,
-          this.canvas
+          this.canvas,
+          this.step
         );
       } else if (shape === "square") {
         this.currentShape = new SquareController(
           this.coordinates,
           this.context,
-          this.canvas
+          this.canvas,
+          this.step
         );
       }
       console.log(this.currentShape.toString());
