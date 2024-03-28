@@ -2,6 +2,7 @@ import Converter from "./Converter.js";
 
 export default class Coordinates {
   // Convert cartesian coordinates to polar coordinates
+  basis: string;
 
   constructor(x, y, coordinateFormat, coordinateView) {
     this.x = x;
@@ -13,7 +14,7 @@ export default class Coordinates {
     this.coordinateView = coordinateView;
   }
 
-    updateCoordinateView() {
+  updateCoordinateView() {
     if (this.coordinateFormat.value === "polar") {
       this.coordinateView.innerText = this.converter.toPolar();
     } else {

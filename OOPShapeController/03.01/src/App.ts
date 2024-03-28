@@ -214,7 +214,9 @@ class App {
   }
 
   initUndoContainer() {
-    this.undoContainer.addEventListener("click", (event) => {
+    this.undoContainer.addEventListener("click", (event: MouseEvent) => {
+      if (!(event.target instanceof HTMLElement))
+        throw new Error("Invalid target");
       const action = event.target.id;
       console.log("Action; ", action);
       if (action === "undo") {
