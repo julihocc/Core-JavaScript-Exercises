@@ -1,28 +1,31 @@
+interface RomanToIntMap {
+  [key: string]: number;
+  I: number;
+  V: number;
+  X: number;
+  L: number;
+  C: number;
+  D: number;
+  M: number;
+}
+interface IntToRomanMap {
+  1: string;
+  4: string;
+  5: string;
+  9: string;
+  10: string;
+  40: string;
+  50: string;
+  90: string;
+  100: string;
+  400: string;
+  500: string;
+  900: string;
+  1000: string;
+}
 export default class RomanNumerals {
-  romanToIntMap: {
-    I: number;
-    V: number;
-    X: number;
-    L: number;
-    C: number;
-    D: number;
-    M: number;
-  };
-  intToRomanMap: {
-    1: string;
-    4: string;
-    5: string;
-    9: string;
-    10: string;
-    40: string;
-    50: string;
-    90: string;
-    100: string;
-    400: string;
-    500: string;
-    900: string;
-    1000: string;
-  };
+  romanToIntMap: RomanToIntMap;
+  intToRomanMap: IntToRomanMap;
   constructor() {
     this.romanToIntMap = {
       I: 1,
@@ -69,7 +72,7 @@ export default class RomanNumerals {
     return result;
   }
 
-  fromRoman(roman) {
+  fromRoman(roman: string) {
     let result = 0;
     let i = 0;
 
