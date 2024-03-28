@@ -1,7 +1,10 @@
 import RomanNumerals from "./RomanNumerals.js";
+import Coordinates from "./Coordinates.js";
 
 export default class Converter {
-  constructor(coordinates) {
+  coordinates: Coordinates;
+  romanNumerals: RomanNumerals;
+  constructor(coordinates: Coordinates) {
     this.coordinates = coordinates;
     this.romanNumerals = new RomanNumerals();
   }
@@ -36,9 +39,7 @@ export default class Converter {
         16
       )}, y: ${this.coordinates.y.toString(16)}`;
     }
-    // if (this.coordinates.basis === "polar") {
-    //   return `r: ${this.toPolar()[0]}, θ: ${this.toPolar()[1]}`;
-    // }
+
     throw new Error("Invalid base");
   }
 }
