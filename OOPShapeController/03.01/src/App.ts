@@ -18,7 +18,7 @@ class App {
   coordinates: Coordinates;
   currentShape: SquareController;
   directions: Directions;
-  timerId: null;
+  timer: void | null;
   constructor(
     canvas: HTMLCanvasElement,
     context: CanvasRenderingContext2D,
@@ -56,7 +56,6 @@ class App {
       this.context,
       this.step
     );
-    // this.controller = new Controller();
 
     this.directions = {
       UP: { deltax: 0, deltay: -this.step },
@@ -65,7 +64,7 @@ class App {
       RIGHT: { deltax: this.step, deltay: 0 },
     };
 
-    this.timerId = null;
+    this.timer = null;
   }
 
   init() {
@@ -117,9 +116,6 @@ class App {
     if (this.directions.hasOwnProperty(direction)) {
       const directionData = this.directions[direction as keyof Directions];
       if (directionData) {
-        // let deltax = this.directions[direction as keyof Directions].deltax;
-        // let deltay = this.directions[direction as keyof Directions].deltay;
-
         let deltax = directionData.deltax;
         let deltay = directionData.deltay;
 
@@ -133,42 +129,31 @@ class App {
       } else {
         throw new Error("Invalid direction data");
       }
-
-      // this.currentShape.enqueue(action);
     } else {
       throw new Error("Invalid direction");
     }
   };
 
-  async delay(ms) {
+  async delay(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  // delayedCallback = async (e) => {
-  //   console.log("Compressing");
-  //   if (this.timerId) {
-  //     clearTimeout(this.timerId);
-  //   }
-  //   this.timerId = await this.delay(3000);
-  //   this.callback(e);
-  // };
-
-  processQueue = (event) => {
+  processQueue = (event: MouseEvent) => {
     // this.enqueue(event);
     const action = this.createAction(event);
     this.currentShape.enqueue(action);
     this.currentShape.dequeue();
   };
 
-  debouncedProcessQueue = async (event) => {
+  debouncedProcessQueue = async (event: MouseEvent) => {
     console.log("Compressing");
-    if (this.timerId) {
-      clearTimeout(this.timerId);
+    if (this.timer) {
+      clearTimeout(this.timer);
     }
     // this.enqueue(event);
     const action = this.createAction(event);
     this.currentShape.enqueue(action);
-    this.timerId = await this.delay(this.debounceTime);
+    this.timer = await this.delay(this.debounceTime);
     this.currentShape.dequeue();
   };
 
