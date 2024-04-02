@@ -1,25 +1,26 @@
-export default class MinHeap {
+export default class MinHeap<T extends { priority: number }> {
+  heap: T[]; // The array to store the heap
   constructor() {
     this.heap = []; // Initialize an empty array to store the heap
   }
 
-  getParentIndex(i) {
+  getParentIndex(i: number) {
     return Math.floor((i - 1) / 2);
   }
 
-  getLeftChildIndex(i) {
+  getLeftChildIndex(i: number) {
     return 2 * i + 1;
   }
 
-  getRightChildIndex(i) {
+  getRightChildIndex(i: number) {
     return 2 * i + 2;
   }
 
-  swap(i, j) {
+  swap(i: number, j: number) {
     [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
 
-  insert(order) {
+  insert(order: T) {
     this.heap.push(order);
     this.heapifyUp();
   }
@@ -37,7 +38,11 @@ export default class MinHeap {
 
   extractMin() {
     const min = this.heap[0];
-    this.heap[0] = this.heap.pop();
+    // this.heap[0] = this.heap.pop();
+    const poppedValue = this.heap.pop();
+    if (poppedValue !== undefined) {
+      this.heap[0] = poppedValue;
+    }
     this.heapifyDown();
     return min;
   }
@@ -77,7 +82,7 @@ export default class MinHeap {
   }
 
   // TODO Implement a .find(callback) method that returns the first order that satisfies the callback
-  find(callback) {
+  find(callback: (order: T) => boolean) {
     return this.heap.find(callback);
   }
 }
