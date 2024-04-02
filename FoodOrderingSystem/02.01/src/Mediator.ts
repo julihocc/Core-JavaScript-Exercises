@@ -11,8 +11,7 @@ export default class Mediator {
   constructor() {
     this.cooks = [];
     this.warehouse = null;
-    // this.orders = [];
-    this.orders = new MinHeap();
+    this.orders = new MinHeap<Order>();
   }
 
   registerCook(cook: Cook) {
@@ -41,11 +40,15 @@ export default class Mediator {
     });
   }
 
-  requestIngredients(ingredients) {
+  requestIngredients(ingredients: string[]) {
+    if (!this.warehouse) {
+      console.warn("Warehouse is not available.");
+      return false;
+    }
     return this.warehouse.provideIngredients(ingredients);
   }
 
-  deliverOrder(order) {
+  deliverOrder(order: Order) {
     console.warn(
       `Order for ${order.items.map((item) => item.name).join(", ")} is ready.`
     );
