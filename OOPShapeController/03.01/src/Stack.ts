@@ -1,19 +1,23 @@
 // Implement a stack
 
-class Node {
-  constructor(value) {
+class Node<T> {
+  value: T;
+  next: Node<T> | null;
+  constructor(value: T) {
     this.value = value;
     this.next = null;
   }
 }
 
-export default class Stack {
+export default class Stack<T> {
+  private head: Node<T> | null;
+  private tail: Node<T> | null;
   #length = 0;
   constructor() {
     this.head = null;
     this.tail = null;
   }
-  push(value) {
+  push(value: T) {
     this.#length++;
     console.log("push", value);
     const newNode = new Node(value);

@@ -34,7 +34,8 @@ class Queue {
             this.tail = newNode;
         }
         else {
-            this.tail.next = newNode;
+            if (this.tail)
+                this.tail.next = newNode;
             this.tail = newNode;
         }
     }

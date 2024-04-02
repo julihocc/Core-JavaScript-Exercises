@@ -15,8 +15,8 @@ abstract class ShapeController {
   targetY: number | null;
   animating: boolean;
   queue: Queue<Action>;
-  undoStack: Stack;
-  redoStack: Stack;
+  undoStack: Stack<Action>;
+  redoStack: Stack<Action>;
   canvas: HTMLCanvasElement;
   constructor(
     coordinates: Coordinates,

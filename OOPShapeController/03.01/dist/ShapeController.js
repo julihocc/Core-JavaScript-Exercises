@@ -42,7 +42,8 @@ class ShapeController {
         if (this.queue.length > 0) {
             // const event = this.queue.shift();
             const action = this.queue.dequeue();
-            this.moveInThisDirection(action.deltax, action.deltay);
+            if (action)
+                this.moveInThisDirection(action.deltax, action.deltay);
         }
     }
     moveTo(x, y) {
