@@ -1,3 +1,4 @@
+"use strict";
 // Implement a stack
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
@@ -11,13 +12,14 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _Stack_length;
+Object.defineProperty(exports, "__esModule", { value: true });
 class Node {
     constructor(value) {
         this.value = value;
         this.next = null;
     }
 }
-export default class Stack {
+class Stack {
     constructor() {
         _Stack_length.set(this, 0);
         this.head = null;
@@ -60,3 +62,4 @@ export default class Stack {
         return __classPrivateFieldGet(this, _Stack_length, "f");
     }
 }
+exports.default = Stack;

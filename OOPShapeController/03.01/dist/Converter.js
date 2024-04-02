@@ -1,8 +1,13 @@
-import RomanNumerals from "./RomanNumerals.js";
-export default class Converter {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const RomanNumerals_js_1 = __importDefault(require("./RomanNumerals.js"));
+class Converter {
     constructor(coordinates) {
         this.coordinates = coordinates;
-        this.romanNumerals = new RomanNumerals();
+        this.romanNumerals = new RomanNumerals_js_1.default();
     }
     toPolar() {
         let r = Math.sqrt(Math.pow(this.coordinates.x, 2) + Math.pow(this.coordinates.y, 2));
@@ -28,3 +33,4 @@ export default class Converter {
         throw new Error("Invalid base");
     }
 }
+exports.default = Converter;

@@ -1,4 +1,6 @@
-export default class RomanNumerals {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class RomanNumerals {
     constructor() {
         this.romanToIntMap = {
             I: 1,
@@ -63,3 +65,4 @@ export default class RomanNumerals {
         return result;
     }
 }
+exports.default = RomanNumerals;

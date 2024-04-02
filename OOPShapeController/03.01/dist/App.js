@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,8 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { SquareController, CircleController, } from "./ShapeController.js";
-import Coordinates from "./Coordinates.js";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ShapeController_js_1 = require("./ShapeController.js");
+const Coordinates_js_1 = __importDefault(require("./Coordinates.js"));
 class App {
     constructor(canvas, context, shapeSelected, compress, directionsContainer, coordinateFormat, coordinateView, coordinateStyle, coordinateStyleContainer, undoContainer) {
         this.createAction = (event) => {
@@ -67,8 +72,8 @@ class App {
         this.coordinateStyle = coordinateStyle;
         this.coordinateStyleContainer = coordinateStyleContainer;
         this.undoContainer = undoContainer;
-        this.coordinates = new Coordinates(0, 0, this.coordinateFormat, this.coordinateView);
-        this.currentShape = new SquareController(this.coordinates, this.context, this.canvas, this.step);
+        this.coordinates = new Coordinates_js_1.default(0, 0, this.coordinateFormat, this.coordinateView);
+        this.currentShape = new ShapeController_js_1.SquareController(this.coordinates, this.context, this.canvas, this.step);
         this.directions = {
             UP: { deltax: 0, deltay: -this.step },
             DOWN: { deltax: 0, deltay: this.step },
@@ -98,10 +103,10 @@ class App {
             const shape = this.shapeSelected.value;
             this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
             if (shape === "circle") {
-                this.currentShape = new CircleController(this.coordinates, this.context, this.canvas, this.step);
+                this.currentShape = new ShapeController_js_1.CircleController(this.coordinates, this.context, this.canvas, this.step);
             }
             else if (shape === "square") {
-                this.currentShape = new SquareController(this.coordinates, this.context, this.canvas, this.step);
+                this.currentShape = new ShapeController_js_1.SquareController(this.coordinates, this.context, this.canvas, this.step);
             }
             console.log(this.currentShape.toString());
             this.currentShape.draw();
@@ -169,4 +174,4 @@ class App {
         });
     }
 }
-export default App;
+exports.default = App;

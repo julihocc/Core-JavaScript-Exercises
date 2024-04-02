@@ -7,11 +7,12 @@
   ],
   "compilerOptions": {
     "target": "es6",
-    "module": "es2015",
+    "module": "NodeNext",
     "outDir": "./dist",
     "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "nodenext"
   }
 }

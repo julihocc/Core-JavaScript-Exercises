@@ -1,5 +1,11 @@
-import Queue from "./Queue.js";
-import Stack from "./Stack.js";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ShapeController = exports.SquareController = exports.CircleController = void 0;
+const Queue_js_1 = __importDefault(require("./Queue.js"));
+const Stack_js_1 = __importDefault(require("./Stack.js"));
 class ShapeController {
     constructor(coordinates, context, canvas) {
         this.coordinates = coordinates;
@@ -10,10 +16,10 @@ class ShapeController {
         this.animating = false;
         // [x] TODO 1. In shape controller, replace array with a queue
         // this.queue = [];
-        this.queue = new Queue();
+        this.queue = new Queue_js_1.default();
         // this.history = new History();
-        this.undoStack = new Stack();
-        this.redoStack = new Stack();
+        this.undoStack = new Stack_js_1.default();
+        this.redoStack = new Stack_js_1.default();
     }
     enqueue(action) {
         if (this.coordinates.x + action.deltax < 0 ||
@@ -96,6 +102,7 @@ class ShapeController {
         this.moveTo(this.coordinates.x + dx, this.coordinates.y + dy);
     }
 }
+exports.ShapeController = ShapeController;
 class CircleController extends ShapeController {
     constructor(coordinates, context, canvas, radius) {
         super(coordinates, context, canvas);
@@ -111,6 +118,7 @@ class CircleController extends ShapeController {
         return `Circle x: ${this.coordinates.x}, y: ${this.coordinates.y}, radius: ${this.radius}`;
     }
 }
+exports.CircleController = CircleController;
 class SquareController extends ShapeController {
     constructor(coordinates, context, canvas, length) {
         super(coordinates, context, canvas);
@@ -127,4 +135,4 @@ class SquareController extends ShapeController {
         return `Square x: ${this.coordinates.x}, y: ${this.coordinates.y}, length: ${this.length}`;
     }
 }
-export { CircleController, SquareController, ShapeController };
+exports.SquareController = SquareController;

@@ -1,4 +1,9 @@
-import App from "./App.js";
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const App_js_1 = __importDefault(require("./App.js"));
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 const shapeSelected = document.getElementById("shape-selected");
@@ -19,5 +24,5 @@ if (compress) {
 else {
     console.log("compress is null or undefined");
 }
-const app = new App(canvas, context, shapeSelected, compress, directionsContainer, coordinateFormat, coordinateView, coordinateStyle, coordinateStyleContainer, undoContainer);
+const app = new App_js_1.default(canvas, context, shapeSelected, compress, directionsContainer, coordinateFormat, coordinateView, coordinateStyle, coordinateStyleContainer, undoContainer);
 app.init();
