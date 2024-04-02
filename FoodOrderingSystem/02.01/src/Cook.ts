@@ -1,16 +1,25 @@
+import type Mediator from "./Mediator.js";
+
 export default class Cook {
-  constructor(name) {
+  name: string;
+  mediator: Mediator | null;
+  status: string;
+  constructor(name: string) {
     this.name = name;
     this.mediator = null;
     this.status = "available";
   }
 
-  setMediator(mediator) {
+  setMediator(mediator: Mediator) {
     this.mediator = mediator;
   }
 
   prepareOrder() {
     console.log(`${this.name} is listening for an order.`);
+    if (!this.mediator) {
+      console.warn(`${this.name} cannot prepare an order without a mediator.`);
+      return;
+    }
     console.log(this.mediator.orders.size());
     if (this.mediator.orders.size() > 0 && this.status === "available") {
       console.log(`${this.name} is available.`);
@@ -24,7 +33,7 @@ export default class Cook {
       console.string(order);
       // debugger;
       const ingredientsAvailable = order.items.every((item) =>
-        this.mediator.requestIngredients(item.ingredients)
+        this.mediator!.requestIngredients(item.ingredients)
       );
 
       if (ingredientsAvailable && !order.isTaken) {
@@ -34,7 +43,7 @@ export default class Cook {
         setTimeout(() => {
           console.warn(`${this.name} has finished preparing the order.`);
           this.status = "available";
-          this.mediator.deliverOrder(order);
+          this.mediator!.deliverOrder(order);
         }, 3000);
         // this.mediator.deliverOrder(order);
       } else if (order.isTaken) {

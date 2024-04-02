@@ -1,5 +1,7 @@
 export default class Food {
-  constructor(name, ingredients) {
+  name: string;
+  ingredients: string[];
+  constructor(name: string, ingredients: string[]) {
     this.name = name;
     this.ingredients = ingredients;
   }

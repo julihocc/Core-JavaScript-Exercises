@@ -6,6 +6,13 @@ import Order from "./Order.js";
 
 console.clear();
 
+declare global {
+  interface Console {
+    string: (obj: any) => void;
+    stringify: (obj: any) => void;
+  }
+}
+
 console.string = (obj) => console.log(obj.toString());
 console.stringify = (obj) => JSON.stringify(obj, null, 2);
 

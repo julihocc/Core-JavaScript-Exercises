@@ -1,7 +1,13 @@
 import MinHeap from "./MinHeap.js";
+import type Cook from "./Cook.js";
+import type Warehouse from "./Warehouse.js";
+import type Order from "./Order.js";
 
 export default class Mediator {
   static numberOfOrders = 0;
+  cooks: Cook[];
+  warehouse: Warehouse | null;
+  orders: MinHeap<Order>;
   constructor() {
     this.cooks = [];
     this.warehouse = null;
@@ -9,17 +15,17 @@ export default class Mediator {
     this.orders = new MinHeap();
   }
 
-  registerCook(cook) {
+  registerCook(cook: Cook) {
     this.cooks.push(cook);
     cook.setMediator(this);
   }
 
-  registerWarehouse(warehouse) {
+  registerWarehouse(warehouse: Warehouse) {
     this.warehouse = warehouse;
     warehouse.setMediator(this);
   }
 
-  placeOrder(order) {
+  placeOrder(order: Order) {
     // this.orders.push(order);
     this.orders.insert(order);
     order.id = ++Mediator.numberOfOrders;
