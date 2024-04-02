@@ -1,16 +1,11 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const Converter_js_1 = __importDefault(require("./Converter.js"));
-class Coordinates {
+import Converter from "./Converter.js";
+export default class Coordinates {
     constructor(x, y, coordinateFormat, coordinateView) {
         this.x = x;
         this.y = y;
         this.basis = "decimal";
         this.isPolar = false;
-        this.converter = new Converter_js_1.default(this);
+        this.converter = new Converter(this);
         this.coordinateFormat = coordinateFormat;
         this.coordinateView = coordinateView;
     }
@@ -23,4 +18,3 @@ class Coordinates {
         }
     }
 }
-exports.default = Coordinates;

@@ -105,7 +105,9 @@ abstract class ShapeController {
   animate() {
     // Smoothness factor determines the speed of the animation
     const smoothness = 0.25;
-    if (!this.targetX || !this.targetY)
+    console.log("Animating");
+    console.log("this.targetX", this.targetX, "this.targetY", this.targetY);
+    if (this.targetX === null || this.targetY === null)
       throw new Error("Invalid target coordinates");
     const dx = this.targetX - this.coordinates.x;
     const dy = this.targetY - this.coordinates.y;
