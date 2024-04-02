@@ -1,7 +1,4 @@
-"use strict";
 // directions.interface.ts
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Direction = void 0;
 // export interface Direction {
 //   deltax: number;
 //   deltay: number;
@@ -21,10 +18,10 @@ exports.Direction = void 0;
 // interface Directions {
 //   [key in Direction]?: { deltax: number, deltay: number };
 // }
-var Direction;
+export var Direction;
 (function (Direction) {
     Direction["Up"] = "UP";
     Direction["Down"] = "DOWN";
     Direction["Left"] = "LEFT";
     Direction["Right"] = "RIGHT";
-})(Direction || (exports.Direction = Direction = {}));
+})(Direction || (Direction = {}));
