@@ -12,17 +12,6 @@ list.append(6);
 list.append(7);
 console.log(list.length); // 7
 
-// const [first, second] = list.split();
-// console.log([...first]); // [1, 2, 3]
-// console.log([...second]); // [4, 5, 6]
-// console.log([...list]); // [1, 2, 3, 4, 5, 6]
-
-// const otherHalf = list.halve();
-// console.log([...list]); // [1, 2, 3]
-// console.log(list.length); // 3
-// console.log([...otherHalf]); // [4, 5, 6]
-// console.log(otherHalf.length); // 3
-
 list.insertAfter(3, 3.5, 4.5);
 console.log([...list]); // [1, 2, 3, 3.5, 4.5, 4, 5, 6, 7]
 console.log(list.length); // 9

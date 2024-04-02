@@ -9,9 +9,9 @@ class Node<T> {
 }
 
 class LinkedList<T> {
-  private head: Node<T> | null;
-  private tail: Node<T> | null;
-  private #length: number;
+  head: Node<T> | null;
+  tail: Node<T> | null;
+  #length: number;
 
   constructor() {
     this.head = null;
@@ -82,6 +82,10 @@ class LinkedList<T> {
 
   get length(): number {
     return this.#length;
+  }
+
+  set length(value: number) {
+    this.#length = value;
   }
 
   lookup(value: T): Node<T> | null {
