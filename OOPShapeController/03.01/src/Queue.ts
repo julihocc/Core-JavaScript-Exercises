@@ -1,18 +1,22 @@
-class Node {
-  constructor(value) {
+class Node<T> {
+  value: T;
+  next: Node<T> | null;
+  constructor(value: T) {
     this.value = value;
     this.next = null;
   }
 }
 
-class Queue {
+class Queue<T> {
   #length = 0;
+  head: Node<T> | null;
+  tail: Node<T> | null;
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
-  enqueue(value) {
+  enqueue(value: T) {
     this.#length++;
     console.log("enqueue", value);
     const newNode = new Node(value);
