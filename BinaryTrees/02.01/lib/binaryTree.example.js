@@ -1,15 +1,10 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const BinaryTree_js_1 = __importDefault(require("./BinaryTree.js"));
-const tree = new BinaryTree_js_1.default();
+import BinaryTree from "./BinaryTree.js";
+const tree = new BinaryTree();
 tree.insert(5);
 tree.insert(3);
 tree.insert(7);
 tree.print();
-const subtree = new BinaryTree_js_1.default();
+const subtree = new BinaryTree();
 subtree.insert(4);
 subtree.insert(6);
 subtree.insert(1);

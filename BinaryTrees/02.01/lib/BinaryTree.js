@@ -1,8 +1,5 @@
-"use strict";
 // create a class for a binary tree
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Node = void 0;
-class Node {
+export class Node {
     value;
     left;
     right;
@@ -43,8 +40,7 @@ class Node {
         return false;
     }
 }
-exports.Node = Node;
-class BinaryTree {
+export default class BinaryTree {
     root;
     constructor() {
         this.root = null;
@@ -256,27 +252,33 @@ class BinaryTree {
             }
             else {
                 const min = this._findMin(node.right);
-                node.value = min.value;
-                node.right = this._remove(node.right, min.value);
+                if (min !== null) {
+                    node.value = min.value;
+                    node.right = this._remove(node.right, min.value);
+                }
                 return node;
             }
         }
         else if (value < node.value) {
-            node.left = this._remove(node.left, value);
+            if (node.left !== null) {
+                node.left = this._remove(node.left, value);
+            }
             return node;
         }
         else {
-            node.right = this._remove(node.right, value);
+            if (node.right !== null) {
+                node.right = this._remove(node.right, value);
+            }
             return node;
         }
     }
     _findMin(node) {
+        if (!node) {
+            return null;
+        }
         if (!node.left) {
             return node;
         }
-        else {
-            return this._findMin(node.left);
-        }
+        return this._findMin(node.left);
     }
 }
-exports.default = BinaryTree;
