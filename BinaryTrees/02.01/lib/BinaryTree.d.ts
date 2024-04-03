@@ -19,15 +19,15 @@ export default class BinaryTree<T> {
     _postOrderTraversal(node: Node<T>, result: T[]): T[];
     levelOrderTraversal(): T[];
     [Symbol.iterator](): Generator<T, void, undefined>;
-    find(value: any): any;
-    _find(node: any, value: any): any;
-    filter(value: any): any;
-    _filter(node: any, value: any): any;
+    find(value: T): Node<T> | null;
+    _find(node: Node<T>, value: T): Node<T> | null;
+    filter(value: T): Node<T>[];
+    _filter(node: Node<T>, value: T): Node<T>[];
     print(): void;
-    _print(node: any, level: any): void;
-    insertSubtree(subtree: any): void;
-    _insertSubtree(node: any): void;
-    remove(value: any): void;
-    _remove(node: any, value: any): any;
+    _print(node: Node<T>, level: number): void;
+    insertSubtree(subtree: BinaryTree<T>): void;
+    _insertSubtree(node: Node<T>): void;
+    remove(value: T): void;
+    _remove(node: Node<T>, value: T): Node<T> | null;
     _findMin(node: any): any;
 }
