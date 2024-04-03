@@ -1,8 +1,10 @@
 import type Mediator from "./Mediator.js";
 
+// TODO provide mediator in the constructor
 export default class Cook {
   name: string;
   mediator: Mediator | null;
+  // TODO change to enum
   status: string;
   constructor(name: string) {
     this.name = name;
