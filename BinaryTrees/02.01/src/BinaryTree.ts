@@ -1,14 +1,17 @@
 // create a class for a binary tree
 
-export class Node {
-  constructor(value) {
+export class Node<T> {
+  value: T;
+  left: Node<T> | null;
+  right: Node<T> | null;
+  constructor(value: T) {
     this.value = value;
     this.left = null;
     this.right = null;
   }
 
   // [x] TODO Add element for a general tree
-  insert(value) {
+  insert(value: T) {
     if (value <= this.value) {
       if (!this.left) {
         this.left = new Node(value);
@@ -24,7 +27,7 @@ export class Node {
     }
   }
 
-  search(value) {
+  search(value: T): boolean {
     if (this.value === value) {
       return true;
     } else if (value < this.value && this.left) {
@@ -36,12 +39,13 @@ export class Node {
   }
 }
 
-export default class BinaryTree {
+export default class BinaryTree<T> {
+  root: Node<T> | null;
   constructor() {
     this.root = null;
   }
 
-  insert(value) {
+  insert(value: T) {
     if (!this.root) {
       this.root = new Node(value);
     } else {
@@ -49,7 +53,7 @@ export default class BinaryTree {
     }
   }
 
-  search(value) {
+  search(value: T): boolean {
     if (!this.root) {
       return false;
     } else {
@@ -66,7 +70,7 @@ export default class BinaryTree {
     }
   }
 
-  _inOrderTraversal(node, result) {
+  _inOrderTraversal(node: Node<T>, result: T[]) {
     if (node.left) {
       this._inOrderTraversal(node.left, result);
     }
@@ -87,7 +91,7 @@ export default class BinaryTree {
     }
   }
 
-  _preOrderTraversal(node, result) {
+  _preOrderTraversal(node: Node<T>, result: T[]) {
     result.push(node.value);
     if (node.left) {
       this._preOrderTraversal(node.left, result);
@@ -107,7 +111,7 @@ export default class BinaryTree {
     }
   }
 
-  _postOrderTraversal(node, result) {
+  _postOrderTraversal(node: Node<T>, result: T[]) {
     if (node.left) {
       this._postOrderTraversal(node.left, result);
     }
@@ -126,12 +130,14 @@ export default class BinaryTree {
       const queue = [this.root];
       while (queue.length > 0) {
         const node = queue.shift();
-        result.push(node.value);
-        if (node.left) {
-          queue.push(node.left);
-        }
-        if (node.right) {
-          queue.push(node.right);
+        if (node) {
+          result.push(node.value);
+          if (node.left) {
+            queue.push(node.left);
+          }
+          if (node.right) {
+            queue.push(node.right);
+          }
         }
       }
       return result;
@@ -142,12 +148,12 @@ export default class BinaryTree {
     if (!this.root) {
       return;
     } else {
-      yield* this.inOrderTraversal(this.root);
+      yield* this.inOrderTraversal();
     }
   }
 
   // .find(value) return the first node with the given value or null if that not exists
-  find(value) {
+  find(value: T) {
     if (!this.root) {
       return null;
     } else {
@@ -155,7 +161,7 @@ export default class BinaryTree {
     }
   }
 
-  _find(node, value) {
+  _find(node: Node<T>, value: T): Node<T> | null {
     if (node.value === value) {
       return node;
     } else if (value < node.value && node.left) {
@@ -167,7 +173,7 @@ export default class BinaryTree {
   }
 
   // filter(value) return an array with all the nodes with the given value
-  filter(value) {
+  filter(value: T) {
     if (!this.root) {
       return [];
     } else {
@@ -175,7 +181,7 @@ export default class BinaryTree {
     }
   }
 
-  _filter(node, value) {
+  _filter(node: Node<T>, value: T): Node<T>[] {
     let result = [];
     if (node.value === value) {
       result.push(node);
@@ -205,7 +211,7 @@ export default class BinaryTree {
   //   -- 3 -- 4
   //       -- 3 -- 1
   //             -
-  _print(node, level) {
+  _print(node: Node<T>, level: number) {
     if (node.right) {
       this._print(node.right, level + 1);
     }
@@ -216,14 +222,14 @@ export default class BinaryTree {
   }
 
   // [x] TODO Add insertSubtree method that inserts a subtree into the tree
-  insertSubtree(subtree) {
+  insertSubtree(subtree: BinaryTree<T>) {
     if (!subtree.root) {
       return;
     }
     this._insertSubtree(subtree.root);
   }
 
-  _insertSubtree(node) {
+  _insertSubtree(node: Node<T>) {
     this.insert(node.value);
     if (node.left) {
       this._insertSubtree(node.left);
@@ -234,14 +240,14 @@ export default class BinaryTree {
   }
 
   // [x] TODO Add remove method that removes a node with the given value
-  remove(value) {
+  remove(value: T) {
     if (!this.root) {
       return;
     }
     this.root = this._remove(this.root, value);
   }
 
-  _remove(node, value) {
+  _remove(node: Node<T>, value: T) {
     if (node.value === value) {
       if (!node.left && !node.right) {
         return null;

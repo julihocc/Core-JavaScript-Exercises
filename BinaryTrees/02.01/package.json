@@ -1,13 +1,15 @@
 {
-  "name": "01.01",
+  "name": "02.01",
   "version": "1.0.0",
   "description": "",
-  "main": "BinaryTree.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "devDependencies": {
+    "typescript": "^5.4.3"
+  }
 }
