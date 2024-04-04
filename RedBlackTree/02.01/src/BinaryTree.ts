@@ -1,42 +1,4 @@
-// create a class for a binary tree
-
-export class Node<T> {
-  value: T;
-  left: Node<T> | null;
-  right: Node<T> | null;
-  constructor(value: T) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-
-  insert(value: T) {
-    if (value <= this.value) {
-      if (!this.left) {
-        this.left = new Node(value);
-      } else {
-        this.left.insert(value);
-      }
-    } else {
-      if (!this.right) {
-        this.right = new Node(value);
-      } else {
-        this.right.insert(value);
-      }
-    }
-  }
-
-  search(value: T): boolean {
-    if (this.value === value) {
-      return true;
-    } else if (value < this.value && this.left) {
-      return this.left.search(value);
-    } else if (value > this.value && this.right) {
-      return this.right.search(value);
-    }
-    return false;
-  }
-}
+import Node from "./Node.js";
 
 export default class BinaryTree<T> {
   root: Node<T> | null;
@@ -52,7 +14,7 @@ export default class BinaryTree<T> {
     }
   }
 
-  search(value: T): boolean {
+  search(value: T) {
     if (!this.root) {
       return false;
     } else {
@@ -69,7 +31,7 @@ export default class BinaryTree<T> {
     }
   }
 
-  _inOrderTraversal(node: Node<T>, result: T[]): T[] {
+  _inOrderTraversal(node: Node<T>, result: T[]) {
     if (node.left) {
       this._inOrderTraversal(node.left, result);
     }
@@ -90,7 +52,7 @@ export default class BinaryTree<T> {
     }
   }
 
-  _preOrderTraversal(node: Node<T>, result: T[]): T[] {
+  _preOrderTraversal(node: Node<T>, result: T[]) {
     result.push(node.value);
     if (node.left) {
       this._preOrderTraversal(node.left, result);
@@ -152,7 +114,7 @@ export default class BinaryTree<T> {
   }
 
   // .find(value) return the first node with the given value or null if that not exists
-  find(value: T): Node<T> | null {
+  find(value: T) {
     if (!this.root) {
       return null;
     } else {

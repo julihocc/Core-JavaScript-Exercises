@@ -1,4 +1,5 @@
-import BinaryTree, { Node } from "./BinaryTree.js";
+import BinaryTree from "./BinaryTree.js";
+import Node from "./Node.js";
 
 const binaryTree = new BinaryTree<number>();
 

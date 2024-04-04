@@ -1,19 +1,22 @@
 import BinaryTree, { Node } from "./BinaryTree.js";
 
-class RBNode extends Node {
-  constructor(value) {
+class RBNode<T> extends Node<T> {
+  parent: RBNode<T> | null;
+  color: string;
+  constructor(value: T) {
     super(value);
     this.parent = null;
     this.color = "red";
   }
 }
 
-export default class RedBlackTree extends BinaryTree {
+export default class RedBlackTree<T> extends BinaryTree<T> {
+  root: RBNode<T> | null = null;
   constructor() {
     super();
   }
 
-  insert(value) {
+  insert(value: T) {
     const newNode = new RBNode(value);
     if (this.root === null) {
       this.root = newNode;
@@ -23,20 +26,20 @@ export default class RedBlackTree extends BinaryTree {
     this.fixInsert(newNode);
   }
 
-  insertNode(node, newNode) {
+  insertNode(node: RBNode<T>, newNode: RBNode<T>) {
     if (newNode.value < node.value) {
       if (node.left === null) {
         node.left = newNode;
         newNode.parent = node;
       } else {
-        this.insertNode(node.left, newNode);
+        this.insertNode(node.left as RBNode<T>, newNode);
       }
     } else {
       if (node.right === null) {
         node.right = newNode;
         newNode.parent = node;
       } else {
-        this.insertNode(node.right, newNode);
+        this.insertNode(node.right as RBNode<T>, newNode);
       }
     }
   }
@@ -78,11 +81,14 @@ export default class RedBlackTree extends BinaryTree {
         }
       }
     }
-    this.root.color = "BLACK";
+    if (this.root !== null) this.root.color = "BLACK";
   }
 
-  rotateLeft(node) {
+  rotateLeft(node: RBNode<T>) {
     const rightChild = node.right;
+    if (rightChild === null) {
+      return;
+    }
     node.right = rightChild.left;
     if (rightChild.left !== null) {
       rightChild.left.parent = node;
