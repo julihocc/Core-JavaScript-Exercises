@@ -37,7 +37,7 @@ export default class Fraction extends Number {
     this.#d = denominator;
   }
 
-  valueOf() {
+  valueOf():number {
     return this.#n / this.#d;
   }
 
