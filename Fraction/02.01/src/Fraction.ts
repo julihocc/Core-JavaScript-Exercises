@@ -1,17 +1,17 @@
 export default class Fraction extends Number {
-  #n;
-  #d;
+  #n: number;
+  #d: number;
 
-  static gcd(a, b) {
+  static gcd(a: number, b: number): number {
     if (b === 0) {
       return a;
     }
     return Fraction.gcd(b, a % b);
   }
 
-  static from(decimal) {
+  static from(decimal: number) {
     // FIX-ME Do not use convertion to string
-    let power = 0
+    let power = 0;
     while (decimal % 1 !== 0) {
       decimal *= 10;
       power++;
@@ -21,11 +21,11 @@ export default class Fraction extends Number {
     return result;
   }
 
-  static isInteger(number){
+  static isInteger(number: number) {
     return number % 1 === 0;
   }
 
-  constructor(numerator, denominator) {
+  constructor(numerator: number, denominator: number) {
     if (denominator === 0) {
       throw new Error("Denominator cannot be zero");
     }
@@ -63,7 +63,7 @@ export default class Fraction extends Number {
     this.#d /= gcd;
   }
 
-  multiply(fraction) {
+  multiply(fraction: Fraction) {
     const N = this.#n * fraction.numerator;
     const D = this.#d * fraction.denominator;
     const result = new Fraction(N, D);
@@ -84,7 +84,7 @@ export default class Fraction extends Number {
     return result;
   }
 
-  divideBy(fraction) {
+  divideBy(fraction: Fraction) {
     if (fraction.isZero()) {
       throw new Error("Cannot divide by zero");
     }
@@ -93,7 +93,7 @@ export default class Fraction extends Number {
     return result;
   }
 
-  add(fraction) {
+  add(fraction: Fraction) {
     const N = this.#n * fraction.denominator + fraction.numerator * this.#d;
     const D = this.#d * fraction.denominator;
     const result = new Fraction(N, D);
@@ -107,31 +107,31 @@ export default class Fraction extends Number {
     return neg;
   }
 
-  subtract(fraction) {
+  subtract(fraction: Fraction) {
     return this.add(fraction.negative());
   }
 
-  #crossMultiplication(fraction) {
+  #crossMultiplication(fraction: Fraction) {
     return this.#n * fraction.denominator - fraction.numerator * this.#d;
   }
 
-  equals(fraction) {
+  equals(fraction: Fraction) {
     return this.#crossMultiplication(fraction) === 0;
   }
 
-  greaterThan(fraction) {
+  greaterThan(fraction: Fraction) {
     return this.#crossMultiplication(fraction) > 0;
   }
 
-  lessThan(fraction) {
+  lessThan(fraction: Fraction) {
     return this.#crossMultiplication(fraction) < 0;
   }
 
-  greaterOrEquals(fraction) {
+  greaterOrEquals(fraction: Fraction) {
     return this.#crossMultiplication(fraction) >= 0;
   }
 
-  lessOrEquals(fraction) {
+  lessOrEquals(fraction: Fraction) {
     return this.#crossMultiplication(fraction) <= 0;
   }
 }

@@ -1,26 +1,36 @@
 import Fraction from "./Fraction.js";
 
-console.string = function(fraction){
-  console.log(fraction.toString());
+interface Stringable{
+  toString(): string;
 }
 
-console.string(Fraction.gcd(2*3*5, 2*3*7)); 
+declare global {
+  interface Console {
+    string(stringable: Stringable): void;
+  }
+}
+
+console.string = function (stringable) {
+  console.log(stringable.toString());
+};
+
+console.string(Fraction.gcd(2 * 3 * 5, 2 * 3 * 7));
 
 try {
   new Fraction(1, 0);
 } catch (e) {
-  console.error(e.message);
+  if(e instanceof Error ) console.error(e.message);
 }
 
 try {
   new Fraction(1.5, 2);
 } catch (e) {
-  console.error(e.message);
+  if(e instanceof Error) console.error(e.message);
 }
 
 const f = new Fraction(6, 15);
-console.string(f)
-console.log(f)
+console.string(f);
+console.log(f);
 
 f.simplify();
 console.string(f);
@@ -34,14 +44,14 @@ const zero = new Fraction(0, 1);
 console.string(zero.isZero());
 try {
   zero.reciprocal();
-} catch(error){
-  console.error(error.message);
+} catch (error) {
+  if(error instanceof Error) console.error(error.message);
 }
 
 try {
   f.divideBy(zero);
-} catch(error){
-  console.error(error.message);
+} catch (error) {
+  if(error instanceof Error) console.error(error.message);
 }
 
 console.string(f.divideBy(f));
@@ -49,7 +59,7 @@ console.string(f.divideBy(g));
 
 console.string(f.add(g));
 
-console.string(f.subtract(f))
+console.string(f.subtract(f));
 
 const oneHalf = new Fraction(1, 2);
 const otherHalf = new Fraction(3, 6);
@@ -64,7 +74,7 @@ console.string(oneThird.lessOrEquals(oneHalf));
 console.string(otherHalf.greaterOrEquals(oneHalf));
 console.string(otherHalf.lessOrEquals(oneHalf));
 
-console.string(oneHalf+oneThird);
+console.string(oneHalf  + oneThird);
 console.log(oneHalf + oneThird);
 
 console.string(Fraction.from(1.5));
