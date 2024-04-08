@@ -1,33 +1,34 @@
-class MinHeap {
+export default class MinHeap<T> {
+  heap: T[];
   constructor() {
     // Initialize a heap with an empty array
     this.heap = [];
   }
 
   // Method to get the index of the parent node
-  getParentIndex(index) {
+  getParentIndex(index: number): number {
     return Math.floor((index - 1) / 2);
   }
 
   // Method to get the index of the left child node
-  getLeftChildIndex(parentIndex) {
+  getLeftChildIndex(parentIndex: number): number {
     return 2 * parentIndex + 1;
   }
 
   // Method to get the index of the right child node
-  getRightChildIndex(parentIndex) {
+  getRightChildIndex(parentIndex: number): number {
     return 2 * parentIndex + 2;
   }
 
   // Method to swap two nodes in the heap
-  swap(indexOne, indexTwo) {
+  swap(indexOne:number, indexTwo:number) {
     const temp = this.heap[indexOne];
     this.heap[indexOne] = this.heap[indexTwo];
     this.heap[indexTwo] = temp;
   }
 
   // Method to add a new element to the heap
-  insert(value) {
+  insert(value: T) {
     this.heap.push(value);
     let index = this.heap.length - 1;
     let parentIndex = this.getParentIndex(index);
@@ -55,7 +56,7 @@ class MinHeap {
   }
 
   // Helper method to maintain the heap property by bubbling down the element at given index
-  heapify(index) {
+  heapify(index: number) {
     let smallest = index;
     const leftChildIndex = this.getLeftChildIndex(index);
     const rightChildIndex = this.getRightChildIndex(index);
@@ -81,13 +82,3 @@ class MinHeap {
   }
 }
 
-// Usage example
-const minHeap = new MinHeap();
-minHeap.insert(5);
-minHeap.insert(3);
-minHeap.insert(8);
-minHeap.insert(4);
-
-console.log(minHeap.heap);
-console.log(minHeap.remove()); // Outputs: 3 (the smallest element)
-console.log(minHeap.heap);
