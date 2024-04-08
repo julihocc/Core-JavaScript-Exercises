@@ -1,0 +1,24 @@
+declare const leftButton: HTMLButtonElement;
+declare const rightButton: HTMLButtonElement;
+declare const upButton: HTMLButtonElement;
+declare const downButton: HTMLButtonElement;
+declare const resetButton: HTMLButtonElement;
+declare const frezeButton: HTMLButtonElement;
+declare const positionInformation: HTMLElement;
+declare const circle: HTMLDivElement;
+declare function getNumber(str: string): number[] | null;
+declare let xPos: number[] | null;
+declare let yPos: number[] | null;
+declare function setPositionInfo(x: number | null, y: number | null): void;
+declare function incrementGenerator(): Generator<number, void, unknown>;
+declare function delay(ms: number): Promise<unknown>;
+declare let horizontalIncrementGenerator: Generator<number, void, unknown>;
+declare let horizontalIncrement: number | void;
+declare let verticalIncrementGenerator: Generator<number, void, unknown>;
+declare let verticalIncrement: number | void;
+declare let isFrozen: boolean;
+declare const moveLeft: () => void;
+declare const moveRight: () => void;
+declare const moveUp: () => void;
+declare const moveDown: () => void;
+//# sourceMappingURL=index.d.ts.map
