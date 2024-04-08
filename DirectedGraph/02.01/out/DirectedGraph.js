@@ -139,8 +139,11 @@ class DirectedGraph {
             }
             this.getNeighbors(currentNode).forEach((neighbor) => {
                 // let alt = distances[value] + this.getEdgeWeight(currentNode, neighbor);
+                console.log("distances", distances);
+                console.log("value", value);
+                console.log("distances.get(value)", distances.get(value));
                 let distanceGetValue = distances.get(value);
-                if (!distanceGetValue) {
+                if (distanceGetValue === undefined) {
                     throw new Error("Distance value does not exist in the graph");
                 }
                 let alt = distanceGetValue + this.getEdgeWeight(currentNode, neighbor);

@@ -155,8 +155,11 @@ class DirectedGraph<T> {
       }
       this.getNeighbors(currentNode).forEach((neighbor) => {
         // let alt = distances[value] + this.getEdgeWeight(currentNode, neighbor);
+        console.log("distances", distances);
+        console.log("value", value);
+        console.log("distances.get(value)", distances.get(value));
         let distanceGetValue = distances.get(value);
-        if (!distanceGetValue) {
+        if (distanceGetValue===undefined) {
           throw new Error("Distance value does not exist in the graph");
         }
         let alt = distanceGetValue + this.getEdgeWeight(currentNode, neighbor);
@@ -197,7 +200,7 @@ class DirectedGraph<T> {
     );
   }
 
-  getEdgeWeight(sourceNode:Node<T>, targetNode:Node<T>) {
+  getEdgeWeight(sourceNode: Node<T>, targetNode: Node<T>) {
     // Assumes an edge object contains a `weight` property. Adjust based on actual implementation
     if (!sourceNode || !targetNode) {
       console.error("sourceNode or targetNode is undefined");
