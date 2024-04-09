@@ -1,10 +1,10 @@
 function curry(fn) {
     const n = fn.length;
     const UNDEF = undefined;
-    return function curriedFn(...args) {
+    const curriedFn = (...args) => {
         const nonUndefinedArgs = args.filter((arg) => arg !== UNDEF);
         if (nonUndefinedArgs.length >= n) {
-            return fn(...args);
+            return fn(...nonUndefinedArgs);
         }
         else {
             return function (...args2) {
@@ -14,5 +14,6 @@ function curry(fn) {
             };
         }
     };
+    return curriedFn;
 }
 export default curry;

@@ -1,12 +1,13 @@
-function curry<F extends (...args: any[]) => any>(fn: F) {
+function curry<T, U>(fn: (...args: T[]) => U) {
   const n = fn.length;
   const UNDEF = undefined;
-  return function curriedFn(...args: any[]) {
+
+  const curriedFn = (...args: (T | typeof UNDEF)[]) => {
     const nonUndefinedArgs = args.filter((arg) => arg !== UNDEF);
     if (nonUndefinedArgs.length >= n) {
-      return fn(...args);
+      return fn(...nonUndefinedArgs);
     } else {
-      return function (...args2: any[]) {
+      return function (...args2: (T | typeof UNDEF)[]) {
         const combinedArgs = args.map((arg) =>
           arg === UNDEF ? args2.shift() : arg
         );
@@ -15,6 +16,8 @@ function curry<F extends (...args: any[]) => any>(fn: F) {
       };
     }
   };
+
+  return curriedFn;
 }
 
 export default curry;

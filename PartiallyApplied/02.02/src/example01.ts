@@ -1,5 +1,7 @@
 import curry from "./curry.js";
 
+console.log("Example 01");
+
 const isDivisibleBy = (divisor1: number, divisor2: number, number: number) => {
   return number % divisor1 === 0 && number % divisor2 === 0;
 };
