@@ -1,3 +1,5 @@
+// TODO Implement a log decorator
+
 import Queue from "./Queue.js";
 import Stack from "./Stack.js";
 import Coordinates from "./Coordinates.js";
@@ -100,7 +102,7 @@ abstract class ShapeController {
     }
   }
 
-  // FIXME undo and redo are not working at the endpoints of the history
+  //  FIXME undo and redo are not working at the endpoints of the history
 
   animate() {
     // Smoothness factor determines the speed of the animation
@@ -134,17 +136,10 @@ abstract class ShapeController {
     this.moveTo(this.coordinates.x + dx, this.coordinates.y + dy);
   }
 
-  // toString() {
-  //   // return `x: ${this.x}, y: ${this.y}`;
-  //   throw new Error("You have to implement the method toString!");
-  // }
 
   abstract toString(): string;
 
-  // draw() {
-  //   //developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
-  //   throw new Error("You have to implement the method draw!");
-  // }
+
 
   abstract draw(): void;
 }
