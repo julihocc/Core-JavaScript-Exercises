@@ -1,13 +1,13 @@
-function curry<T, U>(fn: (...args: T[]) => U) {
+function curry(fn: Function) {
   const n = fn.length;
   const UNDEF = undefined;
 
-  const curriedFn = (...args: (T | typeof UNDEF)[]) => {
+  function curriedFn(...args: any[]) {
     const nonUndefinedArgs = args.filter((arg) => arg !== UNDEF);
     if (nonUndefinedArgs.length >= n) {
       return fn(...nonUndefinedArgs);
     } else {
-      return function (...args2: (T | typeof UNDEF)[]) {
+      return function (...args2: any[]) {
         const combinedArgs = args.map((arg) =>
           arg === UNDEF ? args2.shift() : arg
         );
@@ -15,7 +15,7 @@ function curry<T, U>(fn: (...args: T[]) => U) {
         return curriedFn(...combinedArgs, ...args2);
       };
     }
-  };
+  }
 
   return curriedFn;
 }

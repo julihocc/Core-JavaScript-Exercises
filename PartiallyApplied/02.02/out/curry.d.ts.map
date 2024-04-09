@@ -1,1 +1,1 @@
-{"version":3,"file":"curry.d.ts","sourceRoot":"","sources":["../src/curry.ts"],"names":[],"mappings":"AAAA,iBAAS,KAAK,CAAC,CAAC,EAAE,CAAC,EAAE,EAAE,EAAE,CAAC,GAAG,IAAI,EAAE,CAAC,EAAE,KAAK,CAAC,kFAoB3C;AAED,eAAe,KAAK,CAAC"}
+{"version":3,"file":"curry.d.ts","sourceRoot":"","sources":["../src/curry.ts"],"names":[],"mappings":"AAAA,iBAAS,KAAK,CAAC,EAAE,EAAE,QAAQ,aAIG,GAAG,EAAE,SAgBlC;AAED,eAAe,KAAK,CAAC"}

@@ -1,7 +1,7 @@
 function curry(fn) {
     const n = fn.length;
     const UNDEF = undefined;
-    const curriedFn = (...args) => {
+    function curriedFn(...args) {
         const nonUndefinedArgs = args.filter((arg) => arg !== UNDEF);
         if (nonUndefinedArgs.length >= n) {
             return fn(...nonUndefinedArgs);
@@ -13,7 +13,7 @@ function curry(fn) {
                 return curriedFn(...combinedArgs, ...args2);
             };
         }
-    };
+    }
     return curriedFn;
 }
 export default curry;
