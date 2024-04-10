@@ -4,7 +4,8 @@
 // }
 
 // ClassDecoratorContext<typeof Person>;
-type Constructor = new (...args: any[]) => any;
+// type Constructor = new (...args: any[]) => any;
+type Constructor<T = {}> = new (...args: any[]) => T;
 
 // function abstractClass<T extends Constructor>(
 //   value: T,
