@@ -1,12 +1,19 @@
-function memoize(value, context) {
+type ThisWithMemoize<This> = This & { memoize: Map<string, any> };
 
-  const {kind}=context;
+function memoize<This, Args extends any[], Return>(
+  target: (this: This, ...args: Args) => Return,
+  context: ClassMethodDecoratorContext<
+    This,
+    (this: This, ...args: Args) => Return
+  >
+) {
+  const { kind } = context;
 
-  if(kind === "method") {
+  if (kind !== "method") {
     throw new Error("Memoize can only be used with methods");
   }
 
-  return function (...args) {
+  return function (this: ThisWithMemoize<This>, ...args: Args) {
     if (!this["memoize"]) {
       this["memoize"] = new Map();
     }
@@ -14,21 +21,21 @@ function memoize(value, context) {
     const cacheKey = JSON.stringify(args);
 
     if (this["memoize"].has(cacheKey)) {
-      console.log("Cache hit!")
+      console.log("Cache hit!");
       return this["memoize"].get(cacheKey);
     }
 
-    const result = value.apply(this, args)
+    const result = target.apply(this, args);
     this["memoize"].set(cacheKey, result);
 
     console.log(`Caching result for ${cacheKey}`);
     return result;
-  }
+  };
 }
 
 class Example {
   @memoize
-  expensiveOperation(arg) {
+  expensiveOperation(arg: number) {
     console.log(`Processing very slowly...`);
     // Simulate an expensive operation
     return arg * 2; // Simplified example
