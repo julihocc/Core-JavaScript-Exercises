@@ -1,4 +1,4 @@
-class PriorityQueue {
+export default class PriorityQueue {
     items;
     constructor() {
         this.items = [];
@@ -80,4 +80,3 @@ class PriorityQueue {
         return this.items.length === 0;
     }
 }
-export default PriorityQueue;
