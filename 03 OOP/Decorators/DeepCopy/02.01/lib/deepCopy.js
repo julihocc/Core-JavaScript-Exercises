@@ -1,43 +1,34 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = deepCopy;
-function deepCopy(obj) {
-  var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : new WeakMap();
-  // Check for circular references to avoid infinite loop
-  if (hash.has(obj)) return hash.get(obj);
-
-  // Handle Date
-  if (obj instanceof Date) return new Date(obj.valueOf());
-
-  // Handle Array and Object
-  if (obj instanceof Object) {
-    var result = Array.isArray(obj) ? [] : {};
-    hash.set(obj, result);
-    for (var _i = 0, _Object$keys = Object.keys(obj); _i < _Object$keys.length; _i++) {
-      var key = _Object$keys[_i];
-      result[key] = deepCopy(obj[key], hash);
+export default function deepCopy(obj, register = new Map()) {
+    // console.log("obj: ", obj);
+    if (typeof obj !== "object" || obj === null)
+        return obj; // Return if obj is a primitive value or null
+    // Handle circular references
+    if (register.has(obj)) {
+        return register.get(obj);
     }
-
-    // Handle special objects like Map, Set, etc.
-    // This part could be extended to handle other types as needed.
-    if (obj instanceof Map) {
-      result = new Map();
-      obj.forEach(function (value, key) {
-        result.set(key, deepCopy(value, hash));
-      });
+    if (Array.isArray(obj)) {
+        console.log("Array: ", obj);
+        let resultArray = [];
+        register.set(obj, resultArray);
+        // obj.forEach((item, index) => {
+        //   resultArray[index] = deepCopy(item, register);
+        // });
+        for (let i = 0; i < obj.length; i++) {
+            // resultArray[i] = deepCopy(obj[i], register);
+            resultArray.push(deepCopy(obj[i], register));
+        }
+        // console.log("resultArray: ", resultArray);
+        return resultArray;
     }
-    if (obj instanceof Set) {
-      result = new Set();
-      obj.forEach(function (value) {
-        result.add(deepCopy(value, hash));
-      });
+    else {
+        let resultObj = {};
+        register.set(obj, resultObj);
+        Reflect.ownKeys(obj).forEach((key) => {
+            // resultObj[key] = deepCopy(obj[key], register);
+            resultObj[key] = deepCopy(
+            // obj as { [key: string]: any },
+            obj[key], register);
+        });
+        return resultObj;
     }
-    return result;
-  }
-
-  // Handle primitive types (String, Number, Boolean, null, undefined)
-  return obj;
 }

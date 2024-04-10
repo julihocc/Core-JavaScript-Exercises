@@ -1,6 +1,6 @@
 import deepCopy from "./deepCopy.js";
 
-function deepCopyDecorator<This, T extends object}>(
+function deepCopyDecorator<This, T extends object>(
   target: (this: This) => T & { [key: string]: any },
   context: ClassGetterDecoratorContext<This, T>
 ) {
