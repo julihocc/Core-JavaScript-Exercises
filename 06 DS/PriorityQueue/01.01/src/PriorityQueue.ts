@@ -1,40 +1,41 @@
-class PriorityQueue {
+class PriorityQueue<T> {
+  items: { element: T; priority: number }[];
   constructor() {
     this.items = [];
   }
 
   // Swap elements at the indices i and j
-  swap(i, j) {
+  swap(i:number, j:number) {
     [this.items[i], this.items[j]] = [this.items[j], this.items[i]];
   }
 
   // Returns the index of the parent node
-  parentIndex(index) {
+  parentIndex(index:number) {
     return Math.floor((index - 1) / 2);
   }
 
   // Returns the index of the left child node
-  leftChildIndex(index) {
+  leftChildIndex(index:number) {
     return 2 * index + 1;
   }
 
   // Returns the index of the right child node
-  rightChildIndex(index) {
+  rightChildIndex(index:number) {
     return 2 * index + 2;
   }
 
   // Returns true if the node at index has a parent
-  hasParent(index) {
+  hasParent(index:number) {
     return this.parentIndex(index) >= 0;
   }
 
   // Returns true if the node at index has a left child
-  hasLeftChild(index) {
+  hasLeftChild(index:number) {
     return this.leftChildIndex(index) < this.items.length;
   }
 
   // Returns true if the node at index has a right child
-  hasRightChild(index) {
+  hasRightChild(index:number) {
     return this.rightChildIndex(index) < this.items.length;
   }
 
@@ -73,7 +74,7 @@ class PriorityQueue {
   }
 
   // Enqueue element with a priority
-  enqueue(element, priority) {
+  enqueue(element:T, priority:number) {
     this.items.push({ element, priority });
     this.bubbleUp();
   }
