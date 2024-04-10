@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- - UI must contain a canvas of 500x500 pixels -->
+    <canvas id="canvas" width="500px" height="500px"></canvas>
+
+    <div id="controls">
+      <!-- - create a web UI with buttons (UP, DOWN, LEFT, RIGHT) -->
+      <div>
+        <button type="button" id="up">UP</button>
+        <button type="button" id="left">LEFT</button>
+        <button type="button" id="right">RIGHT</button>
+        <button type="button" id="down">DOWN</button>
+      </div>
+      <!-- - must be able to select between at least two shapes (Square, circle, triangle, etc) -->
+      <!-- <div>
+        <button type="button" id="square">Square</button>
+        <button type="button" id="circle">Circle</button>
+        <button type="button" id="triangle">Triangle</button>
+      </div> -->
+      <div>
+        <label for="shape-selected">Shape</label>
+        <select name="shape-selected" id="shape-selected">
+          <option value="square">Square</option>
+          <option value="circle">Circle</option>
+          <!-- <option value="triangle">Triangle</option> -->
+        </select>
+      <!-- - must be able to select between at least two coordinate display methods -->
+      <div>
+        <label for="coordinate-format">Coordinate Format</label>
+        <!-- <button type="button" id="cartesian">Cartesian</button> -->
+        <!-- <button type="button" id="polar">Polar</button> -->
+        <select name="coordinate-format" id="coordinate-format">
+          <option value="cartesian">Cartesian</option>
+          <option value="polar">Polar</option>
+        </select>
+        <!-- - the UI must display the coordinate position somewhere and be updated as the changes occur  -->
+        <div>Coordinates: <span id="coordinate-view">0, 0</span></div>
+        <!-- - add a "compress" option for movements -->
+        <div>
+          <label for="compress">Compress</label>
+          <input type="checkbox" id="compress" />
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./script.js"></script>
+    <script type="module" src="./Shape.js"></script>
+  </body>
+</html>
