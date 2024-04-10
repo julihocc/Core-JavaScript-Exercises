@@ -4,25 +4,24 @@ function log<This, Args extends any[], Return>(
     This,
     (this: This, ...args: Args) => Return
   >
-){
-  const methodName = String(context.name)
+) {
+  const methodName = String(context.name);
 
   function replacementMethod(this: This, ...args: Args): Return {
-    console.log(`LOG: Entering method ${methodName}`)
-    const result = target.call(this, ...args)
-    console.log(`LOG: Exiting method ${methodName}`)
-    return result
+    const result = target.call(this, ...args);
+    console.log(`${methodName}(${args}) => ${result}`);
+    return result;
   }
 
-  return replacementMethod
+  return replacementMethod;
 }
 
-class Calculator{
+class Calculator {
   @log
-  add(a: number, b: number){
-    return a + b
+  add(a: number, b: number) {
+    return a + b;
   }
 }
 
-const calculator = new Calculator()
-calculator.add(1, 2)
+const calculator = new Calculator();
+calculator.add(1, 2);

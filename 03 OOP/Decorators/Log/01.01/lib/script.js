@@ -36,9 +36,8 @@ var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, 
 function log(target, context) {
     const methodName = String(context.name);
     function replacementMethod(...args) {
-        console.log(`LOG: Entering method ${methodName}`);
         const result = target.call(this, ...args);
-        console.log(`LOG: Exiting method ${methodName}`);
+        console.log(`${methodName}(${args}) => ${result}`);
         return result;
     }
     return replacementMethod;
