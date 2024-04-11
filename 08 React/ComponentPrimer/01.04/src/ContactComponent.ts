@@ -11,15 +11,18 @@
 // Export the class
 
 export default class ContactComponent {
-  contact: Contact;
-  constructor(contact: Contact) {
-    this.contact = contact;
+  #id = Symbol("contact-component");
+
+  constructor(private contact: Contact) {}
+
+  get id(): string {
+    return String(this.#id);
   }
 
   create(): HTMLElement {
-    const div = document.createElement('div');
-    const h2 = document.createElement('h2');
-    const p = document.createElement('p');
+    const div = document.createElement("div");
+    const h2 = document.createElement("h2");
+    const p = document.createElement("p");
 
     h2.textContent = this.contact.name;
     p.textContent = this.contact.phone;

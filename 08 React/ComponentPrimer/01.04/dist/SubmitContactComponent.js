@@ -1,10 +1,19 @@
 // Use just vanilla JS
-export default class SubmitContactComponent {
-    constructor(id, submitHandler) {
-        this.id = id;
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _SubmitContactComponent_id;
+class SubmitContactComponent {
+    constructor(submitHandler) {
+        _SubmitContactComponent_id.set(this, Symbol("submit-contact-component"));
         this.submitHandler = submitHandler.bind(this);
     }
-    render() {
+    get id() {
+        return String(__classPrivateFieldGet(this, _SubmitContactComponent_id, "f"));
+    }
+    create() {
         const div = document.createElement("div");
         const form = document.createElement("form");
         const nameLabel = document.createElement("label");
@@ -37,3 +46,5 @@ export default class SubmitContactComponent {
         return div;
     }
 }
+_SubmitContactComponent_id = new WeakMap();
+export default SubmitContactComponent;

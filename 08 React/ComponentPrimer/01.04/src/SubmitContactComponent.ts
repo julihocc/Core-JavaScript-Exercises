@@ -1,12 +1,15 @@
 // Use just vanilla JS
 
-export default class SubmitContactComponent {
-  id: string;
+export default class SubmitContactComponent { 
+  #id = Symbol("submit-contact-component");
   submitHandler: (event: Event) => void;
 
-  constructor(id: string, submitHandler: (event: Event) => void) {
-    this.id = id;
+  constructor(submitHandler: (event: Event) => void) {
     this.submitHandler = submitHandler.bind(this);
+  }
+
+  get id() {
+    return String(this.#id);
   }
 
   create(): HTMLElement {

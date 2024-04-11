@@ -11,33 +11,38 @@
 
 // Assuming ContactComponent is imported from another module
 
-export default class ContactListComponent<
-  T extends { new (contact: Contact): { render: () => HTMLElement } }
-> {
-  contacts: Contact[];
-  Component: T;
+import ContactComponent from "./ContactComponent.js";
 
-  constructor(contacts: Contact[], Component: T) {
-    this.contacts = contacts;
-    this.Component = Component;
+export default class ContactListComponent {
+  #id = Symbol("contact-list-component");
+  contacts: Contact[];
+  retrieveContacts: () => Contact[];
+  div: HTMLDivElement;
+  h1: HTMLHeadingElement;
+  ul: HTMLUListElement;
+
+  constructor(retrieveContacts: () => Contact[]) {
+    this.contacts = retrieveContacts();
+    this.retrieveContacts = retrieveContacts.bind(this);
+    this.div = document.createElement("div");
+    this.h1 = document.createElement("h1");
+    this.ul = document.createElement("ul");
+  }
+
+  render() {
+    this.contacts = this.retrieveContacts();
+    this.contacts.forEach((contact) => {
+      const contactComponent = new ContactComponent(contact);
+      const contactElement = contactComponent.create();
+      this.ul.appendChild(contactElement);
+    });
   }
 
   create(): HTMLElement {
-    const div = document.createElement("div");
-    const h1 = document.createElement("h1");
-    const ul = document.createElement("ul");
-
-    h1.textContent = "Contacts";
-    div.appendChild(h1);
-
-    this.contacts.forEach((contact) => {
-      const contactComponent = new this.Component(contact);
-      const contactElement = contactComponent.render();
-      ul.appendChild(contactElement);
-    });
-
-    div.appendChild(ul);
-
-    return div;
+    this.h1.textContent = "Contacts";
+    this.render();
+    this.div.appendChild(this.h1);
+    this.div.appendChild(this.ul);
+    return this.div;
   }
 }

@@ -1,4 +1,5 @@
 import SubmitContactComponent from "./SubmitContactComponent.js";
+import ContactListComponent from "./ContactListComponent.js";
 const body = document.querySelector("body");
 const submitHandler = (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
@@ -14,7 +15,16 @@ const submitHandler = (event) => {
     console.log("Form submitted");
     // print updated contancts
     console.log(JSON.parse(localStorage.getItem("contacts") || "[]"));
+    // rerender
+    contactListComponent.render();
+    window.location.reload();
 };
-const submitContactComponent = new SubmitContactComponent("contactHandler", submitHandler);
-console.log(submitContactComponent);
-body.appendChild(submitContactComponent.render());
+const submitContactComponent = new SubmitContactComponent(submitHandler);
+const form = submitContactComponent.create();
+body.appendChild(form);
+const retrieveContacts = () => {
+    return JSON.parse(localStorage.getItem("contacts") || "[]");
+};
+const contactListComponent = new ContactListComponent(retrieveContacts);
+const contactList = contactListComponent.create();
+body.appendChild(contactList);

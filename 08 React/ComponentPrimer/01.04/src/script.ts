@@ -1,6 +1,5 @@
 import SubmitContactComponent from "./SubmitContactComponent.js";
 import ContactListComponent from "./ContactListComponent.js";
-import ContactComponent from "./ContactComponent.js";
 
 const body = document.querySelector("body") as HTMLBodyElement;
 
@@ -23,20 +22,23 @@ const submitHandler = (event: Event) => {
 
   // print updated contancts
   console.log(JSON.parse(localStorage.getItem("contacts") || "[]"));
+
+  // rerender
+  contactListComponent.render();
+  window.location.reload();
 };
 
-const submitContactComponent = new SubmitContactComponent(
-  "contactHandler",
-  submitHandler
-);
+const submitContactComponent = new SubmitContactComponent(submitHandler);
 
-body.appendChild(submitContactComponent.create());
+const form = submitContactComponent.create();
+body.appendChild(form);
 
-const contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
+const retrieveContacts = () => {
+  return JSON.parse(localStorage.getItem("contacts") || "[]");
+};
 
-const contactListComponent = new ContactListComponent(
-  contacts,
-  ContactComponent
-);
+const contactListComponent = new ContactListComponent(retrieveContacts);
 
-body.appendChild(contactListComponent.create());
+const contactList = contactListComponent.create();
+
+body.appendChild(contactList);
