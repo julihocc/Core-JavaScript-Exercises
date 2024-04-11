@@ -30,19 +30,22 @@ export default class ContactListComponent {
   }
 
   render() {
+    this.div.removeChild(this.ul);
+    this.ul = document.createElement("ul");
     this.contacts = this.retrieveContacts();
     this.contacts.forEach((contact) => {
       const contactComponent = new ContactComponent(contact);
       const contactElement = contactComponent.create();
       this.ul.appendChild(contactElement);
     });
+    this.div.appendChild(this.ul);
   }
 
   create(): HTMLElement {
     this.h1.textContent = "Contacts";
-    this.render();
     this.div.appendChild(this.h1);
     this.div.appendChild(this.ul);
+    this.render();
     return this.div;
   }
 }

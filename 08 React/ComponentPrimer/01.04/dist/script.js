@@ -8,6 +8,16 @@ const submitHandler = (event) => {
     const phoneInput = form.elements.namedItem("phone");
     const name = nameInput.value;
     const phone = phoneInput.value;
+    const nameRegex = /^[a-zA-Z\s]*$/;
+    if (!nameRegex.test(name)) {
+        console.error("Invalid name");
+        return;
+    }
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(phone)) {
+        console.error("Invalid phone number");
+        return;
+    }
     const contactData = { name, phone };
     const contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
     contacts.push(contactData);
@@ -17,7 +27,7 @@ const submitHandler = (event) => {
     console.log(JSON.parse(localStorage.getItem("contacts") || "[]"));
     // rerender
     contactListComponent.render();
-    window.location.reload();
+    // window.location.reload();
 };
 const submitContactComponent = new SubmitContactComponent(submitHandler);
 const form = submitContactComponent.create();
