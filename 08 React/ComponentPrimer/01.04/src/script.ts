@@ -1,4 +1,6 @@
 import SubmitContactComponent from "./SubmitContactComponent.js";
+import ContactListComponent from "./ContactListComponent.js";
+import ContactComponent from "./ContactComponent.js";
 
 const body = document.querySelector("body") as HTMLBodyElement;
 
@@ -29,3 +31,12 @@ const submitContactComponent = new SubmitContactComponent(
 );
 
 body.appendChild(submitContactComponent.create());
+
+const contacts = JSON.parse(localStorage.getItem("contacts") || "[]");
+
+const contactListComponent = new ContactListComponent(
+  contacts,
+  ContactComponent
+);
+
+body.appendChild(contactListComponent.create());

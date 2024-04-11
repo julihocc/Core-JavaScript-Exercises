@@ -10,9 +10,8 @@
 // Export the class
 
 // Assuming ContactComponent is imported from another module
-import ContactComponent from "./ContactComponent.js";
 
-class ContactListComponent<
+export default class ContactListComponent<
   T extends { new (contact: Contact): { render: () => HTMLElement } }
 > {
   contacts: Contact[];
@@ -24,11 +23,11 @@ class ContactListComponent<
   }
 
   create(): HTMLElement {
-    const div = document.createElement('div');
-    const h1 = document.createElement('h1');
-    const ul = document.createElement('ul');
+    const div = document.createElement("div");
+    const h1 = document.createElement("h1");
+    const ul = document.createElement("ul");
 
-    h1.textContent = 'Contacts';
+    h1.textContent = "Contacts";
     div.appendChild(h1);
 
     this.contacts.forEach((contact) => {
