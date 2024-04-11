@@ -1,0 +1,19 @@
+.node {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+.child {
+  margin-top: 10px;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
