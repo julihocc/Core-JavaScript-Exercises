@@ -1,0 +1,15 @@
+.counter {
+  font-size: 2em;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}

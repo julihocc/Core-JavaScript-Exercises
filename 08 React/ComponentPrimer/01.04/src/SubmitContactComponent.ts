@@ -1,5 +1,3 @@
-// Use just vanilla JS
-
 export default class SubmitContactComponent { 
   #id = Symbol("submit-contact-component");
   submitHandler: (event: Event) => void;
