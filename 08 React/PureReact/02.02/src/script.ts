@@ -1,12 +1,10 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-
+// import React from "react";
+// import { createRoot } from "react-dom/client";
 import Counter from "./components/counter.js";
 
 let root = document.getElementById("root") as HTMLElement;
 
-// let reactRoot = ReactDOM.createRoot(root);
-let reactRoot = createRoot(root);
+let reactRoot = ReactDOM.createRoot(root);
 
 // reactRoot.render("Hello World!");
 

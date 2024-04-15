@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import CounterDisplay from "./counterDisplay.js";
 
 export default class Counter extends React.Component<

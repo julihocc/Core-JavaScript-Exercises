@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
     "typescript": "^5.4.5"
   },
   "dependencies": {
