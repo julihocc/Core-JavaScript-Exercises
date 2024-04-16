@@ -1,6 +1,7 @@
 import { Component } from "react";
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
+import { produce } from "immer";
 
 export default class ContactApp extends Component {
   constructor() {
@@ -37,13 +38,19 @@ export default class ContactApp extends Component {
         <ContactForm
           onAddContact={(contact) => {
             console.log(contact);
-            this.setState({
-              contacts: [
-                ...this.state.contacts,
-                { ...contact, id: this.state.nextId },
-              ],
-              nextId: this.state.nextId + 1,
-            });
+            // this.setState({
+            //   contacts: [
+            //     ...this.state.contacts,
+            //     { ...contact, id: this.state.nextId },
+            //   ],
+            //   nextId: this.state.nextId + 1,
+            // });
+            this.setState(
+              produce((state) => {
+                state.contacts.push({ ...contact, id: state.nextId });
+                state.nextId++;
+              })
+            );
           }}
         />
         <ContactList
@@ -51,9 +58,13 @@ export default class ContactApp extends Component {
           onDeleteContact={(id) => {
             this.setState({
               // contacts: this.state.contacts.filter((_, i) => i !== index),
-              contacts: this.state.contacts.filter(
-                (contact) => contact.id !== id
-              ),
+              // contacts: this.state.contacts.filter(
+              //   (contact) => contact.id !== id
+              // ),
+              contacts: produce(this.state.contacts, (draft) => {
+                const index = draft.findIndex((contact) => contact.id === id);
+                draft.splice(index, 1);
+              }),
             });
           }}
           onToggleFavorite={(id) => {
@@ -65,11 +76,15 @@ export default class ContactApp extends Component {
             //   ),
             // });
             this.setState({
-              contacts: this.state.contacts.map((contact) =>
-                contact.id === id
-                  ? { ...contact, favorite: !contact.favorite }
-                  : contact
-              ),
+              // contacts: this.state.contacts.map((contact) =>
+              //   contact.id === id
+              //     ? { ...contact, favorite: !contact.favorite }
+              //     : contact
+              // ),
+              contacts: produce(this.state.contacts, (draft) => {
+                const contact = draft.find((contact) => contact.id === id);
+                contact.favorite = !contact.favorite;
+              }),
             });
           }}
         />
