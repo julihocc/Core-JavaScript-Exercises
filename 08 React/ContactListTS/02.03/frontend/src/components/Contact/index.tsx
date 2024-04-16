@@ -24,9 +24,11 @@ export default class Contact extends Component<ContactProps> {
         </div>
         <div>
           {" "}
-          <button onClick={onDeleteContact}>Delete Contact</button>
-          <button onClick={onToggleFavorite}>
-            {favorite ? "Unmark" : "Mark"}
+          <button onClick={onDeleteContact} type="button">
+            Delete Contact
+          </button>
+          <button onClick={onToggleFavorite} type="button">
+            {favorite ? "Unfavorite" : "Favorite"}
           </button>
         </div>
       </li>
