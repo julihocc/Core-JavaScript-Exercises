@@ -40,14 +40,6 @@ class App extends Component<unknown, AppState> {
         <ContactForm
           onAddContact={(contact) => {
             console.log(contact);
-            // this.setState({
-            //   contacts: [
-            //     ...this.state.contacts,
-            //     { ...contact, id: this.state.nextId, favorite: false },
-            //   ],
-            //   nextId: this.state.nextId + 1,
-            // });
-
             this.setState(
               produce((draft: AppState) => {
                 draft.contacts.push({
@@ -63,28 +55,42 @@ class App extends Component<unknown, AppState> {
         <ContactList
           contacts={this.state.contacts}
           onDeleteContact={(id) => {
-            this.setState({
-              // contacts: this.state.contacts.filter((_, i) => i !== index),
-              contacts: this.state.contacts.filter(
-                (contact) => contact.id !== id
-              ),
-            });
-          }}
-          onToggleFavorite={(id) => {
             // this.setState({
-            //   contacts: this.state.contacts.map((contact, i) =>
-            //     i === index
-            //       ? { ...contact, favorite: !contact.favorite }
-            //       : contact
+            //   contacts: this.state.contacts.filter(
+            //     (contact) => contact.id !== id
             //   ),
             // });
-            this.setState({
-              contacts: this.state.contacts.map((contact) =>
-                contact.id === id
-                  ? { ...contact, favorite: !contact.favorite }
-                  : contact
-              ),
-            });
+            this.setState(
+              produce((draft) => {
+                const index = draft.contacts.findIndex(
+                  (contact: ContactType) => contact.id === id
+                );
+                if (index !== -1) {
+                  draft.contacts.splice(index, 1);
+                }
+              })
+            );
+          }}
+          // onToggleFavorite={(id) => {
+          //   this.setState({
+          //     contacts: this.state.contacts.map((contact) =>
+          //       contact.id === id
+          //         ? { ...contact, favorite: !contact.favorite }
+          //         : contact
+          //     ),
+          //   });
+          // }}
+          onToggleFavorite={(id) => {
+            this.setState(
+              produce((draft) => {
+                const contact = draft.contacts.find(
+                  (contact: ContactType) => contact.id === id
+                );
+                if (contact) {
+                  contact.favorite = !contact.favorite;
+                }
+              })
+            );
           }}
         />
       </div>
