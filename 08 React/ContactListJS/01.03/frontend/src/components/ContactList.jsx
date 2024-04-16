@@ -11,12 +11,18 @@ const sortByFavorite = (a, b) => (b.favorite ? 1 : -1);
 export default class ContactList extends Component {
   constructor(props) {
     super(props);
+    console.log("ContactList constructor");
+    console.log(props);
   }
 
   render() {
+    console.log("ContactList render");
+    const { contacts } = this.props;
+    console.log("contacts", contacts);
+    const sortedContacts = [...contacts].sort(sortByFavorite);
     return (
       <ul>
-        {this.props.contacts.toSorted(sortByFavorite).map((contact) => {
+        {sortedContacts.map((contact) => {
           // console.log(contact);
           return (
             <Contact
