@@ -1,11 +1,11 @@
 import { Component } from "react";
 import Contact from "./Contact";
 
-// const sortByFavorite = (a, b) =>
+// const sortByFavorite = (a:ContactType, b:ContactType) =>
 //   a.favorite !== b.favorite ? a.favorite : -(a.name < b.name);
 
 const sortByFavorite = (a: ContactType, b: ContactType) =>
-  b.favorite ? 1 : -1;
+  ( a.favorite || !a.favorite) && b.favorite ? 1 : -1;
 
 export default class ContactList extends Component<ContactListProps> {
   constructor(props: ContactListProps) {
