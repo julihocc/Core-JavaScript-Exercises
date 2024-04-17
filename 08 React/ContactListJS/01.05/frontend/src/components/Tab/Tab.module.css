@@ -1,0 +1,23 @@
+.tabNav {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.tabItem {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-bottom: none;
+  background-color: lightcoral;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}
+
+.tabActive {
+  background-color: lightgreen;
+  border: 1px solid #ccc;
+}
+
+.componentInactive {
+  display: none;
+}

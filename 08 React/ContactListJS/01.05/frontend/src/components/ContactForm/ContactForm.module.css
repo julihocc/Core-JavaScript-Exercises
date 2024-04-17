@@ -1,0 +1,8 @@
+.inputElement {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.invalid {
+  background-color: lightcoral;
+}
