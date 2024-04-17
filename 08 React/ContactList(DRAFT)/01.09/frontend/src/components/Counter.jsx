@@ -1,9 +1,22 @@
-import { Component } from "react";
+import Serializable from "./Serializable";
 
-export default class Counter extends Component {
-  constructor() {
-    super();
-    this.state = { count: 0 };
+export default class Counter extends Serializable {
+  static reset(id) {
+    localStorage.removeItem(id);
+  }
+  constructor(props) {
+    super(props);
+    // this.state = { count: 0 }
+    this.state = this.initialState();
+  }
+  getKey() {
+    return this.props.id;
+  }
+  saveState() {
+    return this.state;
+  }
+  initialState() {
+    return { count: 0 };
   }
   render() {
     if (this.state.count < 0) {

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 import { Component } from "react";
 import Contact from "./Contact";
+// import Serializable from "./Serializable"
 
 const sortByFavorite = (a, b) => (b.favorite ? 1 : -1);
 
@@ -11,7 +12,6 @@ export default class ContactList extends Component {
     console.log("ContactList constructor");
     console.log(props);
   }
-
   render() {
     console.log("ContactList render");
     const { contacts } = this.props;

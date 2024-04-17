@@ -1,5 +1,6 @@
-import { Component } from 'react';
-import Counter from './Counter';
+import { Component } from "react";
+import Counter from "./Counter";
+import ErrorBoundary from "./ErrorBoundary";
 
 export default class CounterApp extends Component {
   constructor() {
@@ -9,24 +10,22 @@ export default class CounterApp extends Component {
     };
   }
   render() {
+    const counter = <Counter id="unique-counter" />;
     return (
       <div>
         {this.state.counters.map((count, index) => (
-          <Counter
-            key={index}
-            count={count}
-            onIncrement={() => {
-              const counters = [...this.state.counters];
-              counters[index] += 1;
-              this.setState({ counters });
+          <ErrorBoundary
+            key={`eb-${index}`}
+            onReload={() => {
+              Counter.reset(`counter-${index}`);
             }}
-            onDecrement={() => {
-              const counters = [...this.state.counters];
-              counters[index] -= 1;
-              this.setState({ counters });
-            }}
-          />
+          >
+            <Counter id={`counter-${index}`} />
+          </ErrorBoundary>
         ))}
+        <hr />
+        {counter}
+        {counter}
       </div>
     );
   }

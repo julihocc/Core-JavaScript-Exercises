@@ -17,18 +17,33 @@ class App extends Component {
     ];
     this.onTabSelect = this.onTabSelect.bind(this);
     this.getCurrentTab = this.getCurrentTab.bind(this);
+    this.handleHashChange = this.handleHashChange.bind(this);
   }
   onTabSelect = (index) => {
     console.log("onTabSelect", index);
-
-    window.location.hash = index;
+    // this is moved to componentDidUpdate
+    // window.location.hash = index;
+    this.setState({ currentTab: index });
   };
   componentDidMount() {
     console.log("componentDidMount");
-    window.addEventListener("hashchange", () => {
-      console.log("hashchange");
-      this.setState({ currentTab: this.getCurrentTab() });
-    });
+    this.setState({ currentTab: this.getCurrentTab() });
+    // make sure to clean up the event listener when the component is unmounted
+    window.addEventListener("hashchange", this.handleHashChange);
+  }
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
+    window.location.hash = this.state.currentTab;
+  }
+  handleHashChange() {
+    // FIXME maybe extra duplicate work, but just once
+    // however not ideal
+    console.log("handleHashChange");
+    this.setState({ currentTab: this.getCurrentTab() });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("hashchange", this.handleHashChange);
   }
   getCurrentTab() {
     const currentLocation = window.location.hash || "#0";

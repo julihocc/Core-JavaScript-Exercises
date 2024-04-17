@@ -22,3 +22,10 @@ d. Can accept a string, and object, a string and an object...
          a. If error avoid the app crashing
     TODO 4. Add types to the project
     TODO 5. Use scss
+
+## April, 17
+
+TODO Creta more sofisticated components using Bootstrap
+TODO Implement a confirmation when deleting a contact, but using model window (React portal)
+
+

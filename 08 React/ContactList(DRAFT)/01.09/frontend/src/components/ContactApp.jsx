@@ -1,12 +1,23 @@
-import { Component } from "react";
+// import { Component } from "react";
 import ContactForm from "./ContactForm";
 import ContactList from "./ContactList";
 import customProduce from "../utils/customProduce";
+import Serializable from "./Serializable";
 
-export default class ContactApp extends Component {
+// We have to serialize ContactApp because it has state
+export default class ContactApp extends Serializable {
   constructor() {
     super();
-    this.state = {
+    this.state = this.initialState();
+  }
+  getKey() {
+    return "contact-app";
+  }
+  saveState() {
+    return this.state;
+  }
+  initialState() {
+    return {
       nextId: 4,
       contacts: [
         {

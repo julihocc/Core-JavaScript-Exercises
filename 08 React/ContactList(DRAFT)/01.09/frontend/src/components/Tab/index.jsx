@@ -34,6 +34,7 @@ export default class Tab extends Component {
               <h2 className="display-4">{tab.title}</h2>
               {/* <TabComponent /> */}
               <ErrorBoundary>
+                {/* No reload option provided */}
                 <TabComponent />
               </ErrorBoundary>
             </div>

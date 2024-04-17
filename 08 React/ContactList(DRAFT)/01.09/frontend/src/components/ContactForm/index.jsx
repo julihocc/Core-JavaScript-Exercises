@@ -70,6 +70,7 @@ export default class ContactForm extends Component {
             }
           }}
         />
+        {/* FIXME The button should disable if any data is not valid and the styling should reflect this condition */}
         <button type="submit">Add Contact</button>
       </form>
     );
