@@ -17,8 +17,8 @@ d. Can accept a string, and object, a string and an object...
 
     [x] 1. Update the URL based on the selected tab
       a. set on the tab, change it when update the tab
-    [x] 1. Make the title match the tab (the document title for the html)
-    TODO 3. In counter, make sure that the counter is not negative, or throw an error
-      a. If error avoid the app crashing
+    [x] 2. Make the title match the tab (the document title for the html)
+    [x] 3. In counter, make sure that the counter is not negative, or throw an error
+         a. If error avoid the app crashing
     TODO 4. Add types to the project
     TODO 5. Use scss
