@@ -1,11 +1,10 @@
 import { useState } from "react";
 import Counter from "../Counter";
-import { useCounterContext } from "../../state";
 
 // Refactor to functional component
 export default function CounterApp() {
-  const [counts] = useCounterContext();
-  console.log("counts", counts);
+  // const [counts] = useCounterContext();
+  // console.log("counts", counts);
   const [inputValue, setInputValue] = useState("");
 
   function handleOnChangeInput(event) {
@@ -15,10 +14,9 @@ export default function CounterApp() {
   return (
     <>
       <input value={inputValue} onChange={handleOnChangeInput} type="text" />
-
-      {counts.map((count, index) => (
-        <Counter key={index} init={inputValue} count={0} index={index} />
-      ))}
+      <Counter init={inputValue} index={0} />
+      <Counter init={inputValue} index={1} />
+      <Counter init={inputValue} index={2} />
     </>
   );
 }
