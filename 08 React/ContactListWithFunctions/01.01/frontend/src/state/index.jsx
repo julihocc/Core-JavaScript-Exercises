@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-const counterContext = createContext([0, 0, 0]); // returns an object with Provider and Consumer properties
+const counterContext = createContext(null); // returns an object with Provider and Consumer properties
 
 export function useCounterContext() {
   return useContext(counterContext);

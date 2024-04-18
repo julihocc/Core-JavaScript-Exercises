@@ -4,7 +4,7 @@ import { useCounterContext } from "../../state";
 
 // Refactor to functional component
 export default function CounterApp() {
-  const counts = useCounterContext();
+  const [counts] = useCounterContext();
   console.log("counts", counts);
   const [inputValue, setInputValue] = useState("");
 
