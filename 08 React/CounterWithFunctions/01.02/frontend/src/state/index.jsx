@@ -10,14 +10,14 @@ export function CounterProvider({ children }) {
   const [providerState, setProviderState] = useState([1, 2, 3]);
 
   // TODO Add validation
-  function setIndexedSatate(index, value) {
+  function setIndexedState(index, value) {
     const newState = [...providerState];
     newState[index] = value;
     setProviderState(newState);
   }
 
   return (
-    <counterContext.Provider value={[providerState, setIndexedSatate]}>
+    <counterContext.Provider value={[providerState, setIndexedState]}>
       {children}
     </counterContext.Provider>
   );
