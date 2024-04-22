@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import Counter from "../Counter";
 
 // Refactor to functional component
@@ -8,10 +8,16 @@ export default function CounterApp() {
   const MemoCounter = memo(Counter);
   const [inputValue, setInputValue] = useState("");
 
-  function handleOnChangeInput(event) {
+  // function handleOnChangeInput(event) {
+  //   const { target } = event;
+  //   setInputValue(target.value);
+  // }
+
+  const handleOnChangeInput = useCallback((event) => {
     const { target } = event;
     setInputValue(target.value);
-  }
+  }, []);
+
   return (
     <>
       <input value={inputValue} onChange={handleOnChangeInput} type="text" />
