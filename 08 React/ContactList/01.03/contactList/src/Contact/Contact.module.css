@@ -1,0 +1,8 @@
+.favorite {
+  background-color: gray;
+}
+
+.favorite::after {
+  content: "❤️";
+  color: royalblue;
+}
