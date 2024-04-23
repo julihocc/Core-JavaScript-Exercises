@@ -14,7 +14,8 @@ const Contact = ({
   return (
     <div>
       <li
-        className={`        
+        className={`
+        card card-body mb-3   
         ${favorite ? styles.favorite : ""}
       `}
       >

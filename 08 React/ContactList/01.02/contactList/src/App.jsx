@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tab from "./Tab";
 import ContactContainer from "./ContactContainer";
 import CounterContainer from "./CounterContainer";
-import "bootstrap/dist/css/bootstrap.min.css";
-
+// import "bootstrap/dist/css/bootstrap.min.css";w
 
 import "./App.css";
 

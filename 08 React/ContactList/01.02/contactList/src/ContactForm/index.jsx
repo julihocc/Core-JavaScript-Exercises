@@ -104,6 +104,7 @@ function ContactForm({ onAddContact }) {
         <div className="invalid-feedback">Please enter a valid phone</div>
       </div>
       <button
+        className="btn btn-primary"
         type="submit"
         // disabled={!nameIsValid || !emailIsValid || !phoneIsValid}
       >
