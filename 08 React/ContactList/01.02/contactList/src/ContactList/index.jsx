@@ -1,5 +1,4 @@
-import { memo } from "react"; // Import memo for optimization
-import PropTypes from "prop-types";
+import { memo } from "react"; // Import memo for optim
 import Contact from "../Contact";
 
 const sortByFavorite = (a, b) => (b.favorite ? 1 : -1);
@@ -20,17 +19,5 @@ function ContactList({ contacts, onDeleteContact, onToggleFavorite }) {
     </ul>
   );
 }
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      email: PropTypes.string,
-      phone: PropTypes.string,
-    })
-  ),
-  onDeleteContact: PropTypes.func,
-  onToggleFavorite: PropTypes.func,
-};
 
 export default memo(ContactList); // Use memo for optimization

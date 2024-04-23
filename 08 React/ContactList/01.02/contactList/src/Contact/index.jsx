@@ -14,8 +14,7 @@ const Contact = ({
   return (
     <div>
       <li
-        className={`
-        ${styles.contact}
+        className={`        
         ${favorite ? styles.favorite : ""}
       `}
       >
