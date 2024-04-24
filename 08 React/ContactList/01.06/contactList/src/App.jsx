@@ -47,7 +47,6 @@ function App() {
 
   useEffect(() => {
     const initialTab = getCurrentTab();
-
     dispatchTabChange({ type: "SET_TAB", index: initialTab });
   }, []);
 
