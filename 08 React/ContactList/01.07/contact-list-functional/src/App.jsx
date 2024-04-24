@@ -1,8 +1,8 @@
 import { useEffect, useReducer, useCallback } from "react";
-import ContactContainer from "./ContactContainer";
-import CounterContainer from "./CounterContainer";
-import Tab from "./Tab";
-import useSerializable from "./Serializable";
+import ContactContainer from "./Components/ContactContainer";
+import CounterContainer from "./Components/CounterContainer";
+import Tab from "./Components/Tab";
+import useSerializable from "./Hooks/useSerializable";
 
 const LOCAL_STORAGE_KEY = "app-state";
 

@@ -15,11 +15,6 @@ module.exports = {
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-uses-react": "off",
-    "react/jsx-uses-vars": "warn",
-    "react/jsx-no-duplicate-props": "warn",
-    "react/jsx-no-undef": "warn",
-    "react/no-unused-prop-types": "warn",
-    "react/no-direct-mutation-state": "warn",
-    "react/no-typos": "warn",
+    "react/jsx-uses-vars": "off",
   },
 };

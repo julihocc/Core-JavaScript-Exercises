@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import Counter from "../Counter";
-import useSerializable from "../Serializable";
+import useSerializable from "../../Hooks/useSerializable";
 
 const LOCAL_STORAGE_KEY = "counters";
 
@@ -24,14 +24,12 @@ function CounterContainer() {
     counterReducer([], { type: "SET_COUNTERS", payload: [] })
   );
 
-  
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(counters));
   }, [counters]);
 
   const handleAddCounter = () => {
     setCounters([...counters, 0]);
-    
   };
 
   const handleCounterChange = (index, newCount) => {

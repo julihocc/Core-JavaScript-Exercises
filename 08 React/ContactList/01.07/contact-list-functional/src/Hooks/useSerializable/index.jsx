@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 export default function useSerializable(key, initialState) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
