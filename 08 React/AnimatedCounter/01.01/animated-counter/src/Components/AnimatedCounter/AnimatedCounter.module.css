@@ -1,0 +1,20 @@
+.animatedDisplay {
+  border: 1px solid black;
+  animation: none 
+}
+
+.slidein {
+    animation: slidein 4s alternate;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 100px;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100px;
+  }
+}

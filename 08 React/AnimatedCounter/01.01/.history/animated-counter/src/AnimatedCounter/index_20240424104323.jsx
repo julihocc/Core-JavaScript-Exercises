@@ -1,0 +1,3 @@
+AnimatedCounter = ({value}) => {
+    l
+}

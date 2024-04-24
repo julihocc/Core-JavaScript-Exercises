@@ -1,0 +1,22 @@
+.appCounter {
+  --error: red;
+  --valid: blue;
+}
+
+.input {
+  --state: var(--error);
+  border: 1px solid var(--state);
+}
+
+.valid {
+  --state: var(--valid);
+}
+
+.msg {
+  font-weight: 600;
+  color: var(--error);
+}
+
+.hide {
+  display: none;
+}
