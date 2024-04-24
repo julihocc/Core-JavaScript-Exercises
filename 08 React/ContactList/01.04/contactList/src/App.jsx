@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useCallback } from "react";
 import ContactContainer from "./ContactContainer";
 import CounterContainer from "./CounterContainer";
 import Tab from "./Tab";
@@ -52,15 +52,23 @@ function App() {
 
   // Handle hash changes
 
-  const handleHashChange = () => {
-    // setCurrentTab(getCurrentTab());
-    // dispatchTabChange({ type: "SET_TAB", index: getCurrentTab() });
+  // const handleHashChange = () => {
+  //   // setCurrentTab(getCurrentTab());
+  //   // dispatchTabChange({ type: "SET_TAB", index: getCurrentTab() });
+  //   console.log("handleHashChange");
+  //   console.log("currentTab:before", currentTab);
+  //   const newTab = parseInt(window.location.hash.slice(1)) || 0;
+  //   console.log("newTab", newTab);
+  //   dispatchTabChange({ type: "SET_TAB", index: newTab });
+  // };
+
+  const handleHashChange = useCallback(() => {
     console.log("handleHashChange");
     console.log("currentTab:before", currentTab);
     const newTab = parseInt(window.location.hash.slice(1)) || 0;
     console.log("newTab", newTab);
     dispatchTabChange({ type: "SET_TAB", index: newTab });
-  };
+  }, [currentTab, dispatchTabChange]);
 
   useEffect(() => {
     window.location.hash = currentTab;
