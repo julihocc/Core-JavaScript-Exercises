@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
-import Tab from "./Tab";
 import ContactContainer from "./ContactContainer";
 import CounterContainer from "./CounterContainer";
+import Tab from "./Tab";
 
 import "./App.css";
 
@@ -69,7 +69,7 @@ function App() {
 
     console.log("currentTab:after", currentTab);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [currentTab, dispatchTabChange]);
+  }, [currentTab, dispatchTabChange, handleHashChange]);
 
   return (
     <div className="container">
