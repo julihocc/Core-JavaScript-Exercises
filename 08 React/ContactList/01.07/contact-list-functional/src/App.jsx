@@ -3,6 +3,7 @@ import ContactContainer from "./Components/ContactContainer";
 import CounterContainer from "./Components/CounterContainer";
 import Tab from "./Components/Tab";
 import useSerializable from "./Hooks/useSerializable";
+import List from "./Components/List";
 
 const LOCAL_STORAGE_KEY = "app-state";
 
@@ -21,7 +22,7 @@ function App() {
     }
   };
 
-  const [appState, setAppState] = useSerializable(LOCAL_STORAGE_KEY, () => ({
+  const [appState] = useSerializable(LOCAL_STORAGE_KEY, () => ({
     currentTab: 0,
   }));
 
@@ -33,6 +34,7 @@ function App() {
   const tabs = [
     { title: "Contact List", component: ContactContainer },
     { title: "Counters", component: CounterContainer },
+    { title: "List of Movies", component: List },
   ];
 
   const handleTabSelect = (index) => {
