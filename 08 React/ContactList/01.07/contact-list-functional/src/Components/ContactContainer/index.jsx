@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import ContactForm from "../ContactForm";
 import ContactList from "../ContactList";
 import Modal from "../Modal";
