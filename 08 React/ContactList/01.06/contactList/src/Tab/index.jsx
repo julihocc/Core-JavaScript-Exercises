@@ -8,11 +8,11 @@ export default function Tab({ tabs, currentTab, onTabSelect }) {
               className={`nav-link ${
                 index === currentTab ? "active" : "text-muted"
               }`}
-              href="#" // Prevent default navigation to support event handling
+              href="#" 
               onClick={(e) => {
                 e.preventDefault();
-                // setActiveTab(index);
-                onTabSelect(index); // Notify the parent component
+                
+                onTabSelect(index); 
               }}
             >
               {item.title}

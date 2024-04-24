@@ -24,14 +24,14 @@ function CounterContainer() {
     counterReducer([], { type: "SET_COUNTERS", payload: [] })
   );
 
-  // Save counters to localStorage when the counters state changes
+  
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(counters));
   }, [counters]);
 
   const handleAddCounter = () => {
     setCounters([...counters, 0]);
-    // dispatch({ type: "ADD_COUNTER" });
+    
   };
 
   const handleCounterChange = (index, newCount) => {

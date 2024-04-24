@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-// A custom hook to encapsulate the serialization logic
+
 export default function useSerializable(key, initialState) {
   const [storedValue, setStoredValue] = useState(() => {
     try {

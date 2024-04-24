@@ -9,8 +9,6 @@ const LOCAL_STORAGE_KEY = "app-state";
 import "./App.css";
 
 function App() {
-  // const [currentTab, setCurrentTab] = useState(0);
-
   const tabReducer = (state, action) => {
     console.log("action", action);
     switch (action.type) {
@@ -24,7 +22,7 @@ function App() {
   };
 
   const [appState, setAppState] = useSerializable(LOCAL_STORAGE_KEY, () => ({
-    currentTab: 0, // Default tab
+    currentTab: 0,
   }));
 
   const [currentTab, dispatchTabChange] = useReducer(
@@ -38,7 +36,6 @@ function App() {
   ];
 
   const handleTabSelect = (index) => {
-    // setCurrentTab(index);
     dispatchTabChange({ type: "SET_TAB", index });
   };
 
@@ -48,29 +45,22 @@ function App() {
     return parseInt(currentLocation.slice(1));
   };
 
-  // Initialize current tab from URL hash
   useEffect(() => {
     const initialTab = getCurrentTab();
-    // setCurrentTab(initialTab);
+
     dispatchTabChange({ type: "SET_TAB", index: initialTab });
   }, []);
 
-  // UPDATED Update URL hash when the current tab changes
   useEffect(() => {
     window.location.hash = currentTab;
   }, [currentTab]);
 
-  // useEffect(() => {
-  //   setAppState({ ...appState, currentTab });
-  // }, [currentTab, appState, setAppState]);
-
   useEffect(() => {
-    // Update localStorage directly
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify({ ...appState, currentTab })
     );
-  }, [currentTab, appState]); // Removed 'setAppState' from the dependencies
+  }, [currentTab, appState]);
 
   const handleHashChange = useCallback(() => {
     console.log("handleHashChange");
@@ -81,11 +71,8 @@ function App() {
   }, [currentTab, dispatchTabChange]);
 
   useEffect(() => {
-    // window.location.hash = currentTab;
-
     window.addEventListener("hashchange", handleHashChange);
 
-    // console.log("currentTab:after", currentTab);
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, [handleHashChange]);
 
