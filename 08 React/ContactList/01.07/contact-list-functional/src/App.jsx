@@ -3,7 +3,7 @@ import ContactContainer from "./Components/ContactContainer";
 import CounterContainer from "./Components/CounterContainer";
 import Tab from "./Components/Tab";
 import useSerializable from "./Hooks/useSerializable";
-import List from "./Components/List";
+import ListContainer from "./Components/ListContainer";
 
 const LOCAL_STORAGE_KEY = "app-state";
 
@@ -34,7 +34,7 @@ function App() {
   const tabs = [
     { title: "Contact List", component: ContactContainer },
     { title: "Counters", component: CounterContainer },
-    { title: "List of Movies", component: List },
+    { title: "List of Movies", component: ListContainer },
   ];
 
   const handleTabSelect = (index) => {
