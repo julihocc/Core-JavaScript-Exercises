@@ -6,20 +6,6 @@ export const ListItem = ({ movie, details }) => {
   const url = extractUrl(content);
   console.log("url", url);
 
-  // return (
-  //   <li key={`movie-${id}`}>
-  //     <div className="card">
-  //       <h5 className="card-title">
-  //         <a className="" href={url}>
-  //           {title}
-  //         </a>
-  //       </h5>
-  //       <div className="card-body">
-  //         <p className="card-text">Director: {director}</p>
-  //       </div>
-  //     </div>
-  //   </li>
-  // );
   return (
     <li key={`movie-${id}`} className="mb-3">
       <div className="card">
