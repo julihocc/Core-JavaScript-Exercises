@@ -1,15 +1,15 @@
 import { useEffect, useReducer, useCallback } from "react";
-import ContactContainer from "./Components/ContactContainer";
-import CounterContainer from "./Components/CounterContainer";
-import Tab from "./Components/Tab";
-import useSerializable from "./Hooks/useSerializable";
-import ListContainer from "./Components/ListContainer";
+import {ContactContainer} from "./Components/ContactContainer";
+import {CounterContainer} from "./Components/CounterContainer";
+import {Tab} from "./Components/Tab";
+import {useSerializable} from "./Hooks/useSerializable";
+import {ListContainer} from "./Components/ListContainer";
 
 const LOCAL_STORAGE_KEY = "app-state";
 
 import "./App.css";
 
-function App() {
+export function App() {
   const tabReducer = (state, action) => {
     console.log("action", action);
     switch (action.type) {
@@ -85,5 +85,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

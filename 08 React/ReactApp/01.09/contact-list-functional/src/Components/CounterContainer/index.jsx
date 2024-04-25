@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Counter from "../Counter";
-import useSerializable from "../../Hooks/useSerializable";
+import {Counter} from "../Counter";
+import {useSerializable} from "../../Hooks/useSerializable";
 
 const LOCAL_STORAGE_KEY = "counters";
 
@@ -19,7 +19,7 @@ function counterReducer(state, action) {
   }
 }
 
-function CounterContainer() {
+export function CounterContainer() {
   const [counters, setCounters] = useSerializable(LOCAL_STORAGE_KEY, () =>
     counterReducer([], { type: "SET_COUNTERS", payload: [] })
   );
@@ -36,20 +36,7 @@ function CounterContainer() {
     setCounters(counters.map((count, i) => (i === index ? newCount : count)));
   };
 
-  // return (
-  //   <div>
-  //     {counters.map((count, index) => (
-  //       <Counter
-  //         key={`counter-${index}`}
-  //         id={index}
-  //         count={count}
-  //         onChange={handleCounterChange}
-  //       />
-  //     ))}
-  //     <hr />
-  //     <button onClick={handleAddCounter}>Add Counter</button>
-  //   </div>
-  // );
+ 
 
   return (
     <div className="container mt-3">
@@ -67,6 +54,4 @@ function CounterContainer() {
       </button>
     </div>
   );
-}
-
-export default CounterContainer;
+} 

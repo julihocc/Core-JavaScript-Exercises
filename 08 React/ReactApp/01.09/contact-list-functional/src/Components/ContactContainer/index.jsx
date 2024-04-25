@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ContactForm from "../ContactForm";
-import ContactList from "../ContactList";
-import Modal from "../Modal";
-import useSerializable from "../../Hooks/useSerializable";
+import {ContactForm} from "../ContactForm";
+import {ContactList} from "../ContactList";
+import {Modal} from "../Modal";
+import {useSerializable} from "../../Hooks/useSerializable";
 import { produce } from "immer";
 
-function ContactContainer() {
+export function ContactContainer() {
   const [storedState, setStoredState] = useSerializable("contact-app", () => ({
     nextId: 4,
     contacts: [
@@ -60,27 +60,7 @@ function ContactContainer() {
     );
   };
 
-  // return (
-  //   <>
-  //     {deleting && (
-  //       <Modal
-  //         title={`Delete ${deleting.name}?`}
-  //         message="Are you sure you want to delete this contact?"
-  //         onDismiss={() => setDeleting(null)}
-  //         onDelete={() => handleDeleteContact(deleting.id)}
-  //       />
-  //     )}
-
-  //     <div>
-  //       <ContactForm onAddContact={handleAddContact} />
-  //       <ContactList
-  //         contacts={storedState.contacts}
-  //         onDeleteContact={selectItemToDelete}
-  //         onToggleFavorite={handleToggleFavorite}
-  //       />
-  //     </div>
-  //   </>
-  // );
+ 
 
   return (
     <>
@@ -105,4 +85,3 @@ function ContactContainer() {
   );
 }
 
-export default ContactContainer;

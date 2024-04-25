@@ -1,4 +1,4 @@
-function Counter({ id, count, onChange }) {
+export function Counter({ id, count, onChange }) {
   const handleIncrement = () => {
     onChange(id, count + 1);
   };
@@ -7,13 +7,7 @@ function Counter({ id, count, onChange }) {
     onChange(id, Math.max(count - 1, 0));
   };
 
-  // return (
-  //   <div>
-  //     <p>{count}</p>
-  //     <button onClick={handleIncrement}>Increment</button>
-  //     <button onClick={handleDecrement}>Decrement</button>
-  //   </div>
-  // );
+ 
 
   return (
     <div className="card mb-3">
@@ -29,5 +23,4 @@ function Counter({ id, count, onChange }) {
     </div>
   );
 }
-
-export default Counter;
+ 

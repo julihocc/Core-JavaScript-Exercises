@@ -1,4 +1,4 @@
-export default function Tab({ tabs, currentTab, onTabSelect }) {
+export  function Tab({ tabs, currentTab, onTabSelect }) {
   return (
     <>
       <nav className="nav nav-tabs bg-dark p-3 rounded">

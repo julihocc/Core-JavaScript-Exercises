@@ -1,7 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
+ 
 
-function Phone({ phone }) {
+export function Phone({ phone }) {
   const codeArea = phone.substring(0, 3);
   const rest = phone.substring(3);
 
@@ -12,8 +11,4 @@ function Phone({ phone }) {
   );
 }
 
-Phone.propTypes = {
-  phone: PropTypes.string.isRequired,
-};
-
-export default Phone;
+ 

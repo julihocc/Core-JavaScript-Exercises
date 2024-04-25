@@ -1,6 +1,6 @@
-import extractUrl from "../../utils/extractUtils";
+import { extractUrl } from "../../utils/extractUtils";
 
-const ListElement = ({ movie, details }) => {
+export const ListItem = ({ movie, details }) => {
   const { id, title, content } = movie;
   const { director } = details;
   const url = extractUrl(content);
@@ -35,5 +35,3 @@ const ListElement = ({ movie, details }) => {
     </li>
   );
 };
-
-export default ListElement;

@@ -1,4 +1,4 @@
-function Modal({ title, message, onDismiss, onDelete }) {
+export function Modal({ title, message, onDismiss, onDelete }) {
   return (
     <>
       <div className="modal d-block" tabIndex="-1" role="dialog">
@@ -42,5 +42,4 @@ function Modal({ title, message, onDismiss, onDelete }) {
     </>
   );
 }
-
-export default Modal;
+ 

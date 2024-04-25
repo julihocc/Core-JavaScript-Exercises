@@ -1,4 +1,4 @@
-export default function extractUrl(htmlString) {
+export   function extractUrl(htmlString) {
   const parser = new DOMParser();
   const html = parser.parseFromString(htmlString, "text/html");
   const anchor = html.querySelector("a");

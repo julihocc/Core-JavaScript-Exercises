@@ -1,7 +1,6 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
-function ContactForm({ onAddContact }) {
+export function ContactForm({ onAddContact }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -109,5 +108,4 @@ function ContactForm({ onAddContact }) {
     </form>
   );
 }
-
-export default ContactForm;
+ 
