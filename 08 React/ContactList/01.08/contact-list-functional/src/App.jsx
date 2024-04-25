@@ -78,7 +78,7 @@ function App() {
   }, [handleHashChange]);
 
   return (
-    <div className="container">
+    <div className="container p-3">
       {console.log("currentTab@return", currentTab)}
       <Tab tabs={tabs} currentTab={currentTab} onTabSelect={handleTabSelect} />
     </div>
