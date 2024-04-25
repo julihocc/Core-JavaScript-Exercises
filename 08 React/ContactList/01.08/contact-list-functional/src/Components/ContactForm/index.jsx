@@ -84,7 +84,7 @@ function ContactForm({ onAddContact }) {
           className="form-control"
           pattern={emailRegex.source}
         />
-        <div className="valid-feedback">Looks good</div>
+        <div className="valid-feedback">Optional</div>
         <div className="invalid-feedback">Please enter a valid email</div>
       </div>
       <div className="m-3">
@@ -93,14 +93,14 @@ function ContactForm({ onAddContact }) {
         </label>
         <input
           type="tel"
-          placeholder="XXX-XXX-XXXX"
+          placeholder="Up to 10 digits"
           value={phone}
           name="phone"
           onChange={handleInputChange}
           className="form-control"
           pattern={phoneRegex.source}
         />
-        <div className="valid-feedback">Looks good</div>
+        <div className="valid-feedback">Optional</div>
         <div className="invalid-feedback">Please enter a valid phone</div>
       </div>
       <button className="btn btn-primary m-3" type="submit">
@@ -111,4 +111,3 @@ function ContactForm({ onAddContact }) {
 }
 
 export default ContactForm;
-

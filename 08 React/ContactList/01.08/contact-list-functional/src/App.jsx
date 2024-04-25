@@ -80,6 +80,7 @@ function App() {
   return (
     <div className="container p-3">
       {console.log("currentTab@return", currentTab)}
+      <h1 className="text-center">React App</h1>
       <Tab tabs={tabs} currentTab={currentTab} onTabSelect={handleTabSelect} />
     </div>
   );
