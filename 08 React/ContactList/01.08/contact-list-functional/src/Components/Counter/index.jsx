@@ -7,11 +7,25 @@ function Counter({ id, count, onChange }) {
     onChange(id, Math.max(count - 1, 0));
   };
 
+  // return (
+  //   <div>
+  //     <p>{count}</p>
+  //     <button onClick={handleIncrement}>Increment</button>
+  //     <button onClick={handleDecrement}>Decrement</button>
+  //   </div>
+  // );
+
   return (
-    <div>
-      <p>{count}</p>
-      <button onClick={handleIncrement}>Increment</button>
-      <button onClick={handleDecrement}>Decrement</button>
+    <div className="card mb-3">
+      <div className="card-body">
+        <h5 className="card-title">{count}</h5>
+        <button onClick={handleIncrement} className="btn btn-primary me-2">
+          Increment
+        </button>
+        <button onClick={handleDecrement} className="btn btn-secondary">
+          Decrement
+        </button>
+      </div>
     </div>
   );
 }

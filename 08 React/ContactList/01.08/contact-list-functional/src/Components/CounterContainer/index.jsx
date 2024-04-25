@@ -36,8 +36,23 @@ function CounterContainer() {
     setCounters(counters.map((count, i) => (i === index ? newCount : count)));
   };
 
+  // return (
+  //   <div>
+  //     {counters.map((count, index) => (
+  //       <Counter
+  //         key={`counter-${index}`}
+  //         id={index}
+  //         count={count}
+  //         onChange={handleCounterChange}
+  //       />
+  //     ))}
+  //     <hr />
+  //     <button onClick={handleAddCounter}>Add Counter</button>
+  //   </div>
+  // );
+
   return (
-    <div>
+    <div className="container mt-3">
       {counters.map((count, index) => (
         <Counter
           key={`counter-${index}`}
@@ -47,7 +62,9 @@ function CounterContainer() {
         />
       ))}
       <hr />
-      <button onClick={handleAddCounter}>Add Counter</button>
+      <button onClick={handleAddCounter} className="btn btn-primary">
+        Add Counter
+      </button>
     </div>
   );
 }

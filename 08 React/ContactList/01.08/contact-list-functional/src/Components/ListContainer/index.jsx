@@ -21,18 +21,36 @@ export default function ListContainer() {
     console.log("details@List", details);
   }, [details]);
 
+  // return (
+  //   <ul>
+  //     {movies &&
+  //       details &&
+  //       movies.map((movie) => {
+  //         const movieDetails = details.find((detail) => detail.id === movie.id);
+  //         console.log("rendering element: ", movie);
+  //         console.log("movieDetails", movieDetails);
+  //         return (
+  //           <ListItem key={movie.id} movie={movie} details={movieDetails} />
+  //         );
+  //       })}
+  //   </ul>
+  // );
   return (
-    <ul>
-      {movies &&
-        details &&
-        movies.map((movie) => {
-          const movieDetails = details.find((detail) => detail.id === movie.id);
-          console.log("rendering element: ", movie);
-          console.log("movieDetails", movieDetails);
-          return (
-            <ListItem key={movie.id} movie={movie} details={movieDetails} />
-          );
-        })}
-    </ul>
+    <div className="container mt-3">
+      <ul className="list-unstyled">
+        {movies &&
+          details &&
+          movies.map((movie) => {
+            const movieDetails = details.find(
+              (detail) => detail.id === movie.id
+            );
+            console.log("rendering element: ", movie);
+            console.log("movieDetails", movieDetails);
+            return (
+              <ListItem key={movie.id} movie={movie} details={movieDetails} />
+            );
+          })}
+      </ul>
+    </div>
   );
 }

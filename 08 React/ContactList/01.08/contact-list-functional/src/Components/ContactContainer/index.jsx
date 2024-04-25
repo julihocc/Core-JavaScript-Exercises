@@ -60,6 +60,28 @@ function ContactContainer() {
     );
   };
 
+  // return (
+  //   <>
+  //     {deleting && (
+  //       <Modal
+  //         title={`Delete ${deleting.name}?`}
+  //         message="Are you sure you want to delete this contact?"
+  //         onDismiss={() => setDeleting(null)}
+  //         onDelete={() => handleDeleteContact(deleting.id)}
+  //       />
+  //     )}
+
+  //     <div>
+  //       <ContactForm onAddContact={handleAddContact} />
+  //       <ContactList
+  //         contacts={storedState.contacts}
+  //         onDeleteContact={selectItemToDelete}
+  //         onToggleFavorite={handleToggleFavorite}
+  //       />
+  //     </div>
+  //   </>
+  // );
+
   return (
     <>
       {deleting && (
@@ -71,7 +93,7 @@ function ContactContainer() {
         />
       )}
 
-      <div>
+      <div className="container mt-3">
         <ContactForm onAddContact={handleAddContact} />
         <ContactList
           contacts={storedState.contacts}
