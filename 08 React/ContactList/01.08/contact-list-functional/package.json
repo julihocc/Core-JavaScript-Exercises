@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "scss": "sass --watch scss:css"
+    "scss": "sass --no-source-map --watch scss:css"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
