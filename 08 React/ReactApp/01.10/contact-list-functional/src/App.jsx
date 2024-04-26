@@ -1,6 +1,7 @@
 import { ContactContainer } from "./Components/ContactContainer";
 import { CounterContainer } from "./Components/CounterContainer";
 import { ListContainer } from "./Components/ListContainer";
+import { Error404 } from "./Components/Error404";
 
 import {
   createBrowserRouter,
@@ -16,7 +17,9 @@ import "./App.css";
 function classForActivePath(path, location) {
   console.log(path, location.pathname);
   return `
-    nav-link ${"/"+path === location.pathname ? "active bg-primary" : "text-light"}
+    nav-link ${
+      "/" + path === location.pathname ? "active bg-primary" : "text-light"
+    }
   `;
 }
 
@@ -24,6 +27,7 @@ const links = [
   { path: "contact-list", label: "Contact List" },
   { path: "counters", label: "Counter" },
   { path: "list-of-movies", label: "List of Movies" },
+  { path: "*", label: "Error404" },
 ];
 
 export function App() {
@@ -58,6 +62,7 @@ export function App() {
         <Route path="contact-list" element={<ContactContainer />} />
         <Route path="counters" element={<CounterContainer />} />
         <Route path="list-of-movies" element={<ListContainer />} />
+        <Route path="*" element={<Error404 />} />
       </Route>
     )
   );
