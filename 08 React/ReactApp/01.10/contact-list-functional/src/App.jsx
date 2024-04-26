@@ -27,7 +27,6 @@ const links = [
   { path: "contact-list", label: "Contact List" },
   { path: "counters", label: "Counter" },
   { path: "list-of-movies", label: "List of Movies" },
-  { path: "*", label: "Error404" },
 ];
 
 export function App() {
