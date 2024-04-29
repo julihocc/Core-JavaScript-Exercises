@@ -1,8 +1,12 @@
 import { Contact } from "../Contact";
 
-const sortByFavorite = (a, b) => (b.favorite ? 1 : -1);
+const sortByFavorite = (a: IContact, b: IContact) => (b.favorite ? 1 : -1);
 
-export function ContactList({ contacts, onDeleteContact, onToggleFavorite }) {
+export function ContactList({
+  contacts,
+  onDeleteContact,
+  onToggleFavorite,
+}: ContactListProps) {
   return (
     <div className="list-group">
       {[...contacts].sort(sortByFavorite).map((contact) => (

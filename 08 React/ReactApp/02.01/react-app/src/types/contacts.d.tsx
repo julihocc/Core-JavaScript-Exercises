@@ -39,3 +39,9 @@ type Action = IAddContactAction | IDeleteContactAction | IToggleFavoriteAction;
 type ContactFormProps = {
   onAddContact: (newContact: IContact) => void
 };
+
+type ContactListProps = {
+  contacts: IContact[];
+  onDeleteContact: (id: ID) => void;
+  onToggleFavorite: (id: ID) => void;
+};

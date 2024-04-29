@@ -7,6 +7,7 @@ export const Contact = ({
   onDeleteContact,
   favorite,
   onToggleFavorite,
+  className
 }) => {
   return (
     <div className="card mb-3">
