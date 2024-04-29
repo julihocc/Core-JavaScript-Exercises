@@ -48,27 +48,29 @@ function reducer(state: IState, action: Action) {
 
 export function ContactContainer() {
   const [storedState, dispatch] = useReducer(reducer, initialState);
-  const [deleting, setDeleting] = useState<IContact | null>({
-    name: "",
-    id: null,
-  });
+  const [deleting, setDeleting] = useState<IContact | null>(null);
 
   const handleAddContact = (newContact: IContact) => {
-    dispatch({ type: ActionType.ADD, newContact });
+    const newAction: Action = { type: "add" as ActionType.ADD, newContact };
+    dispatch(newAction);
   };
 
   const handleDeleteContact = (targetId: ID) => {
-    dispatch({ type: ActionType.DELETE, targetId });
+    // dispatch({ type, targetId });
+    dispatch({ type: "delete" as ActionType.DELETE, targetId });
     setDeleting(null);
   };
 
   const handleToggleFavorite = (id: ID) => {
-    dispatch({ type: ActionType.TOGGLE_FAVORITE, id });
+    // dispatch({ type, id });
+    dispatch({ type: "toggleFavorite" as ActionType.TOGGLE_FAVORITE, id });
   };
 
   const selectItemToDelete = (contactId: ID) => {
     setDeleting(
-      storedState.contacts.find((contact: IContact) => contact.id === contactId) || null
+      storedState.contacts.find(
+        (contact: IContact) => contact.id === contactId
+      ) || null
     );
   };
 

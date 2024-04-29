@@ -37,7 +37,7 @@ interface IToggleFavoriteAction {
 type Action = IAddContactAction | IDeleteContactAction | IToggleFavoriteAction;
 
 type ContactFormProps = {
-  onAddContact: (newContact: IContact) => void
+  onAddContact: (newContact: IContact) => void;
 };
 
 type ContactListProps = {
@@ -46,7 +46,7 @@ type ContactListProps = {
   onToggleFavorite: (id: ID) => void;
 };
 
-type ContactProps {
+type ContactProps = {
   id: ID;
   name: string;
   email?: string; // Make this optional
@@ -55,15 +55,15 @@ type ContactProps {
   className?: string;
   onDeleteContact: () => void;
   onToggleFavorite: () => void;
-}
+};
 
 type PhoneProps = {
   phone: string;
-}
+};
 
 type ContactDeletingModalProps = {
   title: string;
   message: string;
   onDismiss: () => void;
   onDelete: () => void;
-}
+};
