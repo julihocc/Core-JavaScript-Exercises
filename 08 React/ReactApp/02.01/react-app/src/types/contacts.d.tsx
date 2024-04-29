@@ -45,3 +45,25 @@ type ContactListProps = {
   onDeleteContact: (id: ID) => void;
   onToggleFavorite: (id: ID) => void;
 };
+
+type ContactProps {
+  id: ID;
+  name: string;
+  email?: string; // Make this optional
+  phone?: string;
+  favorite?: boolean;
+  className?: string;
+  onDeleteContact: () => void;
+  onToggleFavorite: () => void;
+}
+
+type PhoneProps = {
+  phone: string;
+}
+
+type ContactDeletingModalProps = {
+  title: string;
+  message: string;
+  onDismiss: () => void;
+  onDelete: () => void;
+}

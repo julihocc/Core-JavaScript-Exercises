@@ -1,7 +1,12 @@
-export function ContactDeletingModal({ title, message, onDismiss, onDelete }) {
+export function ContactDeletingModal({
+  title,
+  message,
+  onDismiss,
+  onDelete,
+}: ContactDeletingModalProps) {
   return (
     <>
-      <div className="modal d-block" tabIndex="-1" role="dialog">
+      <div className="modal d-block" tabIndex={-1} role="dialog">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">

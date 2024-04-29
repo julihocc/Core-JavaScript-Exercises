@@ -1,6 +1,4 @@
- 
-
-export function Phone({ phone }) {
+export function Phone({ phone }: PhoneProps) {
   const codeArea = phone.substring(0, 3);
   const rest = phone.substring(3);
 
@@ -10,5 +8,3 @@ export function Phone({ phone }) {
     </p>
   );
 }
-
- 

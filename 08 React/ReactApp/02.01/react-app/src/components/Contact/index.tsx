@@ -4,13 +4,13 @@ export const Contact = ({
   name,
   email,
   phone,
-  onDeleteContact,
   favorite,
+  className,
+  onDeleteContact,
   onToggleFavorite,
-  className
-}) => {
+}: ContactProps) => {
   return (
-    <div className="card mb-3">
+    <div className={"card mb-3" + " " + className}>
       <div className={`card-body ${favorite ? "bg-secondary m-3" : ""}`}>
         <h4 className="card-title">Name: {name}</h4>
         {email && <p className="card-text">Email: {email}</p>}
