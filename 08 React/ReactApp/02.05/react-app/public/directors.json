@@ -1,0 +1,62 @@
+[
+  {
+    "firstname": "Frank",
+    "lastname": "Darabont",
+    "birthdate": "1959-01-28",
+    "birthplace": "Montbéliard, France",
+    "nationality": "USA",
+    "education": "Hollywood High School",
+    "occupation": "Director, Producer, Screenwriter",
+    "biography": "Frank Darabont is a Hungarian-American film director, screenwriter and producer who has been nominated for three Academy Awards and a Golden Globe Award. In his early career, he was primarily a screenwriter for horror films such as A Nightmare on Elm Street 3: Dream Warriors, The Blob and The Fly II. As a director, he is known for his film adaptations of Stephen King novels such as The Shawshank Redemption, The Green Mile, and The Mist.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Frank_Darabont_2011.jpg/220px-Frank_Darabont_2011.jpg",
+    "yearsactive": "1981-present"
+  },
+  {
+    "firstname": "Francis",
+    "lastname": "Ford Coppola",
+    "birthdate": "1939-04-07",
+    "birthplace": "Detroit, Michigan, USA",
+    "nationality": "USA",
+    "education": "Hofstra University",
+    "occupation": "Director, Producer, Screenwriter",
+    "biography": "Francis Ford Coppola is an American film director, producer, screenwriter and film composer. He was a central figure in the New Hollywood filmmaking movement of the 1960s and 1970s. He is widely considered to be one of the greatest filmmakers of all time. His accolades include five Academy Awards, six Golden Globe Awards, two Palmes d'Or, and a British Academy Film Award.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Francis_Ford_Coppola_2011_CC.jpg/220px-Francis_Ford_Coppola_2011_CC.jpg",
+    "yearsactive": "1960-present"
+  },
+  {
+    "firstname": "Steven",
+    "lastname": "Spielberg",
+    "birthdate": "1946-12-18",
+    "birthplace": "Cincinnati, Ohio, USA",
+    "nationality": "USA",
+    "education": "California State University",
+    "occupation": "Director, Producer, Screenwriter",
+    "biography": "Steven Spielberg is an American film director, producer, and screenwriter. He is considered one of the founding pioneers of the New Hollywood era and one of the most popular directors and producers in film history. Spielberg started in Hollywood directing television and several minor theatrical releases. He became a household name as the director of Jaws, which was critically and commercially successful and is considered the first summer blockbuster.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Steven_Spielberg_Cannes_2013.jpg/220px-Steven_Spielberg_Cannes_2013.jpg",
+    "yearsactive": "1969-present"
+  },
+  {
+    "firstname": "Christopher",
+    "lastname": "Nolan",
+    "birthdate": "1970-07-30",
+    "birthplace": "London, England",
+    "nationality": "UK",
+    "education": "University College London",
+    "occupation": "Director, Producer, Screenwriter",
+    "biography": "Christopher Nolan is a British-American film director, producer, and screenwriter. He is one of the highest-grossing directors in history, and among the most acclaimed and influential filmmakers of the 21st century. Having made his directorial debut with Following, Nolan gained considerable attention for his second feature Memento. The acclaim garnered by his independent films gave Nolan the opportunity to make the big-budget thriller Insomnia, and the mystery drama The Prestige.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Christopher_Nolan_by_Gage_Skidmore.jpg/220px-Christopher_Nolan_by_Gage_Skidmore.jpg",
+    "yearsactive": "1998-present"
+  },
+  {
+    "firstname": "Sidney",
+    "lastname": "Lumet",
+    "birthdate": "1924-06-25",
+    "birthplace": "Philadelphia, Pennsylvania, USA",
+    "nationality": "USA",
+    "education": "Columbia University",
+    "occupation": "Director, Producer, Screenwriter",
+    "biography": "Sidney Lumet was an American film director, producer, and screenwriter. He was nominated five times for the Academy Award: four for Best Director for 12 Angry",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Sidney_Lumet_2007.jpg/220px-Sidney_Lumet_2007.jpg",
+    "yearsactive": "1950-2007"
+  }
+]
