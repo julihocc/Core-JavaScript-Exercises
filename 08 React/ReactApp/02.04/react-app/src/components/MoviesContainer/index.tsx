@@ -3,7 +3,7 @@ import { MovieDataContext } from "../../contexts/MovieDataProvider";
 import { Movie } from "../Movie";
 
 export function MovieContainer() {
-  const data = useContext(MovieDataContext);
+  const data: DataReducerStateMap | null = useContext(MovieDataContext);
   const moviesInfo = data && data.get("movies");
   const movies = moviesInfo && moviesInfo.data;
   const moviesDetails = data && data.get("details");
@@ -24,8 +24,8 @@ export function MovieContainer() {
   return (
     <div className="container mt-3">
       <ul className="list-unstyled">
-        {movies &&
-          details &&
+        {Array.isArray(movies) &&
+          Array.isArray(details) &&
           movies.map((movie) => {
             const movieDetails = details.find(
               (detail) => detail.id === movie.id

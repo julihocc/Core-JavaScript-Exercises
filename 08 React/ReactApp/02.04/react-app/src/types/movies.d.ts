@@ -1,3 +1,7 @@
+interface MovieDataProviderProps {
+  children: ReactNode;
+}
+
 type Movie = {
   id: ID;
   title: string;
@@ -15,19 +19,21 @@ type MovieProps = {
 };
 
 enum ActionOnMovieType {
-  ADD_DATA = "add_data",
-}
-
-interface IAddMovieAction {
-  type: ActionOnMovieType.ADD;
-  id: ID;
-  data: any;
-  source: string;
+  ADD_DATA = "ADD_DATA",
 }
 
 type ActionOnMovie = IAddMovieAction;
 
 type SourceId = "movies" | "details" | "directors";
+
+type SourceFilename = "movies.json" | "details.json" | "directors.json";
+
+interface IAddMovieAction {
+  type: ActionOnMovieType.ADD_DATA;
+  fetchedData: MovieDataType;
+  sourceId: SourceId;
+  sourceFilename: SourceFilename;
+}
 
 type MovieDataType = {
   id: ID;
@@ -47,10 +53,11 @@ type MovieDetailsType = {
 
 type DirectorType = Record<string, string>;
 
-type MovieDataType =
-  | MovieDataType[]
-  | MovieDetailsType[]
-  | DirectorType[]
-  | null;
+type MovieDataType = MovieDataType[] | MovieDetailsType[] | DirectorType[];
 
-type DataReducerState = Map<ID, { data: MovieDataType; source: SourceId }>;
+type DataReducerState = {
+  data: MovieDataType;
+  source: SourceFilename;
+};
+
+type DataReducerStateMap = Map<SourceID, DataReducerState>;
