@@ -1,6 +1,7 @@
-import "./App.css";
 import { ContactContainer } from "./components/ContactContainer";
 import { CounterContainer } from "./components/CounterContainer";
+import { MovieContainer } from "./components/MovieContainer";
+import { MovieDataProvider } from "./contexts/MovieDataProvider";
 import { Error404 } from "./components/Error404";
 import {
   createBrowserRouter,
@@ -24,6 +25,7 @@ function classForActivePath(path: string, locationPathname: string) {
 const links = [
   { path: "contact-list", label: "Contact List", element: ContactContainer },
   { path: "counters", label: "Counters", element: CounterContainer },
+  { path: "movies", label: "Movies", element: MovieContainer },
 ];
 
 function App() {
@@ -57,9 +59,19 @@ function App() {
       <Route index element={<ContactContainer />} />
       {/* <Route path="contact-list" element={<ContactContainer />} />
       <Route path="counters" element={<CounterContainer />} /> */}
-      {links.map((link, index) => (
+      {/* {links.map((link, index) => (
         <Route key={index} path={link.path} element={<link.element />} />
-      ))}
+      ))} */}
+      <Route path="contact-list" element={<ContactContainer />} />
+      <Route path="counters" element={<CounterContainer />} />
+      <Route
+        path="movies"
+        element={
+          <MovieDataProvider>
+            <MovieContainer />
+          </MovieDataProvider>
+        }
+      />
       <Route path="*" element={<Error404 />} />
     </Route>
   );
