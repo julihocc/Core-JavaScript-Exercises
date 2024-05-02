@@ -15,7 +15,7 @@
   left: 0;
   width: 40px;
   height: 20px;
-  background-color: #ccc;
+  background-color: lightpink;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -28,17 +28,21 @@
   left: 2px;
   width: 16px;
   height: 16px;
-  background-color: white;
+  background-color: lightcyan;
   border-radius: 50%;
   transition: transform 0.3s;
 }
 
 .customSwitch input:checked + .customSwitchSlider {
-  background-color: #2196f3;
+  background-color: lightgreen;
 }
 
 .customSwitch input:checked + .customSwitchSlider::before {
   transform: translateX(20px);
+  background-image: url("/checkmark.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
 }
 
 .customSwitchLabel {

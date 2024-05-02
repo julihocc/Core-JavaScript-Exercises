@@ -1,0 +1,20 @@
+.sidenav-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.sidenav-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.sidenav-item-icon {
+  margin-right: 32px;
+}
+
+.sidenav-item-text {
+  font-size: 16px;
+  font-weight: 500;
+}

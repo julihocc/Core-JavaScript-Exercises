@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Sidenav.module.css";
 
-export default function Sidenav() {
+export default function Sidenav({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => {
@@ -21,10 +21,7 @@ export default function Sidenav() {
         <a className={styles.closebtn} onClick={closeNav}>
           &times;
         </a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        {children}
       </div>
       <span style={{ fontSize: "30px", cursor: "pointer" }} onClick={openNav}>
         &#9776;

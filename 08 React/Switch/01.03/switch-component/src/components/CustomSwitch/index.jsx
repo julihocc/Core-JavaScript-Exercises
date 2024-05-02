@@ -1,7 +1,7 @@
 import styles from "./Switch.module.css";
 import { useState } from "react";
 
-function CustomSwitch({ onChange, ...otherProps }) {
+function CustomSwitch({ onChange }) {
   const [checked, setChecked] = useState(false);
 
   const toggleSwitch = () => {
@@ -11,12 +11,7 @@ function CustomSwitch({ onChange, ...otherProps }) {
 
   return (
     <div className={styles.customSwitch} onClick={toggleSwitch}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={() => {}}
-        {...otherProps}
-      />
+      <input type="checkbox" checked={checked} onChange={() => {}} />
       <span className={styles.customSwitchSlider}></span>
     </div>
   );
