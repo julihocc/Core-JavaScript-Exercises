@@ -13,10 +13,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 20px;
-  background-color: lightpink;
-  border-radius: 10px;
+  width: 52px;
+  height: 32px;
+  background-color: lightgrey;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -24,27 +24,28 @@
 .customSwitchSlider::before {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: calc(50% - 8px);
+  left: calc(10%);
   width: 16px;
   height: 16px;
-  background-color: lightcyan;
+  background-color: grey;
   border-radius: 50%;
   transition: transform 0.3s;
 }
 
+.customSwitchSlider:hover::before {
+  transform: scale(1.5); /* Adjust scale as needed */
+}
+
 .customSwitch input:checked + .customSwitchSlider {
-  background-color: lightgreen;
+  background-color: purple;
 }
 
 .customSwitch input:checked + .customSwitchSlider::before {
-  transform: translateX(20px);
+  transform: translateX(26px) scale(1.5);
   background-image: url("/checkmark.svg");
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
-}
-
-.customSwitchLabel {
-  margin-left: 8px;
+  background-color: white;
 }
