@@ -1,0 +1,50 @@
+.customSwitch {
+  position: relative;
+  display: inline-block;
+}
+
+.customSwitch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.customSwitchSlider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 20px;
+  background-color: lightpink;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.customSwitchSlider::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: lightcyan;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.customSwitch input:checked + .customSwitchSlider {
+  background-color: lightgreen;
+}
+
+.customSwitch input:checked + .customSwitchSlider::before {
+  transform: translateX(20px);
+  background-image: url("/checkmark.svg");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+
+.customSwitchLabel {
+  margin-left: 8px;
+}
