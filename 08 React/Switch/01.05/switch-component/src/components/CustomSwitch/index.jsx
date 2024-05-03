@@ -12,7 +12,9 @@ function CustomSwitch({ onChange, left = false, right = false }) {
 
   return (
     <div
-      className={`${styles.customSwitch} ${right ? styles.right : ""}`}
+      className={`${styles.customSwitch}
+       ${left ? styles.left : ""}
+      ${right ? styles.right : ""}`}
       onClick={toggleSwitch}
     >
       <input type="checkbox" checked={checked} onChange={() => {}} />

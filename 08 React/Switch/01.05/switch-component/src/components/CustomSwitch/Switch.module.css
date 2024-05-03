@@ -43,13 +43,13 @@
 
 .customSwitch input:checked + .customSwitchSlider::before {
   transform: translateX(26px) scale(1.5);
-  /* background-image: url("/checkmark.svg"); */
+  /* background-image: url("./checkmark.svg"); */
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
   background-color: white;
 }
 
-.customSwitch:has(.right) input:checked + .customSwitchSlider::before {
-  background-image: url("/checkmark.svg");
+.customSwitch.right input:checked + .customSwitchSlider::before {
+  background-image: url("./checkmark.svg");
 }

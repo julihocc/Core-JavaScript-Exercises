@@ -14,6 +14,7 @@ function CustomSwitchContainer() {
           // console.log("Hi");
           console.log(toggleTheme());
         }}
+        left={true}
         right={true}
       />
     </div>
