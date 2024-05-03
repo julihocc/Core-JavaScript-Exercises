@@ -8,13 +8,7 @@ function CustomSwitchContainer() {
   return (
     <div>
       <h1>{theme.label}</h1>
-      <CustomSwitch
-        onChange={() => {
-          console.log(toggleTheme());
-        }}
-        left={true}
-        right={true}
-      />
+      <CustomSwitch onChange={toggleTheme} leftIcon={true} rightIcon={true} />
     </div>
   );
 }

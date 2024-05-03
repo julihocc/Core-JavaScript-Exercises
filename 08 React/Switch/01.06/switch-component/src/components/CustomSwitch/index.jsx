@@ -1,10 +1,10 @@
 import styles from "./Switch.module.css";
 import { useState } from "react";
 
-function CustomSwitch({ onChange, left = false, right = false }) {
+function CustomSwitch({ onChange, leftIcon = false, rightIcon = false }) {
   const [checked, setChecked] = useState(false);
-  console.log("left: ", left);
-  console.log("right: ", right);
+  console.log("leftIcon: ", leftIcon);
+  console.log("rightIcon: ", rightIcon);
   const toggleSwitch = () => {
     setChecked((prevChecked) => !prevChecked);
     onChange && onChange();
@@ -13,13 +13,13 @@ function CustomSwitch({ onChange, left = false, right = false }) {
   return (
     <div
       className={`${styles.customSwitch}
-      ${right ? styles.right : ""}`}
+      ${rightIcon ? styles.right : ""}`}
       onClick={toggleSwitch}
     >
       <input type="checkbox" checked={checked} onChange={() => {}} />
       <span
         className={`${styles.customSwitchSlider} 
-       ${left ? styles.left : ""}`}
+       ${leftIcon ? styles.left : ""}`}
       ></span>
     </div>
   );
