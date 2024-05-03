@@ -9,9 +9,7 @@ function CustomSwitchContainer() {
     <div>
       <h1>{theme.label}</h1>
       <CustomSwitch
-        label="Toggle Theme"
         onChange={() => {
-          // console.log("Hi");
           console.log(toggleTheme());
         }}
         left={true}
