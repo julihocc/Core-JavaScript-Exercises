@@ -32,6 +32,8 @@ function App() {
         title="Test"
         url="/test"
         icon={() => <i className="fa fa-home" />}
+        getBadgeValue={() => 1}
+        onClick={() => console.log("Test")}
       />
     </>
   );
