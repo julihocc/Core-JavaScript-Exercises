@@ -1,8 +1,10 @@
 import styles from "./Switch.module.css";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-function CustomSwitch({ onChange, leftIcon = false, rightIcon = false }) {
+function CustomSwitch({ onChange, leftIcon = null, rightIcon = null }) {
   const [checked, setChecked] = useState(false);
+  const switchRef = useRef(null);
+
   console.log("leftIcon: ", leftIcon);
   console.log("rightIcon: ", rightIcon);
   const toggleSwitch = () => {
@@ -10,11 +12,22 @@ function CustomSwitch({ onChange, leftIcon = false, rightIcon = false }) {
     onChange && onChange();
   };
 
+
+  useEffect(() => {
+    if (switchRef.current) {
+      switchRef.current.style.setProperty(
+        "--image-left-path",
+        `url(${leftIcon})`
+      );
+    }
+  }, [leftIcon]);
+
   return (
     <div
       className={`${styles.customSwitch}
       ${rightIcon ? styles.right : ""}`}
       onClick={toggleSwitch}
+      ref={switchRef}
     >
       <input type="checkbox" checked={checked} onChange={() => {}} />
       <span

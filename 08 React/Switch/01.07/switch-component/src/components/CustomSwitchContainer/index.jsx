@@ -8,7 +8,11 @@ function CustomSwitchContainer() {
   return (
     <div>
       <h1>{theme.label}</h1>
-      <CustomSwitch onChange={toggleTheme} leftIcon={true} rightIcon={true} />
+      <CustomSwitch
+        onChange={toggleTheme}
+        leftIcon={"./erase.svg"}
+        rightIcon={true}
+      />
     </div>
   );
 }
