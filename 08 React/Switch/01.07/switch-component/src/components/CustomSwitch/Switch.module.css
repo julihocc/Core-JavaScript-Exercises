@@ -1,3 +1,8 @@
+:root {
+  --image-left-path: url("./cross.svg");
+  --image-right-path: url("./checkmark.svg");
+}
+
 .customSwitch {
   position: relative;
   display: inline-block;
@@ -38,7 +43,7 @@
 }
 
 .customSwitchSlider::before {
-  background-image: url("./cross.svg");
+  background-image: var(--image-left-path);
   background-repeat: no-repeat;
   background-size: 30%;
   background-position: center;
@@ -58,5 +63,5 @@
 }
 
 .customSwitch.right input:checked + .customSwitchSlider::before {
-  background-image: url("./checkmark.svg");
+  background-image: var(--image-right-path);
 }
