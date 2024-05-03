@@ -3,11 +3,10 @@ import { ThemeContext } from "../ThemeContext";
 import CustomSwitch from "../CustomSwitch";
 
 function CustomSwitchContainer() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   return (
     <div>
-      <h1>{theme.label}</h1>
       <CustomSwitch
         onChange={toggleTheme}
         leftIcon={"./erase.svg"}

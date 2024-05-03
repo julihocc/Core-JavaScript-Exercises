@@ -1,18 +1,30 @@
 import styles from "./Switch.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 function CustomSwitch({ onChange, leftIcon = null, rightIcon = null }) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(() => {
+    const localChecked = localStorage.getItem("checked");
+    return localChecked ? JSON.parse(localChecked) : false;
+  });
+
   const switchLeftRef = useRef(leftIcon);
   const switchRightRef = useRef(rightIcon);
 
   console.log("leftIcon: ", leftIcon);
   console.log("rightIcon: ", rightIcon);
 
-  const toggleSwitch = () => {
+  const _toggleSwitch = () => {
+    console.log("toggleSwitch");
     setChecked((prevChecked) => !prevChecked);
     onChange && onChange();
   };
+
+  const toggleSwitch = useCallback(_toggleSwitch, [setChecked, onChange]);
+
+  useEffect(() => {
+    console.log("checked: ", checked);
+    localStorage.setItem("checked", checked);
+  }, [checked]);
 
   useEffect(() => {
     if (switchLeftRef.current) {
