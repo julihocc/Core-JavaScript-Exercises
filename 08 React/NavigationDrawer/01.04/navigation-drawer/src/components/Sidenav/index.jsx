@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Sidenav.module.css";
 
-export default function Sidenav({ headline, children }) {
+export default function Sidenav({  children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => {
@@ -19,7 +19,6 @@ export default function Sidenav({ headline, children }) {
         className={`${styles.sidenav} ${isOpen ? styles.open : styles.close}`}
         onClick={closeNav}
       >
-        <span>{headline}</span>
         {children}
       </div>
       <span
