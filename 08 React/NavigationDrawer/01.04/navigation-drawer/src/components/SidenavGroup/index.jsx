@@ -5,6 +5,7 @@ export default function SidenavGroup({ title, children }) {
     <div className={styles.sidenavGroup}>
       <span>{title}</span>
       {children}
+      <hr className={styles.horizontalLine} />
     </div>
   );
 }
