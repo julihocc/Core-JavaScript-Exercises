@@ -36,7 +36,7 @@ const gameReducer = (state: GameState, action: Action) => {
   }
 };
 
-const calculateWinner = (squares) => {
+const calculateWinner = (squares: string[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -60,11 +60,11 @@ const Game = () => {
   const [state, dispatch] = useReducer(gameReducer, initialState);
   const [gameStatus, setGameStatus] = useState("Next player: X" as string);
 
-  const handleClick = (index) => {
+  const handleClick = (index: Index) => {
     dispatch({ type: "HANDLE_CLICK", index: index });
   };
 
-  const jumpTo = (step) => {
+  const jumpTo = (step: number) => {
     dispatch({ type: "JUMP_TO", step });
   };
 
