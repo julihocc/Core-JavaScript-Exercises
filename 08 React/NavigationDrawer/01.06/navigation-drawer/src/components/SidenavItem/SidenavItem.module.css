@@ -26,11 +26,15 @@
 }
 
 .sidenav-item-icon {
-  flex: 0 0 24px; /* Fixed width of 24px, no shrinking or growing */
+  flex: 0 0 24px;
   margin-right: 32px;
   vertical-align: middle;
   width: 24px;
+  height: 24px;
   min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidenav-item-title {
