@@ -1,11 +1,6 @@
-type SquareProps = {
-  value: string;
-  onClick: () => void;
-};
+declare module "*.module.css" {
+  const classes: { [key: string]: string };
+  export default classes;
+}
 
 type Index = number;
-
-type BoardProps = {
-  squares: string[];
-  onClick: (i: Index) => void;
-};
