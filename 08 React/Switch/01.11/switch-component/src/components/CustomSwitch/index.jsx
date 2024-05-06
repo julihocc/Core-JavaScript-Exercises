@@ -1,8 +1,16 @@
 import styles from "./Switch.module.css";
 import { useState, useRef, useEffect, useCallback } from "react";
 
-function CustomSwitch({ onChange, leftIcon = null, rightIcon = null }) {
+function CustomSwitch({
+  onChange,
+  leftIcon = null,
+  rightIcon = null,
+  initialChecked = null,
+}) {
   const [checked, setChecked] = useState(() => {
+    if (initialChecked !== null) {
+      return initialChecked;
+    }
     const localChecked = localStorage.getItem("checked");
     return localChecked ? JSON.parse(localChecked) : false;
   });
