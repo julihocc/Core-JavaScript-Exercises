@@ -82,10 +82,10 @@ const Game = () => {
   }, [state.history, state.stepNumber, state.xIsNext]);
 
   const moves = state.history.map((_, move) => {
-    const desc = move ? "Go to move #" + move : "Go to game start";
+    const description = move ? "Go to move #" + move : "Go to game start";
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <button onClick={() => jumpTo(move)}>{description}</button>
       </li>
     );
   });
