@@ -6,5 +6,7 @@ declare const classNames: {
   readonly "sidenav-item-icon": "sidenav-item-icon";
   readonly "sidenav-item-title": "sidenav-item-title";
   readonly "sidenav-item-badge": "sidenav-item-badge";
+  readonly "sidenav-item-children": "sidenav-item-children";
+  readonly "sidenav-item-cage": "sidenav-item-cage";
 };
 export = classNames;

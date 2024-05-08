@@ -21,7 +21,22 @@ const SidenavContainer = ({ closingMode = "hidden", isOpen = "false" }) => {
             icon={() => <i className="fa fa-info" />}
             getBadgeValue={() => 0}
             onClick={() => console.log("About")}
-          />
+          >
+            <SidenavItem
+              title="Sub-About"
+              url="/sub-about"
+              icon={() => <i className="fa fa-info" />}
+              getBadgeValue={() => 0}
+              onClick={() => console.log("Sub-About")}
+            />
+            <SidenavItem
+              title="Sub-About 2"
+              url="/sub-about-2"
+              icon={() => <i className="fa fa-info" />}
+              getBadgeValue={() => 0}
+              onClick={() => console.log("Sub-About 2")}
+            />
+          </SidenavItem>
         </SidenavGroup>
       </SidenavPresenter>
     </SidenavProvider>

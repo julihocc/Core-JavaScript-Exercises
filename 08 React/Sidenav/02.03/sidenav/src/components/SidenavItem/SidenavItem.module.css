@@ -76,3 +76,27 @@
 .sidenav-item-badge.close.compact {
   display: none;
 }
+
+.sidenav-item-children {
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
+  padding: 0;
+  list-style-type: none;
+  background-color: lightseagreen;
+}
+
+.sidenav-item-cage {
+  background-color: greenyellow;
+  border: 1px solid black;
+}
+
+.sidenav-item-cage .sidenav-item-children > * {
+  display: none;
+}
+
+.sidenav-item-cage:hover .sidenav-item-children > * {
+  /* display: flex; */
+  background-color: purple;
+  display: flex;
+}
