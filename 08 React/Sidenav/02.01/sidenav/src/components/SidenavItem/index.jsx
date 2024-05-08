@@ -12,15 +12,24 @@ const SidenavItem = ({
   console.log(`closingMode: ${closingMode}`);
 
   return (
-    <div className={`${styles["sidenav-item"]}`} onClick={onClick}>
-      <div className={`${styles["sidenav-item-link"]}`}>
+    <div
+      className={`${styles["sidenav-item"]} ${styles[closingMode]}`}
+      onClick={onClick}
+    >
+      <div className={`${styles["sidenav-item-link"]} `}>
         {icon && (
           <span className={`${styles["sidenav-item-icon"]}`}>{icon()}</span>
         )}
-        <span className={`${styles["sidenav-item-title"]}`}>{title}</span>
+        <span
+          className={`${styles["sidenav-item-title"]} ${styles[closingMode]}`}
+        >
+          {title}
+        </span>
       </div>
       {getBadgeValue() !== null && (
-        <span className={`${styles["sidenav-item-badge"]}`}>
+        <span
+          className={`${styles["sidenav-item-badge"]} ${styles[closingMode]}`}
+        >
           {getBadgeValue()}
         </span>
       )}

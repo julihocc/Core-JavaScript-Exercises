@@ -25,8 +25,13 @@
   width: 350px;
 }
 
-.close {
-  width: 0;
+.close.hidden {
+  width: 0px;
+}
+
+.close.compact {
+  top: 80px;
+  width: 80px;
 }
 
 @media screen and (max-height: 450px) {

@@ -17,7 +17,10 @@ export default function SidenavPresenter({ children, closingMode = "hidden" }) {
     <SidenavContext.Provider value={{ closingMode }}>
       <div
         id="mySidenav"
-        className={`${styles.sidenav} ${isOpen ? styles.open : styles.close}`}
+        className={`
+        ${styles.sidenav} 
+        ${isOpen ? styles.open : styles.close} 
+        ${styles[closingMode]}`}
         onClick={closeNav}
       >
         {children}

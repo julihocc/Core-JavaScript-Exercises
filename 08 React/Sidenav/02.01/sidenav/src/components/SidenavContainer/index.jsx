@@ -5,7 +5,7 @@ import SidenavItem from "../SidenavItem";
 const SidenavContainer = () => {
   return (
     <>
-      <SidenavPresenter closingMode="hidden">
+      <SidenavPresenter closingMode="compact">
         <SidenavGroup title="Group 1">
           <SidenavItem
             title="Home"
