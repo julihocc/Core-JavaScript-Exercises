@@ -1,5 +1,4 @@
-
 type BoardProps = {
-  squares: string[];
+  squares: Chip[];
   onClick: (i: Index) => void;
 };
