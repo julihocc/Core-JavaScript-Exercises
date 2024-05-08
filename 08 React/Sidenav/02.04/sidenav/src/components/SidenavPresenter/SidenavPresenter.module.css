@@ -22,7 +22,8 @@
 
 .open {
   transform: translateX(0);
-  width: 350px;
+  /* width: 350px; */
+  width: auto;
 }
 
 .close.hidden {
