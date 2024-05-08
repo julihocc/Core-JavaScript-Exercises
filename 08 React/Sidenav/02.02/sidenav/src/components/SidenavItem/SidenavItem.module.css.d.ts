@@ -1,5 +1,6 @@
 declare const classNames: {
   readonly "sidenav-item": "sidenav-item";
+  readonly close: "close";
   readonly compact: "compact";
   readonly "sidenav-item-link": "sidenav-item-link";
   readonly "sidenav-item-icon": "sidenav-item-icon";

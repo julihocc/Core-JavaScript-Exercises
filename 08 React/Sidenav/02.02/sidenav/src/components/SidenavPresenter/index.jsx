@@ -1,18 +1,28 @@
-import { useState } from "react";
+// import { useState } from "react";
 import styles from "./SidenavPresenter.module.css";
-import { useContext } from "react";
-import SidenavContext from "../SidenavContext";
+// import { useContext } from "react";
+// import SidenavContext from "../SidenavContext";
+import { useSidenavDispatch, useSidenavState } from "../SidenavContext";
 
 export default function SidenavPresenter({ children }) {
-  const { closingMode } = useContext(SidenavContext);
-  const [isOpen, setIsOpen] = useState(false);
+  // const context = useContext(SidenavContext);
+  const sidenavState = useSidenavState();
+  const sidenavDispatch = useSidenavDispatch();
+
+  const { closingMode, isOpen } = sidenavState;
+
+  // const [isOpen, setIsOpen] = useState(startOpen === "true");
 
   const openNav = () => {
-    setIsOpen(true);
+    // setIsOpen(true);
+    sidenavDispatch({ type: "OPEN_SIDENAV" });
+    console.log(`isOpen: ${sidenavState.isOpen}`);
   };
 
   const closeNav = () => {
-    setIsOpen(false);
+    // setIsOpen(false);
+    sidenavDispatch({ type: "CLOSE_SIDENAV" });
+    console.log(`isOpen: ${sidenavState.isOpen}`);
   };
 
   return (

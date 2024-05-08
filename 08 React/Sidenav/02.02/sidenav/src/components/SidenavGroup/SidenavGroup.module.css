@@ -9,7 +9,7 @@
   margin-left: 16px;
 }
 
-.sidenavGroup.compact {
+.sidenavGroup.close.compact {
   width: 350px;
 }
 
@@ -20,6 +20,6 @@
   letter-spacing: 0.0075em;
 }
 
-.sidenavGroupTitle.compact {
+.sidenavGroupTitle.close.compact {
   display: none;
 }

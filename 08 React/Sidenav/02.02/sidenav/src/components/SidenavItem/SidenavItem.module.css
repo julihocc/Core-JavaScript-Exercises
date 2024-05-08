@@ -3,7 +3,7 @@
   --item-hover-bg-color: #ff5722;
   --item-link-color: rgba(0, 0, 0, 0.87);
   --badge-bg-color: yellow;
-  --badge-color: #ffffff;
+  --badge-color: blue;
   --item-compact-bg-color: orange;
 }
 
@@ -19,7 +19,7 @@
   background-color: lightgreen;
 }
 
-.sidenav-item.compact {
+.sidenav-item.close.compact {
   background-color: var(--item-compact-bg-color);
   padding: auto;
   width: 26px;
@@ -36,7 +36,7 @@
   color: var(--item-link-color);
 }
 
-.sidenav-item-link.compact {
+.sidenav-item-link.close.compact {
   justify-content: center;
 }
 
@@ -57,7 +57,7 @@
   font-weight: 500;
 }
 
-.sidenav-item-title.compact {
+.sidenav-item-title.close.compact {
   display: none;
 }
 
@@ -73,6 +73,6 @@
   flex-shrink: 0;
 }
 
-.sidenav-item-badge.compact {
+.sidenav-item-badge.close.compact {
   display: none;
 }

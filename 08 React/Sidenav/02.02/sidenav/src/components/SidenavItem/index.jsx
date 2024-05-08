@@ -1,6 +1,5 @@
 import styles from "./SidenavItem.module.css";
-import SidenavContext from "../SidenavContext";
-import { useContext } from "react";
+import { useSidenavState } from "../SidenavContext";
 
 const SidenavItem = ({
   title,
@@ -8,12 +7,15 @@ const SidenavItem = ({
   icon = () => null,
   getBadgeValue = () => null,
 }) => {
-  const { closingMode } = useContext(SidenavContext);
+  // const { closingMode } = useContext(SidenavContext);
+  const sideNavState = useSidenavState();
+  const { closingMode, isOpen } = sideNavState;
+
   console.log(`closingMode: ${closingMode}`);
 
   return (
     <div
-      className={`${styles["sidenav-item"]} ${styles[closingMode]}`}
+      className={`${styles["sidenav-item"]} ${styles[closingMode]} ${isOpen ? styles.open : styles.close}`}
       onClick={onClick}
     >
       <div className={`${styles["sidenav-item-link"]} `}>

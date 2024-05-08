@@ -1,11 +1,11 @@
 import SidenavPresenter from "../SidenavPresenter";
 import SidenavGroup from "../SidenavGroup";
 import SidenavItem from "../SidenavItem";
-import SidenavContext from "../SidenavContext";
+import SidenavProvider from "../SidenavContext";
 
-const SidenavContainer = () => {
+const SidenavContainer = ({ closingMode = "hidden", isOpen = "false" }) => {
   return (
-    <SidenavContext.Provider value={{ closingMode: "compact" }}>
+    <SidenavProvider closingMode={closingMode} isOpen={isOpen}>
       <SidenavPresenter>
         <SidenavGroup title="Group 1">
           <SidenavItem
@@ -24,7 +24,7 @@ const SidenavContainer = () => {
           />
         </SidenavGroup>
       </SidenavPresenter>
-    </SidenavContext.Provider>
+    </SidenavProvider>
   );
 };
 
