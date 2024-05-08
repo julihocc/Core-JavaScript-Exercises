@@ -1,11 +1,12 @@
 import SidenavPresenter from "../SidenavPresenter";
 import SidenavGroup from "../SidenavGroup";
 import SidenavItem from "../SidenavItem";
+import SidenavContext from "../SidenavContext";
 
 const SidenavContainer = () => {
   return (
-    <>
-      <SidenavPresenter closingMode="compact">
+    <SidenavContext.Provider value={{ closingMode: "compact" }}>
+      <SidenavPresenter>
         <SidenavGroup title="Group 1">
           <SidenavItem
             title="Home"
@@ -23,7 +24,7 @@ const SidenavContainer = () => {
           />
         </SidenavGroup>
       </SidenavPresenter>
-    </>
+    </SidenavContext.Provider>
   );
 };
 

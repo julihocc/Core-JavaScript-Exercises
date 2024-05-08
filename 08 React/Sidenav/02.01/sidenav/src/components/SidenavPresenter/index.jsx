@@ -1,8 +1,10 @@
 import { useState } from "react";
 import styles from "./SidenavPresenter.module.css";
+import { useContext } from "react";
 import SidenavContext from "../SidenavContext";
 
-export default function SidenavPresenter({ children, closingMode = "hidden" }) {
+export default function SidenavPresenter({ children }) {
+  const { closingMode } = useContext(SidenavContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => {
@@ -14,7 +16,7 @@ export default function SidenavPresenter({ children, closingMode = "hidden" }) {
   };
 
   return (
-    <SidenavContext.Provider value={{ closingMode }}>
+    <>
       <div
         id="mySidenav"
         className={`
@@ -32,6 +34,6 @@ export default function SidenavPresenter({ children, closingMode = "hidden" }) {
       >
         &#9776;
       </span>
-    </SidenavContext.Provider>
+    </>
   );
 }
