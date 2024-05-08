@@ -4,6 +4,7 @@
   --item-link-color: rgba(0, 0, 0, 0.87);
   --badge-bg-color: yellow;
   --badge-color: #ffffff;
+  --item-compact-bg-color: orange;
 }
 
 .sidenav-item {
@@ -19,8 +20,9 @@
 }
 
 .sidenav-item.compact {
-  background-color: orange;
-  width: 80px;
+  background-color: var(--item-compact-bg-color);
+  padding: auto;
+  width: 26px;
 }
 
 .sidenav-item:hover {
