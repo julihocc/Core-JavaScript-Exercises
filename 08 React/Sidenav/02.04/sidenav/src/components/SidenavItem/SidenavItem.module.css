@@ -101,3 +101,7 @@
   background-color: purple;
   display: flex;
 }
+
+.sidenav-item-children:hover .sidenav-item {
+  background-color: brown;
+}
