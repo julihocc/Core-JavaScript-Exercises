@@ -1,4 +1,6 @@
 import styles from "./SidenavItem.module.css";
+import SidenavContext from "../SidenavContext";
+import { useContext } from "react";
 
 const SidenavItem = ({
   title,
@@ -6,6 +8,9 @@ const SidenavItem = ({
   icon = () => null,
   getBadgeValue = () => null,
 }) => {
+  const { closingMode } = useContext(SidenavContext);
+  console.log(`closingMode: ${closingMode}`);
+
   return (
     <div className={`${styles["sidenav-item"]}`} onClick={onClick}>
       <div className={`${styles["sidenav-item-link"]}`}>

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import styles from "./Sidenav.module.css";
+import styles from "./SidenavPresenter.module.css";
+import SidenavContext from "../SidenavContext";
 
-export default function Sidenav({  children }) {
+export default function SidenavPresenter({ children, closingMode = "hidden" }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => {
@@ -13,7 +14,7 @@ export default function Sidenav({  children }) {
   };
 
   return (
-    <>
+    <SidenavContext.Provider value={{ closingMode }}>
       <div
         id="mySidenav"
         className={`${styles.sidenav} ${isOpen ? styles.open : styles.close}`}
@@ -28,6 +29,6 @@ export default function Sidenav({  children }) {
       >
         &#9776;
       </span>
-    </>
+    </SidenavContext.Provider>
   );
 }
