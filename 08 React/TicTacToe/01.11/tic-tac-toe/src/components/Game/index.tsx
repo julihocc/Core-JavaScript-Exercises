@@ -3,7 +3,8 @@ import Board from "../Board";
 import { calculateWinner } from "../../utils/calculateWinner";
 import History from "../History";
 import { useGameState, useDispatch } from "../Context";
-import { Button, Flex, Container, Box } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
+import Move from "../Move";
 
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -42,34 +43,28 @@ const Game = () => {
     ? gameState.history.map((_, move) => {
         const description = move ? "Go to move #" + move : "Go to game start";
         return (
-          // <li key={move}>
-          //   <button onClick={() => jumpTo(move as Step)}>{description}</button>
-          // </li>
-          <Box>
-            <Button
-              variant="surface"
-              key={move}
-              onClick={() => jumpTo(move as Step)}
-            >
-              {description}
-            </Button>{" "}
-          </Box>
+          <Move
+            key={`move-${move}`}
+            description={description}
+            onClick={() => jumpTo(move as Step)}
+          />
         );
       })
     : [];
 
   return (
     <>
-      <Flex direction="column">
+      <Flex direction="column" align="center" gapY="2">
         {gameState && (
           <>
             <Board
               squares={gameState.history[gameState.stepNumber].squares}
               onClick={(i) => handleClick(i)}
-            />{" "}
-            <Container size="1">
-              <History moves={moves} />
-            </Container>
+            />
+            <History />
+            <Flex direction="column" gapY="1" align="center">
+              {moves}
+            </Flex>
           </>
         )}
       </Flex>

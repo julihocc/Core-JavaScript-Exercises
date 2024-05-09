@@ -1,8 +1,8 @@
 import { useGameState } from "../Context";
-import { FC } from "react";
-import { Heading, Flex, Container, Box } from "@radix-ui/themes";
+// import { FC } from "react";
+import { Heading, Container, Box } from "@radix-ui/themes";
 
-const History: FC<HistoryProps> = ({ moves }) => {
+const History = () => {
   const gameState = useGameState();
   const gameStatus = gameState ? gameState.gameStatus : null;
 
@@ -15,9 +15,6 @@ const History: FC<HistoryProps> = ({ moves }) => {
     <Box>
       <Container size="1">
         <Heading as="h3">{gameStatus}</Heading>
-        <Flex direction="column" gap="3">
-          {moves}
-        </Flex>
       </Container>
     </Box>
   );

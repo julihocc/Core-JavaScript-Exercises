@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Container>
-        <Flex direction="column" gap="3">
+        <Flex direction="column" gap="3" align="center">
           <Box>
             <Heading size="9" as="h1">
               TicTac Toe 1.0
