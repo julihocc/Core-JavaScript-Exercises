@@ -1,9 +1,10 @@
+import styles from "./Game.module.css";
 import { useEffect } from "react";
 import Board from "../Board";
 import { calculateWinner } from "../../utils/calculateWinner";
 import History from "../History";
 import { useGameState, useDispatch } from "../Context";
-import { Button, Flex, Container, Box } from "@radix-ui/themes";
+import { Button } from "@radix-ui/themes";
 
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -30,7 +31,15 @@ const Game = () => {
     const current = gameState.history[gameState.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    dispatch({ type: "SET_GAME_STATUS", winner });
+    if (winner) {
+      // gameStatus = "Winner: " + winner;
+      // setGameStatus("Winner: " + winner);
+      dispatch({ type: "SET_GAME_STATUS", winner });
+    } else {
+      // gameStatus = "Next player: " + (state.xIsNext ? "X" : "O");
+      // setGameStatus("Next player: " + (state.xIsNext ? "X" : "O"));
+      dispatch({ type: "SET_GAME_STATUS", winner });
+    }
   }, [gameState, dispatch]);
 
   const moves = gameState
@@ -40,30 +49,28 @@ const Game = () => {
           // <li key={move}>
           //   <button onClick={() => jumpTo(move as Step)}>{description}</button>
           // </li>
-          <Box>
-            <Button key={move} onClick={() => jumpTo(move as Step)}>
-              {description}
-            </Button>{" "}
-          </Box>
+          <Bu
         );
       })
     : [];
 
   return (
     <>
-      <Flex direction="column">
+      <div className={`${styles.game}`}>
         {gameState && (
           <>
-            <Board
-              squares={gameState.history[gameState.stepNumber].squares}
-              onClick={(i) => handleClick(i)}
-            />{" "}
-            <Container size="1">
+            <div className={`${styles.gameBoard}`}>
+              <Board
+                squares={gameState.history[gameState.stepNumber].squares}
+                onClick={(i) => handleClick(i)}
+              />
+            </div>
+            <div className={`${styles.gameInfo}`}>
               <History moves={moves} />
-            </Container>
+            </div>
           </>
         )}
-      </Flex>
+      </div>
     </>
   );
 };

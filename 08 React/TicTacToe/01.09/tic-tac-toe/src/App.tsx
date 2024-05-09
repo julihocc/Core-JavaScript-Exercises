@@ -1,15 +1,21 @@
 import GameContainer from "./components/GameContainer";
-import { Flex, Text, Button } from "@radix-ui/themes";
+import { Flex, Container, Heading, Box } from "@radix-ui/themes";
 
 function App() {
   return (
     <>
-      <Flex direction="column" gap="2">
-        <Text>Hello from Radix Themes :)</Text>
-        <Button>Let's go</Button>
-      </Flex>
-      <div className="h1">Tic Tac Toe 1.0</div>
-      <GameContainer />
+      <Container>
+        <Flex direction="column" gap="3">
+          <Box>
+            <Heading size="9" as="h1">
+              TicTac Toe 1.0
+            </Heading>
+          </Box>
+          <Box>
+            <GameContainer />
+          </Box>
+        </Flex>
+      </Container>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useGameState } from "../Context";
 import { FC } from "react";
-import { Heading, Flex, Container, Box } from "@radix-ui/themes";
+import { Button, Heading, Flex, Container } from "@radix-ui/themes";
 
 const History: FC<HistoryProps> = ({ moves }) => {
   const gameState = useGameState();
@@ -12,14 +12,16 @@ const History: FC<HistoryProps> = ({ moves }) => {
     //   {gameStatus && <div>{gameStatus}</div>}
     //   <ol>{moves}</ol>
     // </div>
-    <Box>
-      <Container size="1">
-        <Heading as="h3">{gameStatus}</Heading>
-        <Flex direction="column" gap="3">
-          {moves}
-        </Flex>
-      </Container>
-    </Box>
+    <Container
+    <Button>
+      <Heading as="h3" >
+        {gameStatus}
+      </Heading>
+      <Flex direction="column" gap="3">
+        {moves}
+      </Flex>
+    </Button>
+
   );
 };
 
