@@ -23,6 +23,10 @@ const Game = () => {
   };
 
   useEffect(() => {
+    if (!gameState || !dispatch) {
+      return;
+    }
+
     const current = gameState.history[gameState.stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -35,30 +39,36 @@ const Game = () => {
       // setGameStatus("Next player: " + (state.xIsNext ? "X" : "O"));
       dispatch({ type: "SET_GAME_STATUS", winner });
     }
-  }, [gameState.history, gameState.stepNumber, gameState.xIsNext, dispatch]);
+  }, [gameState, dispatch]);
 
-  const moves = gameState.history.map((_, move) => {
-    const description = move ? "Go to move #" + move : "Go to game start";
-    return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move as Step)}>{description}</button>
-      </li>
-    );
-  });
+  const moves = gameState
+    ? gameState.history.map((_, move) => {
+        const description = move ? "Go to move #" + move : "Go to game start";
+        return (
+          <li key={move}>
+            <button onClick={() => jumpTo(move as Step)}>{description}</button>
+          </li>
+        );
+      })
+    : [];
 
   return (
     <>
       <div className={`${styles.game}`}>
-        <div className={`${styles.gameBoard}`}>
-          <Board
-            squares={gameState.history[gameState.stepNumber].squares}
-            onClick={(i) => handleClick(i)}
-          />
-        </div>
-        <div className={`${styles.gameInfo}`}>
-          <History gameStatus={gameState.gameStatus} moves={moves} />
-        </div>
-      </div>{" "}
+        {gameState && (
+          <>
+            <div className={`${styles.gameBoard}`}>
+              <Board
+                squares={gameState.history[gameState.stepNumber].squares}
+                onClick={(i) => handleClick(i)}
+              />
+            </div>
+            <div className={`${styles.gameInfo}`}>
+              <History moves={moves} />
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 };

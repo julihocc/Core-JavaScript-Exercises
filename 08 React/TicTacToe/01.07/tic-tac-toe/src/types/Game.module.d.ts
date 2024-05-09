@@ -8,7 +8,7 @@ type GameState = {
 type Action =
   | { type: "HANDLE_CLICK"; index: Index }
   | { type: "JUMP_TO"; step: Step }
-  | { type: "SET_GAME_STATUS"; winner: string };
+  | { type: "SET_GAME_STATUS"; winner: string | null };
 
 type GamePresenterProps = {
   gameReducer: (state: GameState, action: Action) => GameState;
@@ -16,3 +16,7 @@ type GamePresenterProps = {
 };
 
 type GameReducer = (state: GameState, action: Action) => GameState;
+
+type HistoryProps = {
+  moves: JSX.Element[];
+};
