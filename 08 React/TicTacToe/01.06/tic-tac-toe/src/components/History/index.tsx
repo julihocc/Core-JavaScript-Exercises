@@ -6,7 +6,6 @@ const History = ({ moves }) => {
 
   return (
     <div>
-      <h2>History</h2>
       <div>{gameStatus}</div>
       <ol>{moves}</ol>
     </div>

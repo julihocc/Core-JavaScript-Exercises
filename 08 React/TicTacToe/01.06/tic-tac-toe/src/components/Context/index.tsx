@@ -1,10 +1,10 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, FC, Dispatch } from "react";
 import { calculateWinner } from "../../utils/calculateWinner";
 
-export const GameContext = createContext(null);
-export const GameDispatchContext = createContext(null);
+export const GameContext = createContext<GameState | null>(null);
+export const GameDispatchContext = createContext<Dispatch<Action> | null>(null);
 
-export const GameProvider = ({ children }) => {
+export const GameProvider: FC<GameProviderProps> = ({ children }) => {
   const [gameState, dispatch] = useReducer(gameReducer, initialState);
 
   return (
@@ -60,7 +60,9 @@ const gameReducer: GameReducer = (state, action) => {
       const winner = action.winner;
       const output = {
         ...state,
-        gameStatus: winner ? `Winner: ${winner}` : `Next player: ${state.xIsNext ? "X" : "O"}`,
+        gameStatus: winner
+          ? `Winner: ${winner}`
+          : `Next player: ${state.xIsNext ? "X" : "O"}`,
       };
       return output as GameState;
     }

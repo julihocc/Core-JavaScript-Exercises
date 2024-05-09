@@ -11,11 +11,15 @@ const Game = () => {
   const dispatch = useDispatch();
 
   const handleClick = (index: Index) => {
-    dispatch({ type: "HANDLE_CLICK", index: index });
+    if (dispatch) {
+      dispatch({ type: "HANDLE_CLICK", index: index });
+    }
   };
 
   const jumpTo = (step: Step) => {
-    dispatch({ type: "JUMP_TO", step });
+    if (dispatch) {
+      dispatch({ type: "JUMP_TO", step });
+    }
   };
 
   useEffect(() => {
