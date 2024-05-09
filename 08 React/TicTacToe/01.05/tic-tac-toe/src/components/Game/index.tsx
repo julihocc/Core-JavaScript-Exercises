@@ -1,11 +1,14 @@
-import styles from "./GamePresenter.module.css";
-import { useReducer, useEffect, useState } from "react";
+import styles from "./Game.module.css";
+import { useEffect } from "react";
 import Board from "../Board";
 import { calculateWinner } from "../../utils/calculateWinner";
+import History from "../History";
+import { useGameState, useDispatch } from "../Context";
 
-const GamePresenter = ({ gameReducer, initialState }: GamePresenterProps) => {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
-  const [gameStatus, setGameStatus] = useState("Next player: X" as string);
+const Game = () => {
+  // const [state, dispatch] = useReducer(gameReducer, initialState);
+  const gameState = useGameState();
+  const dispatch = useDispatch();
 
   const handleClick = (index: Index) => {
     dispatch({ type: "HANDLE_CLICK", index: index });
@@ -16,19 +19,21 @@ const GamePresenter = ({ gameReducer, initialState }: GamePresenterProps) => {
   };
 
   useEffect(() => {
-    const current = state.history[state.stepNumber];
+    const current = gameState.history[gameState.stepNumber];
     const winner = calculateWinner(current.squares);
 
     if (winner) {
       // gameStatus = "Winner: " + winner;
-      setGameStatus("Winner: " + winner);
+      // setGameStatus("Winner: " + winner);
+      dispatch({ type: "SET_GAME_STATUS", winner });
     } else {
       // gameStatus = "Next player: " + (state.xIsNext ? "X" : "O");
-      setGameStatus("Next player: " + (state.xIsNext ? "X" : "O"));
+      // setGameStatus("Next player: " + (state.xIsNext ? "X" : "O"));
+      dispatch({ type: "SET_GAME_STATUS", winner });
     }
-  }, [state.history, state.stepNumber, state.xIsNext]);
+  }, [gameState.history, gameState.stepNumber, gameState.xIsNext, dispatch]);
 
-  const moves = state.history.map((_, move) => {
+  const moves = gameState.history.map((_, move) => {
     const description = move ? "Go to move #" + move : "Go to game start";
     return (
       <li key={move}>
@@ -39,21 +44,19 @@ const GamePresenter = ({ gameReducer, initialState }: GamePresenterProps) => {
 
   return (
     <>
-      <h1>Game</h1>
       <div className={`${styles.game}`}>
         <div className={`${styles.gameBoard}`}>
           <Board
-            squares={state.history[state.stepNumber].squares}
+            squares={gameState.history[gameState.stepNumber].squares}
             onClick={(i) => handleClick(i)}
           />
         </div>
         <div className={`${styles.gameInfo}`}>
-          <div>{gameStatus}</div>
-          <ol>{moves}</ol>
+          <History gameStatus={gameState.gameStatus} moves={moves} />
         </div>
       </div>{" "}
     </>
   );
 };
 
-export default GamePresenter;
+export default Game;

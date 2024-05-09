@@ -1,6 +1,4 @@
-
-
 type SquareProps = {
-  value: string;
+  value: Chip;
   onClick: () => void;
 };
