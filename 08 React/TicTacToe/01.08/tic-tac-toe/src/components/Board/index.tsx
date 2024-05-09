@@ -1,6 +1,5 @@
 import Square from "../Square";
-
-import styles from "./Board.module.css";
+import { Grid } from "@radix-ui/themes";
 
 const Board = (props: BoardProps) => {
   const renderSquare = (i: Index) => {
@@ -8,23 +7,17 @@ const Board = (props: BoardProps) => {
   };
 
   return (
-    <div>
-      <div className={styles.boardRow}>
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className={styles.boardRow}>
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className={styles.boardRow}>
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
-      </div>
-    </div>
+    <Grid columns="3" gap="1">
+      {renderSquare(0)}
+      {renderSquare(1)}
+      {renderSquare(2)}
+      {renderSquare(3)}
+      {renderSquare(4)}
+      {renderSquare(5)}
+      {renderSquare(6)}
+      {renderSquare(7)}
+      {renderSquare(8)}
+    </Grid>
   );
 };
 
