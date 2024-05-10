@@ -6,7 +6,8 @@ import { Heading, Container, Box } from "@radix-ui/themes";
 const CurrentPlayer = () => {
   // const gameState = useGameState();
   const gameState = useGameStore((state) => state);
-  const gameStatus = gameState ? gameState.gameStatus : null;
+  const currentPlayer = gameState.currentPlayer;
+  const winner = gameState.winner;
 
   return (
     // <div>
@@ -16,7 +17,11 @@ const CurrentPlayer = () => {
     // </div>
     <Box>
       <Container size="1">
-        <Heading as="h3">{gameStatus}</Heading>
+        <Heading as="h3">
+          {winner
+            ? `Winner: ${winner}`
+            : `Now playing ${currentPlayer === 0 ? "X" : "0"}...`}
+        </Heading>
       </Container>
     </Box>
   );

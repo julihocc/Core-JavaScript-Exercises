@@ -5,37 +5,31 @@ const gameReducer: GameReducer = (state, action) => {
   if (type === "CLICK_ON_SQUARE") {
     const currentSquareIndex = action.index;
     const squares = state.history[state.activeStep].squares;
-    const isThereAWinner = !!calculateWinner(squares);
     const squareIsFilled = !!squares[currentSquareIndex];
-    if (isThereAWinner || squareIsFilled) {
+    if (squareIsFilled) {
       return state;
     }
-    // currentSquare = state.xIsNext ? "X" : "O";
     const newSquares = [...squares];
-    newSquares[currentSquareIndex] = state.xIsNext ? "X" : "O";
-    state.xIsNext = !state.xIsNext;
-    state.gameStatus = `Next player: ${state.xIsNext ? "X" : "O"}`;
+    newSquares[currentSquareIndex] = state.currentPlayer;
+    state.currentPlayer = ((state.currentPlayer + 1) % 2) as Player;
     state.history.push({ squares: newSquares });
     state.activeStep = (state.history.length - 1) as Step;
+    state.winner = calculateWinner(newSquares);
   }
   if (type === "JUMP_TO") {
     // state.stepNumber = action.step;
-    state.xIsNext = action.step % 2 === 0;
+    state.currentPlayer = (action.step % 2) as Player;
     // state.activeIndex = action.step as Index;
     state.activeStep = action.step;
   }
-  if (type === "SET_GAME_STATUS") {
-    state.gameStatus = action.winner
-      ? `Winner: ${action.winner}`
-      : `Next player: ${state.xIsNext ? "X" : "O"}`;
+  if (type === "SET_GAME_WINNER") {
+    state.winner = action.winner;
   }
   if (type === "RESET") {
     state.history = [{ squares: Array(9).fill(null) }];
-    // state.stepNumber = 0;
-    state.xIsNext = true;
-    state.gameStatus = "Next player: X";
-    // state.activeIndex = 0;
+    state.currentPlayer = 0;
     state.activeStep = 0;
+    state.winner = null;
   }
   if (type === "UNDO") {
     state.history =
@@ -45,8 +39,8 @@ const gameReducer: GameReducer = (state, action) => {
     // state.activeIndex = Math.max(state.stepNumber - 1, 0) as Index;
     // state.stepNumber = Math.max(0, state.stepNumber - 1) as Step;
     state.activeStep = Math.max(0, state.activeStep - 1) as Step;
-    state.xIsNext = !state.xIsNext;
-    state.gameStatus = `Next player: ${state.xIsNext ? "X" : "O"}`;
+    // state.xIsNext = !state.xIsNext;
+    state.currentPlayer = (state.activeStep % 2) as Player;
   }
   return state;
 };

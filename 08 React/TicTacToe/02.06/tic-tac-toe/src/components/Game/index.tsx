@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import Board from "../Board";
-import { calculateWinner } from "../../utils/calculateWinner";
 import CurrentPlayer from "../CurrentPlayer";
 import { Flex, Box, Heading } from "@radix-ui/themes";
 import Move from "../Move";
@@ -15,8 +13,6 @@ const Game = () => {
   // const dispatch = useStore((state) => state.dispatch);
   const dispatch = useGameStore((state) => state.dispatch);
 
-  const [winner, setWinner] = useState<string | null>(null);
-
   const clickOnSquare = (index: Index) => {
     dispatch({ type: "CLICK_ON_SQUARE", index: index });
   };
@@ -27,22 +23,6 @@ const Game = () => {
     // }
     dispatch({ type: "JUMP_TO", step });
   };
-
-  useEffect(() => {
-    const current = gameState && gameState.history[gameState.activeStep];
-    const _winner = current && calculateWinner(current.squares);
-    setWinner(_winner);
-    // console.log("winner", winner);
-  }, [gameState, winner]);
-
-  useEffect(() => {
-    // if (winner) {
-    //   if (dispatch) {
-    //     dispatch({ type: "SET_GAME_STATUS", winner: `Winner: ${winner}` });
-    //   }
-    // }
-    dispatch({ type: "SET_GAME_STATUS", winner: winner });
-  }, [winner, dispatch]);
 
   const moves = gameState
     ? gameState.history.map((_, move) => {

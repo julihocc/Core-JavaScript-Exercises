@@ -6,8 +6,9 @@ declare module "*.module.css" {
 }
 
 type Index = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-type Chip = "X" | "O" | null;
+type Chip = 0 | 1 | null;
 type Step = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+type Player = 0 | 1;
 
 // Move component
 
@@ -35,15 +36,16 @@ type SquareProps = {
 
 type GameState = {
   history: { squares: Chip[] }[];
-  xIsNext: boolean;
-  gameStatus: string;
+  // xIsNext: boolean;
   activeStep: Step;
+  currentPlayer: Player;
+  winner: Player | null;
 };
 
 type Action =
   | { type: "CLICK_ON_SQUARE"; index: Index }
   | { type: "JUMP_TO"; step: Step }
-  | { type: "SET_GAME_STATUS"; winner: string | null }
+  | { type: "SET_GAME_WINNER"; winner: Player | null }
   | { type: "RESET" }
   | { type: "UNDO" };
 
