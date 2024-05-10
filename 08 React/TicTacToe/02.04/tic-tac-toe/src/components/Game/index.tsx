@@ -11,14 +11,14 @@ import Undo from "../Undo";
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);
   const gameState = useGameStore((state) => state);
-  console.log("gameState", gameState);
+  // console.log("gameState", gameState);
   // const dispatch = useStore((state) => state.dispatch);
   const dispatch = useGameStore((state) => state.dispatch);
 
   const [winner, setWinner] = useState<string | null>(null);
 
-  const handleClick = (index: Index) => {
-    dispatch({ type: "HANDLE_CLICK", index: index });
+  const clickOnSquare = (index: Index) => {
+    dispatch({ type: "CLICK_ON_SQUARE", index: index });
   };
 
   const jumpTo = (step: Step) => {
@@ -32,7 +32,7 @@ const Game = () => {
     const current = gameState && gameState.history[gameState.stepNumber];
     const _winner = current && calculateWinner(current.squares);
     setWinner(_winner);
-    console.log("winner", winner);
+    // console.log("winner", winner);
   }, [gameState, winner]);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Game = () => {
             </Flex>
             <Board
               squares={gameState.history[gameState.stepNumber].squares}
-              onClick={(i) => handleClick(i)}
+              onClick={(i) => clickOnSquare(i)}
             />{" "}
             <CurrentPlayer />
             <Flex direction="column" gapY="1" align="center">

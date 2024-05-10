@@ -17,7 +17,6 @@ type MoveProps = {
   isActive: boolean;
 };
 
-
 // Board component
 
 type BoardProps = {
@@ -43,7 +42,7 @@ type GameState = {
 };
 
 type Action =
-  | { type: "HANDLE_CLICK"; index: Index }
+  | { type: "CLICK_ON_SQUARE"; index: Index }
   | { type: "JUMP_TO"; step: Step }
   | { type: "SET_GAME_STATUS"; winner: string | null }
   | { type: "RESET" }
