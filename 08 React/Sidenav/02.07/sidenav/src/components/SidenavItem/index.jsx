@@ -42,14 +42,14 @@ const SidenavItem = ({
             <span className={`${styles["sidenav-item-icon"]}`}>{icon()}</span>
           )}
           <span
-            className={`${styles["sidenav-item-title"]} ${styles[closingMode]}`}
+            className={`${styles["sidenav-item-title"]} ${styles[closingMode]} ${styles[closingMode]} ${isOpen ? styles.open : styles.close}`}
           >
             {title}
           </span>
         </div>
         {getBadgeValue() !== null && (
           <span
-            className={`${styles["sidenav-item-badge"]} ${styles[closingMode]}`}
+            className={`${styles["sidenav-item-badge"]} ${styles[closingMode]} ${styles[closingMode]} ${isOpen ? styles.open : styles.close}`}
           >
             {getBadgeValue()}
           </span>
