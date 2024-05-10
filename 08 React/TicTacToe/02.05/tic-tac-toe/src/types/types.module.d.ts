@@ -35,10 +35,9 @@ type SquareProps = {
 
 type GameState = {
   history: { squares: Chip[] }[];
-  stepNumber: Step;
   xIsNext: boolean;
   gameStatus: string;
-  activeIndex: Index | null;
+  activeStep: Step;
 };
 
 type Action =

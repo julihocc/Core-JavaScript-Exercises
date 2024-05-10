@@ -29,7 +29,7 @@ const Game = () => {
   };
 
   useEffect(() => {
-    const current = gameState && gameState.history[gameState.stepNumber];
+    const current = gameState && gameState.history[gameState.activeStep];
     const _winner = current && calculateWinner(current.squares);
     setWinner(_winner);
     // console.log("winner", winner);
@@ -52,7 +52,7 @@ const Game = () => {
             key={`move-${move}`}
             description={description}
             onClick={() => jumpTo(move as Step)}
-            isActive={gameState.activeIndex === move}
+            isActive={gameState.activeStep === move}
           />
         );
       })
@@ -73,7 +73,7 @@ const Game = () => {
               <Undo />
             </Flex>
             <Board
-              squares={gameState.history[gameState.stepNumber].squares}
+              squares={gameState.history[gameState.activeStep].squares}
               onClick={(i) => clickOnSquare(i)}
             />{" "}
             <CurrentPlayer />

@@ -10,10 +10,9 @@ export const useGameStore = create<
     devtools(
       immer((set) => ({
         history: [{ squares: Array(9).fill(null) }],
-        stepNumber: 0,
         xIsNext: true,
         gameStatus: "Next player: X",
-        activeIndex: null,
+        activeStep: 0,
         dispatch: (action) => set((state) => gameReducer(state, action)),
       }))
     ),
