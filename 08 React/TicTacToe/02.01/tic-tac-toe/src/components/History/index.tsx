@@ -1,9 +1,11 @@
-import { useGameState } from "../Context";
+// import { useGameState } from "../Context";
 // import { FC } from "react";
+import { useGameStore } from "../../store";
 import { Heading, Container, Box } from "@radix-ui/themes";
 
 const History = () => {
-  const gameState = useGameState();
+  // const gameState = useGameState();
+  const gameState = useGameStore((state) => state);
   const gameStatus = gameState ? gameState.gameStatus : null;
 
   return (

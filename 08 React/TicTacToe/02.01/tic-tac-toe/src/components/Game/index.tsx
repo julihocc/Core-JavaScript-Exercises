@@ -4,25 +4,38 @@ import { calculateWinner } from "../../utils/calculateWinner";
 import History from "../History";
 import { Flex } from "@radix-ui/themes";
 import Move from "../Move";
-import { useStore } from "../../store";
+import { useGameStore } from "../../store";
+
+// const Game = () => {
+//   //   const history = useGameStore((state) => state.history);
+//   const history = "History";
+//   return <div> {history} </div>;
+// };
+
+// export default Game;
 
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);
-  const gameState = useStore((state) => state);
-  const dispatch = useStore((state) => state.dispatch);
+  const gameState = useGameStore((state) => state);
+  console.log("gameState", gameState);
+  // const dispatch = useStore((state) => state.dispatch);
+  const dispatch = useGameStore((state) => state.dispatch);
 
   const [winner, setWinner] = useState<string | null>(null);
 
   const handleClick = (index: Index) => {
-    if (dispatch) {
-      dispatch({ type: "HANDLE_CLICK", index: index });
-    }
+    // if (dispatch) {
+    //   dispatch({ type: "HANDLE_CLICK", index: index });
+    // }
+
+    dispatch({ type: "HANDLE_CLICK", index: index });
   };
 
   const jumpTo = (step: Step) => {
-    if (dispatch) {
-      dispatch({ type: "JUMP_TO", step });
-    }
+    // if (dispatch) {
+    //   dispatch({ type: "JUMP_TO", step });
+    // }
+    dispatch({ type: "JUMP_TO", step });
   };
 
   useEffect(() => {
@@ -33,11 +46,12 @@ const Game = () => {
   }, [gameState, winner]);
 
   useEffect(() => {
-    if (winner) {
-      if (dispatch) {
-        dispatch({ type: "SET_GAME_STATUS", winner: `Winner: ${winner}` });
-      }
-    }
+    // if (winner) {
+    //   if (dispatch) {
+    //     dispatch({ type: "SET_GAME_STATUS", winner: `Winner: ${winner}` });
+    //   }
+    // }
+    dispatch({ type: "SET_GAME_STATUS", winner: winner });
   }, [winner, dispatch]);
 
   const moves = gameState

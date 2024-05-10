@@ -12,7 +12,8 @@ function App() {
             </Heading>
           </Box>
           <Box>
-            <Game />
+            {/* <GameContainer /> */}
+            <Game/>
           </Box>
         </Flex>
       </Container>

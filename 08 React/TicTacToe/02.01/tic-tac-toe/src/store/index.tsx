@@ -1,6 +1,6 @@
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
 import { calculateWinner } from "../utils/calculateWinner";
+import { persist, devtools } from "zustand/middleware";
 
 const gameReducer: GameReducer = (state, action) => {
   switch (action.type) {
@@ -45,26 +45,23 @@ const gameReducer: GameReducer = (state, action) => {
   }
 };
 
-// export const useStore = create<Store>((set) => ({
-//   board: Array(9).fill(''),
-//   currentPlayer: 'X',
-//   winner: '',
-//   setBoard: (board) => set({ board }),
-//   setCurrentPlayer: (currentPlayer) => set({ currentPlayer }),
-//   setWinner: (winner) => set({ winner }),
-// }));
 
-export const useStore = create<GameState>()(
-  persist(
-    devtools((set) => ({
-      history: [{ squares: Array(9).fill(null) }],
-      stepNumber: 0,
-      xIsNext: true,
-      gameStatus: "",
-      dispatch: (action: Action) => set((state) => gameReducer(state, action)),
-    })),
-    {
-      name: "tic-tac-toe-store",
-    }
+
+export const useGameStore = create<
+  GameState & { dispatch: (action: Action) => void }
+>()(
+  devtools(
+    persist(
+      (set) => ({
+        history: [{ squares: Array(9).fill(null) }],
+        stepNumber: 0,
+        xIsNext: true,
+        gameStatus: "Next player: X",
+        dispatch: (action) => set((state) => gameReducer(state, action)),
+      }),
+      {
+        name: "tic-tac-toe",
+      }
+    )
   )
 );

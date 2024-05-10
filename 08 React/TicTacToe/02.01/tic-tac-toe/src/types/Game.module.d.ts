@@ -3,7 +3,6 @@ type GameState = {
   stepNumber: Step;
   xIsNext: boolean;
   gameStatus: string;
-  dispatch?: React.Dispatch<Action>;
 };
 
 type Action =
