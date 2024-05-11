@@ -5,8 +5,9 @@ const gameReducer: GameReducer = (state, action) => {
   if (type === "CLICK_ON_SQUARE") {
     const currentSquareIndex = action.index;
     const squares = state.history[state.activeStep].squares;
-    const squareIsFilled = !!squares[currentSquareIndex];
+    const squareIsFilled = squares[currentSquareIndex] !== null;
     if (squareIsFilled) {
+      console.log("Square is already filled");
       return state;
     }
     const newSquares = [...squares];
@@ -22,9 +23,9 @@ const gameReducer: GameReducer = (state, action) => {
     // state.activeIndex = action.step as Index;
     state.activeStep = action.step;
   }
-  if (type === "SET_GAME_WINNER") {
-    state.winner = action.winner;
-  }
+  // if (type === "SET_GAME_WINNER") {
+  //   state.winner = action.winner;
+  // }
   if (type === "RESET") {
     state.history = [{ squares: Array(9).fill(null) }];
     state.currentPlayer = 0;

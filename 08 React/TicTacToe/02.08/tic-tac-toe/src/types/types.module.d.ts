@@ -46,7 +46,7 @@ type GameState = {
 type Action =
   | { type: "CLICK_ON_SQUARE"; index: Index }
   | { type: "JUMP_TO"; step: Step }
-  | { type: "SET_GAME_WINNER"; winner: Player | null }
+  // | { type: "SET_GAME_WINNER"; winner: Player | null }
   | { type: "RESET" }
   | { type: "UNDO" };
 

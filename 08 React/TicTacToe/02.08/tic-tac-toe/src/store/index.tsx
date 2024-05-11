@@ -16,7 +16,8 @@ export const useGameStore = create<
         activeStep: 0,
         iconPlayer0: () => <StarIcon />,
         iconPlayer1: () => <HeartIcon />,
-        dispatch: (action) => set((state) => gameReducer(state, action)),
+        dispatch: (action) =>
+          set((state) => gameReducer(state, action), false, action.type),
       }))
     ),
     { name: "tic-tac-toe" }
