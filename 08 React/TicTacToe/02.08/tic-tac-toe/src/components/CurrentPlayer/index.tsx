@@ -8,9 +8,9 @@ const CurrentPlayer = () => {
   const gameState = useGameStore((state) => state);
   const currentPlayer = gameState.currentPlayer;
   const winner = gameState.winner;
-  let forRender = null
+  let forRender = null;
 
-  if (winner) {
+  if (winner !== null) {
     forRender = () => (
       <Heading as="h3">Winner: {gameState.iconPlayer0()}</Heading>
     );

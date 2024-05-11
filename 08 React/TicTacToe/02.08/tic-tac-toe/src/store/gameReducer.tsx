@@ -12,10 +12,16 @@ const gameReducer: GameReducer = (state, action) => {
     }
     const newSquares = [...squares];
     newSquares[currentSquareIndex] = state.currentPlayer;
-    state.currentPlayer = ((state.currentPlayer + 1) % 2) as Player;
     state.history.push({ squares: newSquares });
+    state.currentPlayer = ((state.currentPlayer + 1) % 2) as Player;
     state.activeStep = (state.history.length - 1) as Step;
-    state.winner = calculateWinner(newSquares);
+    const currentSquares = state.history[state.history.length - 1].squares;
+    console.log("currentSquares", currentSquares);
+    const winner = calculateWinner(currentSquares);
+    if (winner !== null) {
+      console.log("Winner is", winner);
+      state.winner = winner;
+    }
   }
   if (type === "JUMP_TO") {
     // state.stepNumber = action.step;
