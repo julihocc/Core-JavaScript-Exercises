@@ -86,7 +86,5 @@ export default function EndGame() {
     );
   };
 
-  // const AnimatedDialog = animated(ExternalComponent);
-  // return <AnimatedDialog />;
   return <ExternalComponent />;
 }
