@@ -5,6 +5,7 @@ import Move from "../Move";
 import { useGameStore } from "../../store";
 import Reset from "../Reset";
 import Undo from "../Undo";
+import EndGame from "../EndGame";
 
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -40,6 +41,7 @@ const Game = () => {
 
   return (
     <>
+      <EndGame />
       <Flex direction="column" align="center" gapY="2">
         {gameState && (
           <>

@@ -8,7 +8,6 @@ export default function Square({ value, onClick }: SquareProps) {
   const gameState = useGameStore((state) => state);
   const [isClicked, setIsClicked] = useState(false);
 
-  // animate rotation about the z-axis
   const rotation = useSpring({
     transform: isClicked
       ? "perspective(600px) rotateY(180deg)"
