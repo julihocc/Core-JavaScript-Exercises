@@ -51,7 +51,7 @@ export default function EndGame() {
       y: 50,
     },
     config: {
-      duration: 2000,
+      duration: 500,
     },
   };
 
