@@ -1,13 +1,5 @@
-.square-button {
-  /* border: 1px solid #999; */
-  float: left;
-  /* font-size: 24px; */
-  font-weight: bold;
-  /* line-height: 34px; */
-  height: 30px;
-  /* margin-right: -1px; */
-  /* margin-top: -1px; */
-  /* padding: 0; */
-  /* text-align: center; */
-  width: 30px;
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
