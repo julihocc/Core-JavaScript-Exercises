@@ -22,6 +22,13 @@ const gameReducer: GameReducer = (state, action) => {
       console.log("Winner is", winner);
       state.winner = winner;
     }
+    const isDraft =
+      currentSquares.every((square) => square !== null) && winner === null;
+    if (isDraft) {
+      console.log("Draft");
+      state.winner = null;
+      state.draft = true;
+    }
   }
   if (type === "JUMP_TO") {
     // state.stepNumber = action.step;
@@ -37,6 +44,7 @@ const gameReducer: GameReducer = (state, action) => {
     state.currentPlayer = 0;
     state.activeStep = 0;
     state.winner = null;
+    state.draft = false;
   }
   if (type === "UNDO") {
     state.history =
@@ -49,6 +57,7 @@ const gameReducer: GameReducer = (state, action) => {
     // state.xIsNext = !state.xIsNext;
     state.currentPlayer = (state.activeStep % 2) as Player;
     state.winner = null;
+    state.draft = false;
   }
   return state;
 };

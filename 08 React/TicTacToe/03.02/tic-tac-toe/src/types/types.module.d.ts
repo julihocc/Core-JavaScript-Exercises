@@ -39,6 +39,7 @@ type GameState = {
   activeStep: Step;
   currentPlayer: Player;
   winner: Player | null;
+  draft: boolean;
   iconPlayer0: () => React.ReactElement;
   iconPlayer1: () => React.ReactElement;
 };

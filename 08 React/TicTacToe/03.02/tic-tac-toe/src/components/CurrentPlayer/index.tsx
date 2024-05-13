@@ -8,12 +8,15 @@ const CurrentPlayer = () => {
   const gameState = useGameStore((state) => state);
   const currentPlayer = gameState.currentPlayer;
   const winner = gameState.winner;
+  const draft = useGameStore((state) => state.draft);
   let forRender = null;
 
   if (winner !== null) {
     forRender = () => (
       <Heading as="h3">Winner: {gameState.iconPlayer0()}</Heading>
     );
+  } else if (draft) {
+    forRender = () => <Heading as="h3">It's a draft 🙃</Heading>;
   } else {
     forRender = () => (
       <Heading as="h3">

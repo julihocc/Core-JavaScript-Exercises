@@ -14,6 +14,7 @@ export const useGameStore = create<
         currentPlayer: 0,
         winner: null,
         activeStep: 0,
+        draft: false,
         iconPlayer0: () => <StarIcon />,
         iconPlayer1: () => <HeartIcon />,
         dispatch: (action) =>
