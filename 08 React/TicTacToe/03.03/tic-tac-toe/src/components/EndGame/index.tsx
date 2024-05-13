@@ -1,10 +1,16 @@
-import * as Dialog from "@radix-ui/react-dialog";
+// import * as Dialog from "@radix-ui/react-dialog";
+import { AlertDialog, Button } from "@radix-ui/themes";
 import { useState, useEffect } from "react";
 import { useGameStore } from "../../store";
 
 export default function EndGame() {
   const gameState = useGameStore((state) => state);
   const [openModal, setOpenModal] = useState(false);
+
+  const cancelModal = () => {
+    gameState.dispatch({ type: "RESET" });
+    setOpenModal(false);
+  };
 
   useEffect(() => {
     if (gameState.winner !== null || gameState.draft) {
@@ -13,17 +19,20 @@ export default function EndGame() {
   }, [gameState.winner, gameState.draft]);
 
   return (
-    <Dialog.Root open={openModal} onOpenChange={setOpenModal}>
-      <Dialog.Overlay />
-      <Dialog.Content>
-        <Dialog.Title>Game Over</Dialog.Title>
-        <Dialog.Description>
+    <AlertDialog.Root open={openModal} onOpenChange={setOpenModal}>
+      <AlertDialog.Content>
+        <AlertDialog.Title> GameOver </AlertDialog.Title>
+        <AlertDialog.Description>
           {gameState.winner !== null
-            ? `Winner: ${gameState.winner}`
-            : "It's a draw!"}
-        </Dialog.Description>
-        <Dialog.Close />
-      </Dialog.Content>
-    </Dialog.Root>
+            ? `Player ${gameState.winner} wins`
+            : "Draft"}
+        </AlertDialog.Description>
+        <AlertDialog.Cancel>
+          <Button color="red" onClick={cancelModal}>
+            OK
+          </Button>
+        </AlertDialog.Cancel>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
   );
 }
