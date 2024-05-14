@@ -1,0 +1,30 @@
+:root {
+  --group-bg-color: #ffffff;
+  --group-border-color: #e0e0e0;
+}
+
+.sidenavGroup {
+  background-color: var(--group-bg-color);
+  border-bottom: 1px solid var(--group-border-color);
+  /* margin-left: 16px; */
+}
+
+.sidenavGroup.open {
+  padding: 8px;
+}
+
+.sidenavGroup.close.compact {
+  /* width: 300px; */
+  width: auto;
+}
+
+.sidenavGroupTitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+}
+
+.sidenavGroupTitle.close.compact {
+  display: none;
+}
