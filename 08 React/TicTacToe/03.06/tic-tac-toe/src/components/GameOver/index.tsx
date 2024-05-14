@@ -1,5 +1,12 @@
 // import * as Dialog from "@radix-ui/react-dialog";
-import { AlertDialog, Flex, Box, Button, Heading } from "@radix-ui/themes";
+import {
+  AlertDialog,
+  Grid,
+  Box,
+  Button,
+  Heading,
+  Flex,
+} from "@radix-ui/themes";
 import { useState, useEffect, useRef } from "react";
 import { useGameStore } from "../../store";
 import { animated, useTransition } from "@react-spring/web";
@@ -82,16 +89,23 @@ export default function GameOver() {
       <AlertDialog.Root open={openModal} onOpenChange={setOpenModal}>
         {transition((styles, item) =>
           item ? (
-            <AnimatedAlertDialogContent forceMount style={styles}>
+            <AnimatedAlertDialogContent
+              forceMount
+              style={styles}
+              size="1"
+              maxWidth="300px"
+            >
               <animated.div style={styles}>
-                <Flex direction="column" gap="3">
-                  <Box>{message}</Box>
-                  <Box>
+                <Grid columns="2" width="auto">
+                  <Flex align="center" justify="center">
+                    {message}
+                  </Flex>
+                  <Flex align="center" justify="end">
                     <AlertDialog.Cancel onClick={cancelModal}>
                       <Button>Close</Button>
                     </AlertDialog.Cancel>
-                  </Box>
-                </Flex>
+                  </Flex>
+                </Grid>
               </animated.div>
             </AnimatedAlertDialogContent>
           ) : null
