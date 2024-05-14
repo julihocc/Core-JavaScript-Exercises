@@ -5,7 +5,7 @@ import "./App.css";
 const App = () => {
   return (
     <div className="App">
-      <SidenavContainer closingMode={"compact"} isOpen={false} />
+      <SidenavContainer closingMode={"hidden"} isOpen={true} />
     </div>
   );
 };
