@@ -19,7 +19,6 @@
 }
 
 .sidenav-item.close.compact {
-  background-color: var(--item-compact-bg-color);
   padding: auto;
   width: 26px;
 }

@@ -5,14 +5,11 @@ import styles from "./SidenavPresenter.module.css";
 import { useSidenavDispatch, useSidenavState } from "../SidenavContext";
 import Sandwich from "../Sandwich";
 
-export default function SidenavPresenter({ children }) {
-  // const context = useContext(SidenavContext);
+export default function SidenavPresenter({ children }) { 
   const sidenavState = useSidenavState();
   const sidenavDispatch = useSidenavDispatch();
 
-  const { closingMode, isOpen } = sidenavState;
-
-  // const [isOpen, setIsOpen] = useState(startOpen === "true");
+  const { closingMode, isOpen } = sidenavState; 
 
   const openNav = () => {
     // setIsOpen(true);
