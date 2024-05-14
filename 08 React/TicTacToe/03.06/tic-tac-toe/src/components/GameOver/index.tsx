@@ -1,12 +1,5 @@
 // import * as Dialog from "@radix-ui/react-dialog";
-import {
-  AlertDialog,
-  Grid,
-  Box,
-  Button,
-  Heading,
-  Flex,
-} from "@radix-ui/themes";
+import { AlertDialog, Grid, Button, Heading, Flex } from "@radix-ui/themes";
 import { useState, useEffect, useRef } from "react";
 import { useGameStore } from "../../store";
 import { animated, useTransition } from "@react-spring/web";

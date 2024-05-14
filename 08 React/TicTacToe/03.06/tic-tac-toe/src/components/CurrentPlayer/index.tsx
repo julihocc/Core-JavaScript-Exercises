@@ -8,16 +8,10 @@ const CurrentPlayer = () => {
   const gameState = useGameStore((state) => state);
   const currentPlayer = gameState.currentPlayer;
   const winner = gameState.winner;
-  const draft = useGameStore((state) => state.tie);
+  const tie = useGameStore((state) => state.tie);
   let forRender = null;
 
-  if (winner !== null) {
-    forRender = () => (
-      <Heading as="h3">Winner: {gameState.iconPlayer0()}</Heading>
-    );
-  } else if (draft) {
-    forRender = () => <Heading as="h3">It's a draft 🙃</Heading>;
-  } else {
+  if (currentPlayer !== null) {
     forRender = () => (
       <Heading as="h3">
         Waiting for:{" "}
@@ -26,6 +20,10 @@ const CurrentPlayer = () => {
           : gameState.iconPlayer1()}
       </Heading>
     );
+  }
+
+  if (winner !== null || tie !== null) {
+    forRender = () => <Heading as="h3">Game over</Heading>;
   }
 
   return (
