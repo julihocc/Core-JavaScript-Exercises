@@ -28,7 +28,7 @@ const CurrentPlayer = () => {
 
   return (
     <Box>
-      <Container size="1">{forRender()}</Container>
+      <Container size="1">{forRender && forRender()}</Container>
     </Box>
   );
 };
