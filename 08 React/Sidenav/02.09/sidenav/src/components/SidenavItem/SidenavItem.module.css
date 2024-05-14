@@ -16,6 +16,7 @@
   padding: 16px;
   font-family: "Roboto", sans-serif;
   border-radius: 20px;
+  margin: 2px;
 }
 
 .sidenav-item.close.compact {
