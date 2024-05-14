@@ -5,7 +5,7 @@ import Move from "../Move";
 import { useGameStore } from "../../store";
 import Reset from "../Reset";
 import Undo from "../Undo";
-import EndGame from "../EndGame";
+import EndGame from "../GameOver";
 
 const Game = () => {
   // const [state, dispatch] = useReducer(gameReducer, initialState);

@@ -3,9 +3,8 @@ import { AlertDialog, Flex, Box, Button, Heading } from "@radix-ui/themes";
 import { useState, useEffect } from "react";
 import { useGameStore } from "../../store";
 import { animated, useTransition } from "@react-spring/web";
-import Confetti from "../Confetti";
 
-export default function EndGame() {
+export default function GameOver() {
   const gameState = useGameStore((state) => state);
   const [openModal, setOpenModal] = useState(false);
 
