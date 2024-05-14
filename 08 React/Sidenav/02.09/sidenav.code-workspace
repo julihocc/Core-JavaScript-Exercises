@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.fontSize": 18,
+		"editor.suggestFontSize": 9,
+		"debug.console.fontSize": 18,
+		"chat.editor.fontSize": 18,
+		"vsicons.presets.jsonOfficial": false,
+		"vsicons.presets.jsOfficial": true
+	}
+}
