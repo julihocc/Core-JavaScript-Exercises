@@ -29,23 +29,21 @@ const Game = () => {
     : [];
 
   return (
-    <>
+    <Flex direction="column" justify="start" align="center" gapY="2" p="5">
       <EndGame />
-      <Flex direction="column" justify="start" align="center" gapY="2">
-        {gameState && (
-          <>
-            <CurrentPlayer />
-            <Flex gap="2">
-              <Reset />
-              <Undo />
-            </Flex>
-            <Flex direction="column" gapY="1" align="center">
-              {moves}
-            </Flex>
-          </>
-        )}
-      </Flex>
-    </>
+      {gameState && (
+        <>
+          <CurrentPlayer />
+          <Flex gap="2">
+            <Reset />
+            <Undo />
+          </Flex>
+          <Flex direction="column" gapY="1" align="center">
+            {moves}
+          </Flex>
+        </>
+      )}
+    </Flex>
   );
 };
 

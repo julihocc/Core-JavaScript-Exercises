@@ -19,9 +19,9 @@ const Board = () => {
   };
 
   return (
-      <Grid columns="3">
-        {squares.map((_, index) => renderSquare(index as Index))}
-      </Grid>
+    <Grid columns="3" width="15rem" height="15rem" align="center" >
+      {squares.map((_, index) => renderSquare(index as Index))}
+    </Grid>
   );
 };
 

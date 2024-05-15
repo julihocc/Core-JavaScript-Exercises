@@ -1,4 +1,4 @@
-import { Box, Button } from "@radix-ui/themes";
+import { Box, Button, Flex } from "@radix-ui/themes";
 import { useGameStore } from "../../stores/gameStore";
 import { animated, useSpring } from "@react-spring/web";
 import { useState } from "react";
@@ -31,18 +31,20 @@ export default function Square({ value, onClick }: SquareProps) {
   };
 
   return (
-    <Box as="div" width="32px" height="32px" mx="1" onClick={handleClick}>
-      <Button style={{ width: "32px" }} variant="outline">
-        {value === 0 ? (
-          <animated.div style={rotation} className={styles.parent}>
-            {iconPlayer0()}
-          </animated.div>
-        ) : value === 1 ? (
-          <animated.div style={rotation} className={styles.parent}>
-            {iconPlayer1()}
-          </animated.div>
-        ) : null}
-      </Button>
-    </Box>
+    <Flex justify="center" align="center">
+      <Box as="div" width="32px" height="32px" mx="1" onClick={handleClick}>
+        <Button style={{ width: "32px" }} variant="outline">
+          {value === 0 ? (
+            <animated.div style={rotation} className={styles.parent}>
+              {iconPlayer0()}
+            </animated.div>
+          ) : value === 1 ? (
+            <animated.div style={rotation} className={styles.parent}>
+              {iconPlayer1()}
+            </animated.div>
+          ) : null}
+        </Button>
+      </Box>
+    </Flex>
   );
 }

@@ -22,8 +22,8 @@ function App() {
       <Flex direction="column" justify="center" align="center">
         <Title />
         <Grid columns="3" width="auto">
-          <Board />
           <Game />
+          <Board />
           <Stats />
         </Grid>
       </Flex>
