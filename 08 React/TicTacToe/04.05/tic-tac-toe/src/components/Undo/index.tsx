@@ -6,7 +6,11 @@ export const Undo = () => {
   const handleClick = () => {
     dispatch({ type: "UNDO" });
   };
-  return <Button onClick={handleClick}>Undo</Button>;
+  return (
+    <Button onClick={handleClick} variant="surface">
+      Undo
+    </Button>
+  );
 };
 
 export default Undo;

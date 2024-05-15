@@ -8,11 +8,13 @@ type Match = {
 type MatchState = {
   player: Player | null;
   matches: Match[];
+  welcome: boolean;
 };
 
 type MatchAction = {
   addMatch: (Match: Match) => void;
   setPlayer: (player: Player) => void;
+  setWelcome: () => void;
 };
 
 type MatchStore = MatchState & MatchAction;

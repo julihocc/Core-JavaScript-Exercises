@@ -34,13 +34,11 @@ const Game = () => {
       {gameState && (
         <>
           <CurrentPlayer />
-          <Flex gap="2">
-            <Reset />
-            <Undo />
-          </Flex>
           <Flex direction="column" gapY="1" align="center">
             {moves}
           </Flex>
+            <Reset />
+            <Undo />
         </>
       )}
     </Flex>

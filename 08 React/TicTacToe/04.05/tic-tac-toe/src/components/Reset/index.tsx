@@ -6,7 +6,11 @@ const Reset = () => {
   const handleClick = () => {
     dispatch({ type: "RESET" });
   };
-  return <Button onClick={handleClick}>Reset</Button>;
+  return (
+    <Button onClick={handleClick} variant="surface">
+      Reset
+    </Button>
+  );
 };
 
 export default Reset;

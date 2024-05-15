@@ -12,6 +12,7 @@ const handleMatchStore: StateCreator<
 > = (set) => ({
   player: null,
   matches: [],
+  welcome: true,
   addMatch: (match) =>
     set(
       (state) => {
@@ -30,6 +31,7 @@ const handleMatchStore: StateCreator<
       false,
       "setPlayer"
     ),
+  setWelcome: () => set({ welcome: false }),
 });
 
 const useMatchStore = create<MatchStore>()(
