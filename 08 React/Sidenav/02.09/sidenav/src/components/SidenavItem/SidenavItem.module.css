@@ -61,7 +61,7 @@
 }
 
 .sidenav-item-badge {
-  background-color: var(--badge-bg-color);
+  /* background-color: var(--badge-bg-color); */
   /* border-radius: 50%; */
   color: var(--badge-color);
   font-size: 12px;
