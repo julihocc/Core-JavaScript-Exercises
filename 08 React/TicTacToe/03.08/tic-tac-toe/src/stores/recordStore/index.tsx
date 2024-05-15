@@ -12,8 +12,6 @@ const handleRecordStore: StateCreator<
 > = (set) => ({
   player: null,
   records: [],
-  initTime: null,
-  endTime: null,
   addRecord: (record) =>
     set(
       (state) => {
@@ -31,24 +29,6 @@ const handleRecordStore: StateCreator<
       },
       false,
       "setPlayer"
-    ),
-  setInitTime: (time) =>
-    set(
-      (state) => {
-        state.initTime = time;
-        return state;
-      },
-      false,
-      "setInitTime"
-    ),
-  setEndTime: (time) =>
-    set(
-      (state) => {
-        state.endTime = time;
-        return state;
-      },
-      false,
-      "setEndTime"
     ),
 });
 

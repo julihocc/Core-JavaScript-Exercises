@@ -13,12 +13,14 @@ export const useGameStore = create<GameStore>()(
         winner: null,
         activeStep: 0,
         tie: false,
+        startTime: null,
+        endTime: null,
         iconPlayer0: () => <StarIcon />,
         iconPlayer1: () => <HeartIcon />,
         dispatch: (action) =>
           set((state) => gameReducer(state, action), false, action.type),
       }))
     ),
-    { name: "tic-tac-toe" }
+    { name: "tic-tac-toe-game" }
   )
 );

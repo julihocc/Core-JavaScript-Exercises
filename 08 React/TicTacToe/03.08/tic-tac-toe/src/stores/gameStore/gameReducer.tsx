@@ -36,9 +36,6 @@ const gameReducer: GameReducer = (state, action) => {
     // state.activeIndex = action.step as Index;
     state.activeStep = action.step;
   }
-  // if (type === "SET_GAME_WINNER") {
-  //   state.winner = action.winner;
-  // }
   if (type === "RESET") {
     state.history = [{ squares: Array(9).fill(null) }];
     state.currentPlayer = 0;
@@ -58,6 +55,12 @@ const gameReducer: GameReducer = (state, action) => {
     state.currentPlayer = (state.activeStep % 2) as Player;
     state.winner = null;
     state.tie = false;
+  }
+  if (type === "SET_START_TIME") {
+    state.startTime = action.startTime;
+  }
+  if (type === "SET_END_TIME") {
+    state.endTime = action.endTime;
   }
   return state;
 };

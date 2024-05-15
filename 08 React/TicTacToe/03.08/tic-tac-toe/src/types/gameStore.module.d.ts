@@ -4,6 +4,8 @@ type GameState = {
   currentPlayer: Player;
   winner: Player | null;
   tie: boolean;
+  startTime: DateAsNumber | null;
+  endTime: DateAsNumber | null;
   iconPlayer0: () => React.ReactElement;
   iconPlayer1: () => React.ReactElement;
 };
@@ -11,9 +13,10 @@ type GameState = {
 type Action =
   | { type: "CLICK_ON_SQUARE"; index: Index }
   | { type: "JUMP_TO"; step: Step }
-  // | { type: "SET_GAME_WINNER"; winner: Player | null }
   | { type: "RESET" }
-  | { type: "UNDO" };
+  | { type: "UNDO" }  
+  | { type: "SET_START_TIME"; startTime: DateAsNumber }
+  | { type: "SET_END_TIME"; endTime: DateAsNumber };
 
 type GameReducer = (state: GameState, action: Action) => GameState;
 

@@ -1,27 +1,21 @@
 import Board from "../Board";
 import CurrentPlayer from "../CurrentPlayer";
-import { Flex, Box, Heading } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import Move from "../Move";
 import { useGameStore } from "../../stores/gameStore";
 import Reset from "../Reset";
 import Undo from "../Undo";
 import EndGame from "../GameOver";
 
-const Game = () => {
-  // const [state, dispatch] = useReducer(gameReducer, initialState);
-  const gameState = useGameStore((state) => state);
-  // console.log("gameState", gameState);
-  // const dispatch = useStore((state) => state.dispatch);
+const Game = () => { 
+  const gameState = useGameStore((state) => state); 
   const dispatch = useGameStore((state) => state.dispatch);
 
   const clickOnSquare = (index: Index) => {
     dispatch({ type: "CLICK_ON_SQUARE", index: index });
   };
 
-  const jumpTo = (step: Step) => {
-    // if (dispatch) {
-    //   dispatch({ type: "JUMP_TO", step });
-    // }
+  const jumpTo = (step: Step) => { 
     dispatch({ type: "JUMP_TO", step });
   };
 
@@ -45,14 +39,14 @@ const Game = () => {
       <Flex direction="column" align="center" gapY="2">
         {gameState && (
           <>
+            <Board
+              squares={gameState.history[gameState.activeStep].squares}
+              onClick={(i) => clickOnSquare(i)}
+            />
             <Flex gap="2">
               <Reset />
               <Undo />
             </Flex>
-            <Board
-              squares={gameState.history[gameState.activeStep].squares}
-              onClick={(i) => clickOnSquare(i)}
-            />{" "}
             <CurrentPlayer />
             <Flex direction="column" gapY="1" align="center">
               {moves}
