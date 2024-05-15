@@ -6,13 +6,11 @@ import Reset from "../Reset";
 import Undo from "../Undo";
 import EndGame from "../GameOver";
 
-const Game = () => { 
-  const gameState = useGameStore((state) => state); 
+const Game = () => {
+  const gameState = useGameStore((state) => state);
   const dispatch = useGameStore((state) => state.dispatch);
 
-
-
-  const jumpTo = (step: Step) => { 
+  const jumpTo = (step: Step) => {
     dispatch({ type: "JUMP_TO", step });
   };
 
@@ -33,15 +31,14 @@ const Game = () => {
   return (
     <>
       <EndGame />
-      <Flex direction="column" align="center" gapY="2">
+      <Flex direction="column" justify="start" align="center" gapY="2">
         {gameState && (
           <>
-
+            <CurrentPlayer />
             <Flex gap="2">
               <Reset />
               <Undo />
             </Flex>
-            <CurrentPlayer />
             <Flex direction="column" gapY="1" align="center">
               {moves}
             </Flex>

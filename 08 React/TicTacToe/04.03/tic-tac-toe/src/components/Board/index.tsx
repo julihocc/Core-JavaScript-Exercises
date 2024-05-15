@@ -1,5 +1,5 @@
 import Square from "../Square";
-import { Grid, Box } from "@radix-ui/themes";
+import { Grid } from "@radix-ui/themes";
 import { useGameStore } from "../../stores/gameStore";
 
 const Board = () => {
@@ -19,11 +19,9 @@ const Board = () => {
   };
 
   return (
-    <Box>
-      <Grid columns="3" gap="2">
+      <Grid columns="3">
         {squares.map((_, index) => renderSquare(index as Index))}
-      </Grid>{" "}
-    </Box>
+      </Grid>
   );
 };
 
