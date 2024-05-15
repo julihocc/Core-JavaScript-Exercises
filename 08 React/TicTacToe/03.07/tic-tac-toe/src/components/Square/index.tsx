@@ -1,5 +1,5 @@
 import { Box, Button } from "@radix-ui/themes";
-import { useGameStore } from "../../store";
+import { useGameStore } from "../../stores/gameStore";
 import { animated, useSpring } from "@react-spring/web";
 import { useState } from "react";
 import styles from "./Square.module.css";

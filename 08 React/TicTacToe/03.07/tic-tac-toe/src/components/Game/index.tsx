@@ -2,7 +2,7 @@ import Board from "../Board";
 import CurrentPlayer from "../CurrentPlayer";
 import { Flex, Box, Heading } from "@radix-ui/themes";
 import Move from "../Move";
-import { useGameStore } from "../../store";
+import { useGameStore } from "../../stores/gameStore";
 import Reset from "../Reset";
 import Undo from "../Undo";
 import EndGame from "../GameOver";
@@ -45,11 +45,6 @@ const Game = () => {
       <Flex direction="column" align="center" gapY="2">
         {gameState && (
           <>
-            <Box>
-              <Heading size="9" as="h1">
-                Tic Tac Toe
-              </Heading>
-            </Box>
             <Flex gap="2">
               <Reset />
               <Undo />

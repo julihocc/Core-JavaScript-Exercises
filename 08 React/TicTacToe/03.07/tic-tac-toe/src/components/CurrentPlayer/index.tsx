@@ -1,6 +1,6 @@
 // import { useGameState } from "../Context";
 // import { FC } from "react";
-import { useGameStore } from "../../store";
+import { useGameStore } from "../../stores/gameStore";
 import { Heading, Container, Box } from "@radix-ui/themes";
 
 const CurrentPlayer = () => {
@@ -22,7 +22,7 @@ const CurrentPlayer = () => {
     );
   }
 
-  if (winner !== null || tie !== null) {
+  if (winner !== null || tie !== false) {
     forRender = () => <Heading as="h3">Game over</Heading>;
   }
 

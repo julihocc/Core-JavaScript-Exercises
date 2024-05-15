@@ -1,4 +1,4 @@
-import { calculateWinner } from "../utils/calculateWinner";
+import { calculateWinner } from "../../utils/calculateWinner";
 
 const gameReducer: GameReducer = (state, action) => {
   const type = action.type;

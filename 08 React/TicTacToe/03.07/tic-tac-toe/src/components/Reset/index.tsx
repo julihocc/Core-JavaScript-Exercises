@@ -1,5 +1,5 @@
 import { Button } from "@radix-ui/themes";
-import { useGameStore } from "../../store";
+import { useGameStore } from "../../stores/gameStore";
 
 const Reset = () => {
   const dispatch = useGameStore((state) => state.dispatch);

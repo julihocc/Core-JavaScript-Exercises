@@ -1,12 +1,10 @@
 import { create } from "zustand";
 import { persist, devtools } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
-import gameReducer from "./gameReducer"; // Your existing reducer
+import gameReducer from "./gameReducer";
 import { StarIcon, HeartIcon } from "@radix-ui/react-icons";
 
-export const useGameStore = create<
-  GameState & { dispatch: (action: Action) => void }
->()(
+export const useGameStore = create<GameStore>()(
   persist(
     devtools(
       immer((set) => ({
