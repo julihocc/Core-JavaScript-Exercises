@@ -1,6 +1,7 @@
 import Square from "../Square";
-import { Grid } from "@radix-ui/themes";
+import { Grid, Flex } from "@radix-ui/themes";
 import { useGameStore } from "../../stores/gameStore";
+import CurrentPlayer from "../CurrentPlayer";
 
 const Board = () => {
   const activeStep = useGameStore((state) => state.activeStep);
@@ -19,9 +20,12 @@ const Board = () => {
   };
 
   return (
-    <Grid columns="3" width="15rem" height="15rem" align="center" >
-      {squares.map((_, index) => renderSquare(index as Index))}
-    </Grid>
+    <Flex direction="column" justify="center" align="center">
+      <CurrentPlayer />
+      <Grid columns="3" width="15rem" height="15rem" align="center">
+        {squares.map((_, index) => renderSquare(index as Index))}
+      </Grid>
+    </Flex>
   );
 };
 

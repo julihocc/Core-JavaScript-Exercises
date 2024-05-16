@@ -9,9 +9,9 @@ const ThemeApp = () => {
   return (
     <Theme
       appearance={theme}
-      accentColor="crimson"
+      accentColor="iris"
       grayColor="gray"
-      panelBackground="solid"
+      panelBackground="translucent"
       scaling="100%"
       radius="full"
     >

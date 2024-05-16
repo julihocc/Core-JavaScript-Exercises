@@ -7,7 +7,7 @@ const Reset = () => {
     dispatch({ type: "RESET" });
   };
   return (
-    <Button onClick={handleClick} variant="surface">
+    <Button onClick={handleClick} variant="surface" style={{ width: "10rem" }}>
       Reset
     </Button>
   );

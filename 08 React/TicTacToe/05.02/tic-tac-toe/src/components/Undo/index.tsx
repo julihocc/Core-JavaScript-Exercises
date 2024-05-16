@@ -7,7 +7,7 @@ export const Undo = () => {
     dispatch({ type: "UNDO" });
   };
   return (
-    <Button onClick={handleClick} variant="surface">
+    <Button onClick={handleClick} variant="surface" style={{ width: "10rem" }}>
       Undo
     </Button>
   );
