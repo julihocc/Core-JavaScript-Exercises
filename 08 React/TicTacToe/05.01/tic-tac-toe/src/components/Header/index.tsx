@@ -1,7 +1,7 @@
 import { Heading, Section, Switch, Flex } from "@radix-ui/themes";
 import { useThemeStore } from "../../stores/themeStore";
 
-export default function Title() {
+export default function Header() {
   const theme = useThemeStore((state) => state.theme);
   const setTheme = useThemeStore((state) => state.setTheme);
 

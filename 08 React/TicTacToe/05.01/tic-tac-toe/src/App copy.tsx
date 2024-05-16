@@ -1,6 +1,6 @@
 import Game from "./components/Game";
 import WelcomeScreen from "./components/WelcomeScreen";
-import Title from "./components/Title";
+import Header from "./components/Header";
 import { Flex, Grid } from "@radix-ui/themes";
 import Stats from "./components/Stats";
 import Board from "./components/Board";
@@ -20,7 +20,7 @@ function App() {
     >
       <WelcomeScreen />
       <Flex direction="column" justify="center" align="center">
-        <Title />
+        <Header />
         <Grid columns="3" width="auto">
           <Game />
           <Board />
