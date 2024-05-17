@@ -1,0 +1,31 @@
+import { create } from "zustand";
+import { persist, devtools, createJSONStorage } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
+import gameReducer from "./gameReducer";
+import { StarIcon, HeartIcon } from "@radix-ui/react-icons";
+
+const useGameStore = create<GameStore>()(
+  persist(
+    devtools(
+      immer((set) => ({
+        history: [{ squares: Array(9).fill(null) }],
+        currentPlayer: 0,
+        winner: null,
+        activeStep: 0,
+        tie: false,
+        startTime: null,
+        endTime: null,
+        iconPlayer0: () => <StarIcon />,
+        iconPlayer1: () => <HeartIcon />,
+        dispatch: (action) =>
+          set((state) => gameReducer(state, action), false, action.type),
+      }))
+    ),
+    {
+      name: "tic-tac-toe-game",
+      storage: createJSONStorage(() => sessionStorage),
+    }
+  )
+);
+
+export default useGameStore;
