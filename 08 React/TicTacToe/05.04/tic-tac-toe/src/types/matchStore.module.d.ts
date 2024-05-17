@@ -3,6 +3,7 @@ type Match = {
   tie: boolean;
   startTime: DateAsNumber | null;
   endTime: DateAsNumber | null;
+  length: number 
 };
 
 type MatchState = {
@@ -12,6 +13,9 @@ type MatchState = {
 type MatchAction = {
   addMatch: (Match: Match) => void;
   resetMatches: () => void;
+  totalWins: (player: Player | null) => number | null;
+  totalTies: () => number;
+  totalLosses: (player: Player | null) => number | null;
 };
 
 type MatchStore = MatchState & MatchAction;

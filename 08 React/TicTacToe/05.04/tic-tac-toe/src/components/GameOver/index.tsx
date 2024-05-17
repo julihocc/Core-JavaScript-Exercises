@@ -10,6 +10,7 @@ const GameOver = () => {
   const winner = useGameStore((state) => state.winner);
   const tie = useGameStore((state) => state.tie);
   const startTime = useGameStore((state) => state.startTime);
+  const history = useGameStore((state) => state.history);
   const iconPlayer0 = useGameStore((state) => state.iconPlayer0);
   const iconPlayer1 = useGameStore((state) => state.iconPlayer1);
   const dispatch = useGameStore((state) => state.dispatch);
@@ -30,6 +31,7 @@ const GameOver = () => {
       tie: tie,
       startTime: startTime,
       endTime: now,
+      length: history.length,
     };
     addMatch(match);
     dispatch({ type: "RESET" });

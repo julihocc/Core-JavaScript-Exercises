@@ -9,7 +9,7 @@ const handleMatchStore: StateCreator<
     ["zustand/persist", unknown],
     ["zustand/devtools", never]
   ]
-> = (set) => ({
+> = (set, get) => ({
   matches: [],
   addMatch: (match) =>
     set(
@@ -21,6 +21,21 @@ const handleMatchStore: StateCreator<
       "addRecord"
     ),
   resetMatches: () => set({ matches: [] }),
+  totalWins: (player) => {
+    if (player) {
+      return get().matches.filter((match) => match.winner === player).length;
+    }
+    return null;
+  },
+  totalTies: () => get().matches.filter((match) => match.tie).length,
+  totalLosses: (player) => {
+    if (player) {
+      return get().matches.filter(
+        (match) => match.winner !== player && !match.tie
+      ).length;
+    }
+    return null;
+  },
 });
 
 const useMatchStore = create<MatchStore>()(
